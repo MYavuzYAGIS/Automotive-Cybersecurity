@@ -484,3 +484,59 @@ If ethertype in the packet is ipv4 or ipv6, then in layer 3 starting in the payl
 What to understand is: `Layer x is encapsulated in layer X-1` mesela Layer 2 frame encapsulates Layer 3 frame. (like onion approach)
 
 each time a layer is passed, you peel a layer off the packet and process it , and peel again to send it to nexty layer.
+
+
+#### IP HEADER:
+
+
+-> Version : 4 or 6
+
+-> IHL : Internet Header Length (number of 32-bit words in the header)
+
+-> DSCP : Differentiated Services Code Point (traffic management)
+
+-> ECN : Explicit Congestion Notification    
+
+-> Total Length : Total length of the packet in bytes 
+
+-> Time to Live
+
+-> Protocols: 
+
+- - 1 : ICMP (Internet Control Message Protocol)
+- - 2 : IGMP (Internet Group Management Protocol)
+- - 6 : TCP (Transmission Control Protocol)
+- - 17 : UDP (User Datagram Protocol)
+
+-> Identification : Unique identifier for the packet
+
+-> Flags : Flags
+
+-> Header Checksum : Checksum of the header
+
+-> Fragment Offset : Fragment offset
+
+-> Source and Destination IP addresses
+
+
+# 3- Transport Layer:
+
+UDP/ TCP
+
+![](ss/ss9.png)
+
+
+PORTS: 
+
+- Logical Ports:
+
+- - Layer 4 concept to differentiate logical connections.
+- - Port + IP address == socket.
+
+- Physical Ports:
+
+- - Connection between PHY and Pythsical Media
+
+- - `Port` on a switch 
+
+- - `Port` on a computer.
