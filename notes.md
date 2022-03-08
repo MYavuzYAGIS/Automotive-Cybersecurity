@@ -737,16 +737,53 @@ Pros:
 
 - MultiDrop topology(Bus) so every ECU is electrically connected to every other ECU.
 
+- No master-slave, they can transmit at any time.
+
 - Easy for plug and play.
 
-- `non-desctructive arbitration` for data transmission and collision prevention
+- `non-desctructive arbitration` for data transmission and collision prevention. Network Controller decides who wins based on their Arbitration ID.
 
 
 Cons:
 
-- Limited bandwidth with 10Mbps with `CAN-XL`
+- Limited bandwidth with 10Mbps with `CAN-XL` (also due to non-destructive arbitration)
 
 - Relatively small payload with max 8 bytes with CAN, 64 bytes with CAN-FD and 2048 bytes with CAN-XL
 
 - No common time base accross network.
 
+- no inherent redundancy and time sync.
+
+
+## **FlexRay**
+
+
+Used in `Safety/Time-Critical, Backbone, Control Data.`
+
+Pros:
+
+- Single twisted pair copper cable.
+
+- MultiDrop topology(Bus) so every ECU is electrically connected to every other ECU.
+
+- `inherently redundant and deterministic`
+
+- compeletly new message scturcure.
+
+- clock syncronization deterministic(static frames)
+
+- TDMA- Time Divided Media Access to aviod collisions.
+
+- fixes problams with CAN.
+
+- With every FlexRay chip, a redundant controller built in.
+
+
+
+Cons:
+
+- must design the entire network at one time.
+
+- all nodes must be aware of and programmed for the entire network design.
+
+- Max baud rate 10Mbps.
