@@ -272,7 +272,7 @@ wow!
 
 
 
-### MAC Address:
+### 1) MAC Address:
 
 MAC address is Low-level/pyhsical address of the network.
 
@@ -305,3 +305,42 @@ Point2Point adresses, used to send data to `specific` node.
 
 -> When MAC address is all 1's (ff:ff:ff:ff:ff:ff) this is called `Broadcast Address` which is a special case where **all** NICs are programmed to accept the message.
 
+
+
+===============================***===============================
+
+
+### 2) VLANs
+
+QoS at layer 2 hardwqare.  Virtual Lan means, I want to `virtually` separate the traffic in a network so that I can get practicvally multiple networks that are `logically` separated on the `same pyhsical network`.
+
+
+Ports assigned to Virtual Lans. 
+
+-> Switch enforces forwarding restrictions based on VLAN config.
+-> VLAN traffic is blocked on ports not `a memeber` of that VLAN.
+-> Used to optimize bandwith use with `least` resources.
+
+
+===============================***===============================
+
+**Common Automotive Ethertypes**
+
+```
+General Use: 
+0x0800 for IPV4
+0x0806 for ARP
+0x86DD for IPV6
+0x8100 for VLAN (single tag)
+0x9100 for VLAN (double tag)
+0x88F5 for Multiple VLAN Reservation Protocol
+
+
+AVB:
+0x22F0 for IEEE 1722
+0x88F7 for generalized precision Time Protocol
+0x22EA for Multiple Stream Reservation Protocol
+
+V2X:
+0x88DC for Wave Short Message Protocol
+```
