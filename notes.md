@@ -823,7 +823,7 @@ Cons:
 - Became nearly obsolete with automotive ethernet introduced.
 
 
-## **Automotive Ethernet**
+## **Automotive Ethernet IEEE 802.3 MAC Interfaces**
 
 Used in `Control-Data, Backbone, Infotainment, Multi-Giga Data, Safety/Time-Critical Data.`
 
@@ -832,7 +832,7 @@ T1 = single twisted pair copper cable.
 
 Automotive ethernet is adaptation technology built upon standard ethernet, with better handler Electromagnetic handling and cost efficiancy.
 
-Full-Duplex.
+Full-Duplex. 
 
 
 ### *100Base-T1 : IEEE 802.3bw*
@@ -847,3 +847,18 @@ Gigabit
 
 ### *2.5/5/10G Base-T1: IEEE 802.3ch*
 1406.25/2812.5/5625 MBaud
+
+
+Pros:
+- upto 10Gbit/s each direction and each leg!
+
+- Widely used and supported.
+
+- Good clock technology based on IEEE 1588
+
+- History of adaptation to solve new problems.
+
+- Uses switches and routers to connect to the network.(single ECU talks to dedicated port on switch)
+
+
+Cons:
