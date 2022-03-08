@@ -692,6 +692,9 @@ Currently very high bandwith for `point to point` networks
 
 ## **POPULAR VEHICLE NETWORKING APPLICATIONS**
 
+
+from cheaper + slowest to most expensive + fastest
+
 ## **LIN - LOCAL INTERCONNECT NETWORK**
 
 Can be used for non-critical applications.
@@ -717,4 +720,33 @@ Cons:
 
 - No common time base accross network.
 
+
+## **CAN - CAN-FD - CAN-XL**
+
+CAN = Controller Area Network.
+
+One of the MOST COMMON,  if not THE most common.
+
+Used in `Low-cost/Speed data, Backbone, Control Data.`
+
+Pros:
+
+- Low cost single-twisted pair copper cable.
+
+- most widely used well proven Automotive Networking Topology
+
+- MultiDrop topology(Bus) so every ECU is electrically connected to every other ECU.
+
+- Easy for plug and play.
+
+- `non-desctructive arbitration` for data transmission and collision prevention
+
+
+Cons:
+
+- Limited bandwidth with 10Mbps with `CAN-XL`
+
+- Relatively small payload with max 8 bytes with CAN, 64 bytes with CAN-FD and 2048 bytes with CAN-XL
+
+- No common time base accross network.
 
