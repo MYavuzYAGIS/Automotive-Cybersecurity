@@ -45,3 +45,8 @@ also good for plug and play.
 message or packet based communication.
 
 ==> *Collision avoidance is based on time slots for each node*
+
+Eveyn node in FlexRay is aware of time base so this helps each node to understand when it is allowed to transmit. So basically there is a cycle time, and it is divided into slices and each node has its own time slot where it is allowed to transmit.
+So colisions dont happen in flexray.
+
+This helps very accurate in time and security critical.
