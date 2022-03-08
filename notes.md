@@ -789,3 +789,5 @@ Cons:
 - all nodes must be aware of and programmed for the entire network design.
 
 - Max baud rate 10Mbps.
+
+- to change one message, you need to reprogram all the nodes to understand it.
