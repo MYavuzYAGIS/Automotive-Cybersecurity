@@ -196,3 +196,24 @@ Which means, lets say 2 nodes communicating in two-directions in full speed, at 
 - Puncline is : 10Base-T1s is a `time divided type of network` and this is how it avoids colisions.
 
 ![](ss/ss6.png)
+
+
+====***=====
+
+#### Mixing Pyhsical Medium
+
+It is possible to mix the two technologies, for example, 1000Base-T and 100Base-TX(standard known ethernet in every laptop).
+
+- T implies 8-wire and backward compatible with 4-wire media(TX)
+- Auto negotiation resolves the speed since two components have different speed rates.
+- Does not work for all media, like optical cable into electrical connector.
+- T/TX is are not compatible with T1
+- So plugs are not compatible. Needs a media converter and `MII` in between.
+
+![](ss/ss7.png)
+
+
+
+***!!!!*** 
+
+***All these things so far are differences between standard ethernet and automotive ethernet and differences live in OSI model layer 8, which is Physical layer. Everything above Layer 8 (7..1) are the same under the hood.***
