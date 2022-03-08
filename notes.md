@@ -11,6 +11,10 @@ Standard 4 wires ethernet cannot handle this speed currently.
 So instead of standard ethernet, we use `Automotive Ethernet` which can take care of these issues.
 
 
+Bus techologies , compared to ethernet, can be more cost effective given cabling prices all through the vehicle.
+
+
+
 
 ### Comparing Ethernet to CAN(Controller Area Network) and FLEXRAY
 
@@ -162,13 +166,33 @@ in Bus systems like CAN, FLEXRAY, there is a `binary` state at a given time on t
 Operates at base frequency of 33.3 MhzClock.(Gigabit on automative operates at base freq of 125Mhz)
 
 #### Gotcha Points :
+Why Ethernet is good over bus topologies?
+
 1)  Ethernet is, DC-wise electronically isolated. So it is either capacitive coupled or transformer coupled. (capacitive or transformers are used to bridge)
 
 This is another point why ethernet is so dominant in the industry. Because you can have lots of ground differences in and around the network and ethernet remains unaffected.
 
-2) Point2Point ethernet is, in all moderns forms are `duplex` which means one node can communicate data in one direction `at full speed` and `at the same time` the other node can communicate data in the other direction `at full speed`
+2) *Point2Point* ethernet is, in all moderns forms are `duplex` which means one node can communicate data in one direction `at full speed` and `at the same time` the other node can communicate data in the other direction `at full speed`
 
 Which means, lets say 2 nodes communicating in two-directions in full speed, at 100BaseT connection, it makes 100 * 2 = 200 Mbit per second data transfer. as for gigabit, thats 2 gbits aggregate data.
 
 
 
+====***=====
+
+
+*A newer Ethhernet Technology that is getting commercially Available nowayays:*
+
+#### 10Base-T1S
+
+- This is an ethernet technology that is A BUS TECHNOLOGY, and created to compete CAN.
+
+- To take advantage of cost-effectiveness of Bus technologies, this etthernet type is created.
+
+- 10Base-T1S means `10 Mbit/s` and `single twisted cable` but `sitting on a bus topology`
+
+- works very closely to FlexRay, using transmission cycle time, in each cycle a beacon is signalled and every node cross-checks its own time based on the beacon. Once it sees its own beacon, it transmits data.
+
+- Puncline is : 10Base-T1s is a `time divided type of network` and this is how it avoids colisions.
+
+![](ss/ss6.png)
