@@ -358,7 +358,7 @@ Cyclical Redundancy Check. If fails, packet is dropped by the switch or Ethernet
 
 
 
-# 3- Switches
+### - Switches
 
 Switches make intelligent decisions predominantly on the MAC address but also on VLAN tags, and also based on the ethertype and the data within the payload of a mac frame.
 
@@ -440,5 +440,44 @@ Most sophisticated kind of switch.
 - - - AVB/TNS protocols
 
 - - Other Advanced Features:
-- - -Deep Packet Inspection
-- - - Inggress Policing and limiting.
+- - -Deep Packet Inspection(make decisions based on IP adress or ether type)
+- - - Inggress/egress Policing and limiting.
+
+
+In the automotive industry we find smart and managed switches.
+
+
+
+
+# 3- Network Layer:
+
+Ip Addressing / routing.
+
+Why need for higher protocols? What inherent problems with ethernet?
+
+MAC addresses tied to `hardware`, much like CAN frames. So :
+
+1) what is you move a server to new hardware with a new MAC address?
+
+2) What is the receiver is not ready or has `limited buffer size`?
+
+3) What if the same pyhsical address is running `multiple logical programs?`
+
+Also :
+
+an Ethernet frame is huge, 1500 bytes.
+
+Ethernet is `lossy`:
+
+1) no guarantee frames arrive in order
+
+2) no guarantee frames arrive at all
+
+
+
+
+
+
+
+
+
