@@ -674,7 +674,7 @@ Powertrains. like Engine, alternator, transmiission, battery management
 
 - **Backbone:**
 
-General purpose for transporting ** data from one system to another**, generally packet data, `Gateway`s.
+General purpose for transporting ** data from one system to another**, generally packet data, `Gateway`s. So from one subsystem to another data transfer like from control data to safety data.
 
 - **Infotainment:**
 
@@ -688,3 +688,33 @@ as cheap as possible for slow speed non-safefy control: door switches, lights,cl
 - **Multi-Giga Data:** 
 
 Currently very high bandwith for `point to point` networks
+
+
+## **POPULAR VEHICLE NETWORKING APPLICATIONS**
+
+## **LIN - LOCAL INTERCONNECT NETWORK**
+
+Can be used for non-critical applications.
+
+Pros:
+
+- Very low cost with single wire copper cabling.
+
+- MultiDrop topology(Bus) so every ECU is electrically connected to every other ECU.
+
+- Easy for plug and play.
+
+- Master ECU controls the timing for transmissions of other ecus.(master-slave)
+
+- TDMA- Time Divided Media Access to aviod collisions.
+
+
+Cons:
+
+- Very very low bandwidth with 20kbps
+
+- Small payload max 8 bytes
+
+- No common time base accross network.
+
+
