@@ -58,6 +58,7 @@ This helps very accurate in time and security critical.
 *(100Base-T)/(1000Base-T)*
 
 ==> base means this is the speed at the slowest rate
+==> T1 means single twisted cable
 
 Modern ethernet technologies, be it automotive or not, is NOT a bus technology anymore. Instead, it is *point-to-point technology.* This means that each node is connected to only one other node.
 for multiple communication, we need to introduce a `SWITCH`.
@@ -123,11 +124,13 @@ Automotive ethernet, compared to normal ethernet, proioritizes the Physical laye
 
 MII is connected to Ethernet MAC. 
 
-*Punchline:*
+*Punchline: Why Ethernet is Used and how it changes between regular vs automotive* 
 
-```
-MAC stays constant and all the layers under Pyhsical layer are also stays constant. This MAC table, once connected, hosts all the addresses etc and statically keeps these. So it gives ability to easily swap the Ethernet PHY and MAC stays the same, also all the other layers are intact.
+```MAC stays constant and all the layers under Pyhsical layer are also stays constant. This MAC table, once connected, hosts all the addresses etc and statically keeps these. So it gives ability to easily swap the Ethernet PHY and MAC stays the same, also all the other layers are intact.
 
 This gives ability to change and adapt overtime.
-```
+
+Automotive internet is an adaptation of it where only the physical layer is changed.
+Hence talking about `Automotive Ethernet` basically meaning a change in the Pyhsical layer only
+This is adaptability and flexibility for the thanks to Ethernet!```
 
