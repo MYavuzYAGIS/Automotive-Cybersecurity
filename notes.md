@@ -111,3 +111,23 @@ This eliminates the possibility of colisions because each node is communicating 
 
 ![](ss/OSI.png)
 
+Automotive ethernet, compared to normal ethernet, proioritizes the Physical layer of OSI model.
+
+![](ss/ss4.png)
+
+
+
+- Ethernet PHY = Physical layer
+- MII = Media Independent Interface
+- Ethernet MAC = Media Access Control
+
+MII is connected to Ethernet MAC. 
+
+*Punchline:*
+
+```
+MAC stays constant and all the layers under Pyhsical layer are also stays constant. This MAC table, once connected, hosts all the addresses etc and statically keeps these. So it gives ability to easily swap the Ethernet PHY and MAC stays the same, also all the other layers are intact.
+
+This gives ability to change and adapt overtime.
+```
+
