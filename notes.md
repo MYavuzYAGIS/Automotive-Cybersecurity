@@ -858,7 +858,40 @@ Pros:
 
 - History of adaptation to solve new problems.
 
-- Uses switches and routers to connect to the network.(single ECU talks to dedicated port on switch)
+- Uses switches and routers to connect to the network.(single ECU talks to dedicated port on integrated switch)
 
+- Point2point.
 
 Cons:
+
+- Requires Switch.
+
+- Not possible to add or remove nodes `unless` the switch has spare ports.
+
+- Switch is expensive.
+
+- tools cannot just connect and sniff the bus because not all nodes are aware of each other and pass entire traffic, only its own portion.
+
+
+
+**NEW Automotive Ethernet :**
+
+### **10BASE-T1S**
+
+- specifically designed to replace CAN (IP everywhere)
+
+- Multi-drop/ Bus topology
+
+- Time division media access to avoid collisions.
+
+- 10mbps overall bandwith.
+
+- single twisted pair copper cable.(like can.)
+
+- Same cost as CAN and covers same applications.
+
+- You can drop and sniff the entire network thanks to bus topology.
+
+- to Avoid collisions, there is master ECU which sends out beacon(ID) tells the slave ECU's when they are allowed to transmit.
+
+Possible CAN killer. So it is not an upgrade to previous automotive ethernet but targeting directly CAN.

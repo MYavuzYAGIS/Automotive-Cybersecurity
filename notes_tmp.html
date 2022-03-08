@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>notes.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="automotive-ethernet">Automotive Ethernet</h1>
+<p><strong><h1>GENERAL OVERVIEW</h1></strong></p>
+<h1 id="1--physical-layer">1- Physical Layer</h1>
+<h3 id="general-ethernet">General Ethernet :</h3>
+<p>Ethernet is used for <code>Bandwith</code></p>
+<p>In vehicles, low power consumption is important. Also , requirement for ECU(Electronic Control Unit) is to be able to comletely wake up from sleep under 100 miliseconds.</p>
+<p>Standard 4 wires ethernet cannot handle this speed currently.</p>
+<p>So instead of standard ethernet, we use <code>Automotive Ethernet</code> which can take care of these issues.</p>
+<p>Bus techologies , compared to ethernet, can be more cost effective given cabling prices all through the vehicle.</p>
+<h3 id="comparing-ethernet-to-cancontroller-area-network-and-flexray">Comparing Ethernet to CAN(Controller Area Network) and FLEXRAY</h3>
+<h2 id="can"><strong>CAN</strong>:</h2>
+<p>it is a multidrop (bus) technlogy where user can add / remove nodes.</p>
+<p>Multidrop or bus technology means every node or every ecu is pysically, electrically connected to the same wires as ever other node.</p>
+<p>single twisted pair copper wire. =&gt; low cost/ light weight
+easy for <code>plug and play</code>
+<code>Message</code> or <code>Packet</code> based communication.</p>
+<p>Unique for CAN is that <strong><code>Non-Destructive Arbitration</code></strong> for handling message or packet <code>collisions</code>.</p>
+<p>This is handled in the arbitration section or the arbitration ID of the can network. So when there is a possible collision risk , the arbitration ID is used to identify the message or packet. and the packet or the message with the smaller ID is sent first, whereas the packet or the message with the larger ID is sent later but <em><code>WITHOUT A NEED FOR RE-TRANSMISSION</code></em>.</p>
+<p>so lower ID number transmits first, other one waits, not not getting killed just waits.
+And nodes that transmits the higher ID packet also understands the situatuin and also waits.</p>
+<p>This has a drawback: nodes that lost the arbitration (the ones sending the higher ID packet) will have to wait. <em>this maskes CAN not as time-critical and accurate in time</em>.</p>
+<p>This is why FlexRay was developed</p>
+<h2 id="flexray"><strong>FlexRay</strong>:</h2>
+<p>it is similar to CAN in terms of wiring. it is a <em>MultiDrop</em> technology BUT <code>all nodes must be pre-programmed wit a fixed configuration</code></p>
+<p>up to 10Mb/s. speed.
+also good for plug and play.
+message or packet based communication.</p>
+<p>==&gt; <em>Collision avoidance is based on time slots for each node</em></p>
+<p>Eveyn node in FlexRay is aware of time base so this helps each node to understand when it is allowed to transmit. So basically there is a cycle time, and it is divided into slices and each node has its own time slot where it is allowed to transmit.
+So colisions dont happen in flexray.</p>
+<p>This helps very accurate in time and security critical.</p>
+<h2 id="automative-ethernet">Automative Ethernet :</h2>
+<p><em>(100Base-T)/(1000Base-T)</em></p>
+<p>==&gt; base means this is the speed at the slowest rate
+==&gt; T1 means single twisted cable</p>
+<p>Modern ethernet technologies, be it automotive or not, is NOT a bus technology anymore. Instead, it is <em>point-to-point technology.</em> This means that each node is connected to only one other node.
+for multiple communication, we need to introduce a <code>SWITCH</code>.</p>
+<p>Switch distributes the traffic to the nodes within a network based on their <code>pysicall adress</code> that.</p>
+<p>Today commercially there are 100base and 1000base ethernet, 100 meaning 100Mb/s, 1000 meaning 1Gb/s.</p>
+<p>Note that automotive ethenetnet is very cost effective network but not enough for <code>uncompressed audio and video streaming</code> since they handle around 10MBits.</p>
+<p><img src="file:///Users/myyagis/Desktop/Automot/ss/ss1.png" alt=""></p>
+<p>In bus technology, all the node load can be used and it is  locked to 100 or 1000 mbits. in ethernet, however, it is not the case, aggregate bandwith can exceed 100 or 1000.</p>
+<h2 id="networking-topologies">Networking Topologies :</h2>
+<ul>
+<li>Defines how device are connected to each other.</li>
+<li>Defines how the device communicate with each other.</li>
+<li>Determines network characteristics.</li>
+<li>Simple Technologies:</li>
+<li>
+<ul>
+<li>Point to Point(port)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Ring (Also Etnernet, used for safety critical technologies)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Star (ethernet) like one switch with many ports</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Bus (chained or attached) like CAN , FLEXRAY</li>
+</ul>
+</li>
+<li>Complex topologies can combine these(like mesh)</li>
+</ul>
+<h4 id="hierarchical-star-topology">Hierarchical Star topology :</h4>
+<p>also known as <code>tree</code> topology, where each star topology represents a node and they are also intercoonected to each other via a switch.  you can add / remove nodes without effecting the rest of the nodes.</p>
+<p>====***=====</p>
+<p>Note that today's ethernet network are a <code>switched network</code>, devcices connected through switch, it optimizes the traffic flow, buffering eliminates the colisions.</p>
+<p><img src="file:///Users/myyagis/Desktop/Automot/ss/ss2.png" alt=""></p>
+<p>In this pic , there are three ports (A,B,C) and physically A is connected to only it's corresponding Port(Display), same for B and C. and Under each node, it works as a separate network.
+This eliminates the possibility of colisions because each node is communicating through only one dedicated port.</p>
+<p>(this is the difference between this and CAN/FlexRay)</p>
+<h3 id="osi-model">OSI Model</h3>
+<p><img src="file:///Users/myyagis/Desktop/Automot/ss/OSI.png" alt=""></p>
+<p>Automotive ethernet, compared to normal ethernet, proioritizes the Physical layer of OSI model.</p>
+<p><img src="file:///Users/myyagis/Desktop/Automot/ss/ss4.png" alt=""></p>
+<ul>
+<li>Ethernet PHY = Physical layer</li>
+<li>MII = Media Independent Interface</li>
+<li>Ethernet MAC = Media Access Control</li>
+</ul>
+<p>MII is connected to Ethernet MAC.</p>
+<p><em>Punchline: Why Ethernet is Used and how it changes between regular vs automotive</em></p>
+<pre class="hljs"><code><div>MAC stays constant and all the layers under Pyhsical layer are also stays constant. This MAC table, once connected, hosts all the addresses etc and statically keeps these. So it gives ability to easily swap the Ethernet PHY and MAC stays the same, also all the other layers are intact.
+
+This gives ability to change and adapt overtime.
+
+Automotive internet is an adaptation of it where only the physical layer is changed.
+Hence talking about `Automotive Ethernet` basically meaning a change in the Pyhsical layer only
+This is adaptability and flexibility for the thanks to Ethernet!
+</div></code></pre>
+<p>====***=====</p>
+<h4 id="consumer-ethernet-media">Consumer Ethernet Media:</h4>
+<p>Coax ==&gt; 100Base-2 ==&gt; half duplex ==&gt; obsolete in commercial, used in industry for <code>DiagnosticsOverIP</code> purposes. (OBD port)</p>
+<p>10/100 Ethernet 100MB/s ==&gt; 10/100BASE-TX ==&gt; full duplex =&gt; 2 twisted=4 wires.</p>
+<p>Gigabit Ethernet 1Gb/s ==&gt; 1000BASE-T ==&gt; full duplex =&gt; 4 twisted=8 wires.</p>
+<p>====***=====</p>
+<p><img src="file:///Users/myyagis/Desktop/Automot/ss/ss5.png" alt=""></p>
+<p>in Bus systems like CAN, FLEXRAY, there is a <code>binary</code> state at a given time on the pyhsical layer. Whereas in ethernet, more than 2 logical states can be passed. In Gigabit ethernet this is 5 different states(PAM-5). In automotive physical layer of 100/1000mbps,  there are 3 different states(PAM-3).</p>
+<p>Operates at base frequency of 33.3 MhzClock.(Gigabit on automative operates at base freq of 125Mhz)</p>
+<h4 id="gotcha-points">Gotcha Points :</h4>
+<p>Why Ethernet is good over bus topologies?</p>
+<ol>
+<li>Ethernet is, DC-wise electronically isolated. So it is either capacitive coupled or transformer coupled. (capacitive or transformers are used to bridge)</li>
+</ol>
+<p>This is another point why ethernet is so dominant in the industry. Because you can have lots of ground differences in and around the network and ethernet remains unaffected.</p>
+<ol start="2">
+<li><em>Point2Point</em> ethernet is, in all moderns forms are <code>duplex</code> which means one node can communicate data in one direction <code>at full speed</code> and <code>at the same time</code> the other node can communicate data in the other direction <code>at full speed</code></li>
+</ol>
+<p>Which means, lets say 2 nodes communicating in two-directions in full speed, at 100BaseT connection, it makes 100 * 2 = 200 Mbit per second data transfer. as for gigabit, thats 2 gbits aggregate data.</p>
+<p>====***=====</p>
+<p><em>A newer Ethhernet Technology that is getting commercially Available nowayays:</em></p>
+<h4 id="10base-t1s">10Base-T1S</h4>
+<ul>
+<li>
+<p>This is an ethernet technology that is A BUS TECHNOLOGY, and created to compete CAN.</p>
+</li>
+<li>
+<p>To take advantage of cost-effectiveness of Bus technologies, this etthernet type is created.</p>
+</li>
+<li>
+<p>10Base-T1S means <code>10 Mbit/s</code> and <code>single twisted cable</code> but <code>sitting on a bus topology</code></p>
+</li>
+<li>
+<p>works very closely to FlexRay, using transmission cycle time, in each cycle a beacon is signalled and every node cross-checks its own time based on the beacon. Once it sees its own beacon, it transmits data.</p>
+</li>
+<li>
+<p>Puncline is : 10Base-T1s is a <code>time divided type of network</code> and this is how it avoids colisions.</p>
+</li>
+</ul>
+<p><img src="file:///Users/myyagis/Desktop/Automot/ss/ss6.png" alt=""></p>
+<p>====***=====</p>
+<h4 id="mixing-pyhsical-medium">Mixing Pyhsical Medium</h4>
+<p>It is possible to mix the two technologies, for example, 1000Base-T and 100Base-TX(standard known ethernet in every laptop).</p>
+<ul>
+<li>T implies 8-wire and backward compatible with 4-wire media(TX)</li>
+<li>Auto negotiation resolves the speed since two components have different speed rates.</li>
+<li>Does not work for all media, like optical cable into electrical connector.</li>
+<li>T/TX is are not compatible with T1</li>
+<li>So plugs are not compatible. Needs a media converter and <code>MII</code> in between.</li>
+</ul>
+<p><img src="file:///Users/myyagis/Desktop/Automot/ss/ss7.png" alt=""></p>
+<p><em><strong>!!!!</strong></em></p>
+<p><em><strong>All these things so far are differences between standard ethernet and automotive ethernet and differences live in OSI model layer 8, which is Physical layer. Everything above Layer 8 (7..1) are the same under the hood.</strong></em></p>
+<p>====================***====================</p>
+<h1 id="2--data-link-layer">2- Data Link Layer</h1>
+<p>In data link layer lives the Ethernet Frame and MAC Addresses.</p>
+<h3 id="the-ethernet-frame">The Ethernet Frame:</h3>
+<p>the lowes level structure to carry all data the data on Ethernet to meet the neetds of Layer2.</p>
+<ul>
+<li>Device Addressing</li>
+<li>Message Formattings</li>
+<li>Error Detection</li>
+<li>QoS (Quality of Service)</li>
+</ul>
+<p>=&gt; Frames can carry 46 to 1500 bytes of data.</p>
+<p><img src="file:///Users/myyagis/Desktop/Automot/ss/ss8.png" alt=""></p>
+<p>Ethernet Frame architecture:</p>
+<p>-&gt; <strong>Preamble</strong> holds 7 octets which helps the syncronization with the rest of the data.</p>
+<p>-&gt; <strong>Start of Frame</strong> is a 1 octet field which is used to identify the start of the frame.</p>
+<p>-&gt; <strong>Destination MAC Address</strong> is 6 octets, unique. that is the first information that is transmitted and used. Also called the <code>Physical Address of the Network</code></p>
+<p>-&gt; <strong>Source MAC Address</strong> is 6 octets, unique. Who transmits the message.</p>
+<p>-&gt; <strong>802.1Q Tag</strong> is 4 octets, optional. VLAN Tag. in most cases expecially in WWW it is not used. but in <code>Automative Ethernet</code> especially in real-time transmission and protocols that use this real-time transmission do use this for <code>Routing and QoS</code> purposes.</p>
+<p>-&gt; <strong>EtherType</strong> is 2 octets, identifies the type of the message. Essentuially just a number, that represents the type of data that is coming next in the <code>payload</code>. A very common type is <code>0x0800 for IPV4.</code> So means the next octet is the first octet of the IPV4 packet.</p>
+<p>-&gt; <strong>Payload</strong> is the data that is being transmitted.</p>
+<p>-&gt; <strong>CRC</strong> is 4 octets, CRC stands for <code>Cyclical Redundancy Check</code>,  makes sure that the receiver received all the prior bits in the correct order. <strong>NOTE THAT</strong> if a receiving node receives a frame with a bad CRC like short frame, long frame or a fragment of a frame, it <strong>should</strong> drop the frame and don't tell anybody that you dropped it. So in the low level ,there is no re-transmission. We handle this problem in ethernet with higher level protocols which will come soon down here.</p>
+<p>A Comparison: In a given time of 110 miliseconds, the ethernet can transmit 12.336 bits at 100mbps whereas CAN can transmit only 8 bytes of data.</p>
+<p>wow!</p>
+<h3 id="1-mac-address">1) MAC Address:</h3>
+<p>MAC address is Low-level/pyhsical address of the network.</p>
+<p>Example (00-17-4f-08-5D-69)</p>
+<ul>
+<li>Programmed into hardware devices,</li>
+<li>6 bytes loing,each node globally unique.</li>
+<li>First 3 bytes is a Organizationally Unique Identifier(OUI)</li>
+<li><strong>in AutomotiveEthernet, MAC Address = Ethernet Address.</strong></li>
+</ul>
+<h4 id="unicast-addresses">Unicast Addresses:</h4>
+<p>Point2Point adresses, used to send data to <code>specific</code> node.
+-&gt; <code>Universally Administered Addresses</code> ==&gt; UAA : globally unique.</p>
+<p>-&gt; <code>Locally Administered Addresses</code> ==&gt; LAA : probably not unique outside an <code>engineered network</code></p>
+<h4 id="multicast-addresses">Multicast Addresses:</h4>
+<p>-&gt; One to Many addresses.</p>
+<p>-&gt; Specific MAC address that <strong>certain</strong> NICs are programmed to accepts.</p>
+<p>-&gt; USed for protocol, process, or vendor specific messaging.</p>
+<p>-&gt; LSB of the first octet is 1. (01:xx:xx:xx:xx:xx)</p>
+<p>-&gt; When MAC address is all 1's (ff:ff:ff:ff:ff:ff) this is called <code>Broadcast Address</code> which is a special case where <strong>all</strong> NICs are programmed to accept the message.</p>
+<h3 id="2-vlans-vlan-tag--ethertype">2) VLANs (VLAN Tag &amp;&amp; EtherType)</h3>
+<p>QoS at layer 2 hardwqare.  Virtual Lan means, I want to <code>virtually</code> separate the traffic in a network so that I can get practicvally multiple networks that are <code>logically</code> separated on the <code>same pyhsical network</code>.</p>
+<p>Ports assigned to Virtual Lans.</p>
+<p>-&gt; Switch enforces forwarding restrictions based on VLAN config.
+-&gt; VLAN traffic is blocked on ports not <code>a memeber</code> of that VLAN.
+-&gt; Used to optimize bandwith use with <code>least</code> resources.</p>
+<p><strong>Common Automotive Ethertypes</strong></p>
+<p>this is how ethertype is able to handle multiple types of data and their transmission simultaneously on the same network while keeping data consistent.</p>
+<p>Note that these are sent in the ethernet packets.</p>
+<pre class="hljs"><code><div>General Use: 
+0x0800 for IPV4
+0x0806 for ARP
+0x86DD for IPV6
+0x8100 for VLAN (single tag)
+0x9100 for VLAN (double tag)
+0x88F5 for Multiple VLAN Reservation Protocol
+
+
+AVB:
+0x22F0 for IEEE 1722
+0x88F7 for generalized precision Time Protocol
+0x22EA for Multiple Stream Reservation Protocol
+
+V2X:
+0x88DC for Wave Short Message Protocol
+</div></code></pre>
+<p>==&gt; AVB's are used to create custom ether types.</p>
+<h3 id="3-frame-check-sequence-crc">3) `Frame Check Sequence (CRC):</h3>
+<p>Cyclical Redundancy Check. If fails, packet is dropped by the switch or Ethernet MAc.
+<code>No built-in Error recovery like CAN</code> ==&gt; <code>But this is implemented in higher layers like TCP</code></p>
+<h3 id="switches">- Switches</h3>
+<p>Switches make intelligent decisions predominantly on the MAC address but also on VLAN tags, and also based on the ethertype and the data within the payload of a mac frame.</p>
+<p>Enables Layer2 Quality of Service (QoS) by:
+-&gt; dropping bad frames.</p>
+<p>-&gt; VLAN enfrorcing/managing.</p>
+<p>-&gt; Traffic prioritization.</p>
+<p>-&gt; Ingress Limiting</p>
+<p>-&gt; AVB/TNS protocols.</p>
+<p>Conserves bandwith by intelligent forwarding based on the MAC address.
+-&gt; Each pyhsical port connection indepoendent.</p>
+<p>-&gt; no collision.</p>
+<p>Switch routes the traffic in and out of its ports. By definition, ethernet is point2point network. So using switches we can extend the capability of the network.</p>
+<p>Also enables multiple streams of data within the same network ( audio, display, console, etc) without speed bottleneck since all streams use their own bandwith. So Aggregate data is not limited to say 100mbits which is not possible in bus-topology networks.</p>
+<p><strong>Intelligent Frame Forwarding</strong></p>
+<p><code>Ethernet Switches</code> all internally have adress tables this is how they know how to route the traffic.</p>
+<ul>
+<li>
+<p>L2 Address Table:</p>
+</li>
+<li>
+<ul>
+<li>Used by Address Translation Unit (ATU) to translate the MAC address to the port.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Table of Address/Port pairs.</li>
+</ul>
+</li>
+<li>
+<p>Information Stored:</p>
+</li>
+<li>
+<ul>
+<li>MAC address</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>VLAN ID</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Destination Port Vector(DVP)(bit array of ports for the MAC)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Static or Learned</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Priorities</li>
+</ul>
+</li>
+</ul>
+<p>So when a source sends a packet, it HAS TO add its source MAC address in the frame hence, it advertising which MAC adress(es) are on the particulat port. then the switch will know which port to send the packet to thanks to the L2 Address Table.</p>
+<p>adress table can be static or dynamically learned by the switch. There can be multiple mac addresses per port if you have multiple switches connected to each other.</p>
+<p><strong>Unmanaged and Smart Switches</strong></p>
+<ul>
+<li>No official Delienation of ports.</li>
+</ul>
+<p><strong>- Unmanaged Switch:</strong></p>
+<p>Simplest kind. A basic MAC adress table is used.</p>
+<ul>
+<li>
+<ul>
+<li>Little or no configuration.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>MAC based routing.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Learns L2 address table</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Floods unknown DA's</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Possibly stataic L2 address table config.</li>
+</ul>
+</li>
+</ul>
+<p><strong>- Smart Switch:</strong></p>
+<p>Enables VLAN and thereby enables different priorities based on VLAN tags</p>
+<ul>
+<li>
+<ul>
+<li>Basic VLAN support(Static config, enforcing tag/priority)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>port mirroring</li>
+</ul>
+</li>
+</ul>
+<p><strong>- Managed Switches:</strong>
+Most sophisticated kind of switch.</p>
+<ul>
+<li>
+<ul>
+<li>Enhances QoS and Security</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Addition of host processors or embedded cores.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Firmaware esxecures protocols:</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>Dynamic VLAN management(DMRP)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>Manage Redundant Paths(Spanning Tree Protocol)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>AVB/TNS protocols</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Other Advanced Features:</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>-Deep Packet Inspection(make decisions based on IP adress or ether type)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>Inggress/egress Policing and limiting.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>In the automotive industry we find smart and managed switches.</p>
+<h1 id="3--network-layer">3- Network Layer:</h1>
+<p>Ip Addressing / routing.</p>
+<p>Why need for higher protocols? What inherent problems with ethernet?</p>
+<p>MAC addresses tied to <code>hardware</code>, much like CAN frames. So :</p>
+<ol>
+<li>
+<p>what is you move a server to new hardware with a new MAC address?</p>
+</li>
+<li>
+<p>What is the receiver is not ready or has <code>limited buffer size</code>?</p>
+</li>
+<li>
+<p>What if the same pyhsical address is running <code>multiple logical programs?</code></p>
+</li>
+</ol>
+<p>Also :</p>
+<p>an Ethernet frame is huge, 1500 bytes.</p>
+<p>Ethernet is <code>lossy</code>:</p>
+<ol>
+<li>
+<p>no guarantee frames arrive in order</p>
+</li>
+<li>
+<p>no guarantee frames arrive at all</p>
+</li>
+</ol>
+<p><code>IP</code> Addresses are called <code>logical</code> addresses.</p>
+<p>If ethertype in the packet is ipv4 or ipv6, then in layer 3 starting in the payload we have an <code>IP header</code></p>
+<p><code>IP header</code> contains information of the protocol(TCP, UDP, ICMP, etc) and the destination and source IP addresses.</p>
+<p>What to understand is: <code>Layer x is encapsulated in layer X-1</code> mesela Layer 2 frame encapsulates Layer 3 frame. (like onion approach)</p>
+<p>each time a layer is passed, you peel a layer off the packet and process it , and peel again to send it to nexty layer.</p>
+<h4 id="ip-header">IP HEADER:</h4>
+<p>-&gt; Version : 4 or 6</p>
+<p>-&gt; IHL : Internet Header Length (number of 32-bit words in the header)</p>
+<p>-&gt; DSCP : Differentiated Services Code Point (traffic management)</p>
+<p>-&gt; ECN : Explicit Congestion Notification</p>
+<p>-&gt; Total Length : Total length of the packet in bytes</p>
+<p>-&gt; Time to Live</p>
+<p>-&gt; Protocols:</p>
+<ul>
+<li>
+<ul>
+<li>1 : ICMP (Internet Control Message Protocol)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>2 : IGMP (Internet Group Management Protocol)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>6 : TCP (Transmission Control Protocol)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>17 : UDP (User Datagram Protocol)</li>
+</ul>
+</li>
+</ul>
+<p>-&gt; Identification : Unique identifier for the packet</p>
+<p>-&gt; Flags : Flags</p>
+<p>-&gt; Header Checksum : Checksum of the header</p>
+<p>-&gt; Fragment Offset : Fragment offset</p>
+<p>-&gt; Source and Destination IP addresses</p>
+<h1 id="3--transport-layer">3- Transport Layer:</h1>
+<p>UDP/ TCP</p>
+<p><img src="file:///Users/myyagis/Desktop/Automot/ss/ss9.png" alt=""></p>
+<p>PORTS:</p>
+<ul>
+<li>
+<p>Logical Ports:</p>
+</li>
+<li>
+<ul>
+<li>Layer 4 concept to differentiate logical connections.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Port + IP address == socket.</li>
+</ul>
+</li>
+<li>
+<p>Physical Ports:</p>
+</li>
+<li>
+<ul>
+<li>Connection between PHY and Pythsical Media</li>
+</ul>
+</li>
+<li>
+<ul>
+<li><code>Port</code> on a switch</li>
+</ul>
+</li>
+<li>
+<ul>
+<li><code>Port</code> on a computer.</li>
+</ul>
+</li>
+</ul>
+<p>It is all about context. for example are these referring to a physical port or a logical port?</p>
+<ul>
+<li>
+<p>The switch needs to be configured to forward the desired ports for your application : Switch= layer 2, must be physical.</p>
+</li>
+<li>
+<p>The router is setup for port forwarding. Router= layer 3, must be logical.</p>
+</li>
+<li>
+<p>The server is connected to wrong port : Needs more information.</p>
+</li>
+</ul>
+<h4 id="udp-ip"><strong>UDP/ IP:</strong></h4>
+<p>Side note :</p>
+<p>ipv4 =&gt; 4 bytes
+ipv6 =&gt; 128 bit</p>
+<p>Lighter than TCP.,
+unreliable by design.</p>
+<ul>
+<li>
+<ul>
+<li>No guarantee of order.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>No guarantee of delivery.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Used where timely delivery is more important then serviec guarantees like video streaming.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Connectionless.</li>
+</ul>
+</li>
+</ul>
+<p>Analogous to a CAN frame.</p>
+<ul>
+<li>
+<p>No acknowledgement form recipient ( fire and forget)</p>
+</li>
+<li>
+<p>Usually no special recipient ( multi or broadcast)</p>
+</li>
+<li>
+<p>Easy to <code>map</code> CAN messageing over to Ethernet with UDP</p>
+</li>
+</ul>
+<p>Header consists of :</p>
+<p>16 bits source port (katman 1)
+16 bits destination port (katman 1)
+16 bits length (katman 2)
+16 bits checksum (katman 2)
+and then followed by data.</p>
+<p>0         16       17             32
+Source Port        Destination Port</p>
+<p>Length             Checksum</p>
+<p>DATA DATA DATA DATA DATA DATA DATA</p>
+<h4 id="tcp-ip"><strong>TCP/ IP:</strong></h4>
+<ul>
+<li>
+<p>Full-featured transfer protocol.</p>
+</li>
+<li>
+<p>TCP turns ethernet into reliable, dconnection-oriented stream.</p>
+</li>
+<li>
+<p>Analog in CAN is ISO-15765-2.</p>
+</li>
+<li>
+<p>Unlike other protocols, TCP has the native concept of connection.</p>
+</li>
+<li>
+<ul>
+<li>SYN SYN/ACK ACK thing.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Creates an implicit client/server model</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>web browser is a client, web server is a server.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>delivery IS and guaranteed.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>order is guaranteed.</li>
+</ul>
+</li>
+</ul>
+<p>======================</p>
+<h3 id="avb-stack-components">AVB STACK Components:</h3>
+<p><img src="file:///Users/myyagis/Desktop/Automot/ss/ss10.png" alt=""></p>
+<p>AVB stances for <code>Auido-Video-Bridging</code> which is important for real-time and replayable streaming.
+These protocols operate in parallel to everything we talked about so far and are separated by ethertype.</p>
+<p>AVB protocols are like :</p>
+<p>IEEE 802.1Q VLAN tagging</p>
+<p>or</p>
+<p>IEEE 802.1AS clock sync. in GPTP there is a grandmaster clock that sends out clock info and other nodes sync to it.
+Some other protocols are like IEEE 1722 which tells how to transport audio and video itself like mp4 or mp3</p>
+<p>AVBs in automotive industriy are taken and extended to inculde things for <code>safety critical real-time control</code></p>
+<p>========================================================================================================================</p>
+<p><strong><h1>COMPARING IN VEHICLE NETWORK TECHNOLOGIES</h1></strong></p>
+<p>Networking considerations:</p>
+<ul>
+<li>
+<p>Topology : Simple vs complex.</p>
+</li>
+<li>
+<p>Message collisions</p>
+</li>
+<li>
+<p>Addressing of nodes.</p>
+</li>
+<li>
+<p>MEssage / DAta identification.</p>
+</li>
+<li>
+<p>Redundancy.</p>
+</li>
+<li>
+<p>Time sync across network.</p>
+</li>
+</ul>
+<h2 id="vehicle-networking-applications"><strong>Vehicle Networking Applications</strong></h2>
+<ul>
+<li>**Safety/Time Critical Data: **</li>
+</ul>
+<p>Requires relative high-speed, &gt;10mb/s with <code>good time sync</code> and redundancy. like steering,breakes, ADAS.</p>
+<ul>
+<li><strong>Control Data:</strong></li>
+</ul>
+<p>General purpose for controlling of actuators and sensors, generally <code>packed</code> data,
+Powertrains. like Engine, alternator, transmiission, battery management</p>
+<ul>
+<li><strong>Backbone:</strong></li>
+</ul>
+<p>General purpose for transporting ** data from one system to another**, generally packet data, <code>Gateway</code>s. So from one subsystem to another data transfer like from control data to safety data.</p>
+<ul>
+<li><strong>Infotainment:</strong></li>
+</ul>
+<p>Streaming audio/video data critical. Requires good sync and control data, <code>high speed &gt; 25mb/s</code> like GPS, Radio, Video, Camera</p>
+<ul>
+<li><strong>Low-Cost/Speed Data:</strong></li>
+</ul>
+<p>as cheap as possible for slow speed non-safefy control: door switches, lights,climate, seat etc.</p>
+<ul>
+<li><strong>Multi-Giga Data:</strong></li>
+</ul>
+<p>Currently very high bandwith for <code>point to point</code> networks</p>
+<h2 id="popular-vehicle-networking-applications"><strong>POPULAR VEHICLE NETWORKING APPLICATIONS</strong></h2>
+<p>from cheaper + slowest to most expensive + fastest</p>
+<h2 id="lin---local-interconnect-network"><strong>LIN - LOCAL INTERCONNECT NETWORK</strong></h2>
+<p>Can be used for non-critical applications.</p>
+<p>Pros:</p>
+<ul>
+<li>
+<p>Very low cost with single wire copper cabling.</p>
+</li>
+<li>
+<p>MultiDrop topology(Bus) so every ECU is electrically connected to every other ECU.</p>
+</li>
+<li>
+<p>Easy for plug and play.</p>
+</li>
+<li>
+<p>Master ECU controls the timing for transmissions of other ecus.(master-slave)</p>
+</li>
+<li>
+<p>TDMA- Time Divided Media Access to aviod collisions.</p>
+</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>
+<p>Very very low bandwidth with 20kbps</p>
+</li>
+<li>
+<p>Small payload max 8 bytes</p>
+</li>
+<li>
+<p>No common time base accross network.</p>
+</li>
+</ul>
+<h2 id="can---can-fd---can-xl"><strong>CAN - CAN-FD - CAN-XL</strong></h2>
+<p>CAN = Controller Area Network.</p>
+<p>One of the MOST COMMON,  if not THE most common.</p>
+<p>Used in <code>Low-cost/Speed data, Backbone, Control Data.</code></p>
+<p>Pros:</p>
+<ul>
+<li>
+<p>Low cost single-twisted pair copper cable.</p>
+</li>
+<li>
+<p>most widely used well proven Automotive Networking Topology</p>
+</li>
+<li>
+<p>MultiDrop topology(Bus) so every ECU is electrically connected to every other ECU.</p>
+</li>
+<li>
+<p>No master-slave, they can transmit at any time.</p>
+</li>
+<li>
+<p>Easy for plug and play.</p>
+</li>
+<li>
+<p><code>non-desctructive arbitration</code> for data transmission and collision prevention. Network Controller decides who wins based on their Arbitration ID.</p>
+</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>
+<p>Limited bandwidth with 10Mbps with <code>CAN-XL</code> (also due to non-destructive arbitration)</p>
+</li>
+<li>
+<p>Relatively small payload with max 8 bytes with CAN, 64 bytes with CAN-FD and 2048 bytes with CAN-XL</p>
+</li>
+<li>
+<p>No common time base accross network.</p>
+</li>
+<li>
+<p>no inherent redundancy and time sync.</p>
+</li>
+</ul>
+<h2 id="flexray"><strong>FlexRay</strong></h2>
+<p>Used in <code>Safety/Time-Critical, Backbone, Control Data.</code></p>
+<p>Pros:</p>
+<ul>
+<li>
+<p>Single twisted pair copper cable.</p>
+</li>
+<li>
+<p>MultiDrop topology(Bus) so every ECU is electrically connected to every other ECU.</p>
+</li>
+<li>
+<p><code>inherently redundant and deterministic</code></p>
+</li>
+<li>
+<p>compeletly new message scturcure.</p>
+</li>
+<li>
+<p>clock syncronization deterministic(static frames)</p>
+</li>
+<li>
+<p>TDMA- Time Divided Media Access to aviod collisions.(slots and cycles.)</p>
+</li>
+<li>
+<p>fixes problams with CAN.</p>
+</li>
+<li>
+<p>With every FlexRay chip, a redundant controller built in.</p>
+</li>
+<li>
+<p>Designed for time/safety critical applications but also used in backbone and control data.</p>
+</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>
+<p>must design the entire network at one time.</p>
+</li>
+<li>
+<p>all nodes must be aware of and programmed for the entire network design.</p>
+</li>
+<li>
+<p>Max baud rate 10Mbps.</p>
+</li>
+<li>
+<p>to change one message, you need to reprogram all the nodes to understand it.</p>
+</li>
+</ul>
+<h2 id="most--media-oriented-system-transport"><strong>MOST- Media Oriented System Transport</strong></h2>
+<p>Used in <code>Infotainment</code></p>
+<p>Pros:</p>
+<ul>
+<li>
+<p>Higher bandwith (upto 150mbit)</p>
+</li>
+<li>
+<p>Synchronous</p>
+</li>
+<li>
+<p>Isochornous.</p>
+</li>
+<li>
+<p>Single twisted pair copper cable or <code>optical fiber</code> cabling.</p>
+</li>
+<li>
+<ul>
+<li>Optical fiber is completely immune to electromagnetic disturbance.</li>
+</ul>
+</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>
+<p>Proprietary technology.(only one vendor)</p>
+</li>
+<li>
+<p>ring topology and master/slave.</p>
+</li>
+<li>
+<ul>
+<li>single point failures takes down entire network.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Tools must be a part ofthe ring. Problem with the tool? Ring goes down.</li>
+</ul>
+</li>
+<li>
+<p>Became nearly obsolete with automotive ethernet introduced.</p>
+</li>
+</ul>
+<h2 id="automotive-ethernet-ieee-8023-mac-interfaces"><strong>Automotive Ethernet IEEE 802.3 MAC Interfaces</strong></h2>
+<p>Used in <code>Control-Data, Backbone, Infotainment, Multi-Giga Data, Safety/Time-Critical Data.</code></p>
+<p>T1 = single twisted pair copper cable.</p>
+<p>Automotive ethernet is adaptation technology built upon standard ethernet, with better handler Electromagnetic handling and cost efficiancy.</p>
+<p>Full-Duplex.</p>
+<h3 id="100base-t1--ieee-8023bw"><em>100Base-T1 : IEEE 802.3bw</em></h3>
+<p>66,6 MBaud</p>
+<p>100Mbit</p>
+<h3 id="1000base-t1--ieee-8023bp"><em>1000Base-T1 : IEEE 802.3bp</em></h3>
+<p>750 MBaud
+Gigabit</p>
+<h3 id="25510g-base-t1-ieee-8023ch"><em>2.5/5/10G Base-T1: IEEE 802.3ch</em></h3>
+<p>1406.25/2812.5/5625 MBaud</p>
+<p>Pros:</p>
+<ul>
+<li>
+<p>upto 10Gbit/s each direction and each leg!</p>
+</li>
+<li>
+<p>Widely used and supported.</p>
+</li>
+<li>
+<p>Good clock technology based on IEEE 1588</p>
+</li>
+<li>
+<p>History of adaptation to solve new problems.</p>
+</li>
+<li>
+<p>Uses switches and routers to connect to the network.(single ECU talks to dedicated port on integrated switch)</p>
+</li>
+<li>
+<p>Point2point.</p>
+</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>
+<p>Requires Switch.</p>
+</li>
+<li>
+<p>Not possible to add or remove nodes <code>unless</code> the switch has spare ports.</p>
+</li>
+<li>
+<p>Switch is expensive.</p>
+</li>
+<li>
+<p>tools cannot just connect and sniff the bus because not all nodes are aware of each other and pass entire traffic, only its own portion.</p>
+</li>
+</ul>
+<p><strong>NEW Automotive Ethernet :</strong></p>
+<h3 id="10base-t1s"><strong>10BASE-T1S</strong></h3>
+<ul>
+<li>
+<p>specifically designed to replace CAN (IP everywhere)</p>
+</li>
+<li>
+<p>Multi-drop/ Bus topology</p>
+</li>
+<li>
+<p>Time division media access to avoid collisions.</p>
+</li>
+<li>
+<p>10mbps overall bandwith.</p>
+</li>
+<li>
+<p>single twisted pair copper cable.(like can.)</p>
+</li>
+<li>
+<p>Same cost as CAN and covers same applications.</p>
+</li>
+<li>
+<p>You can drop and sniff the entire network thanks to bus topology.</p>
+</li>
+<li>
+<p>to Avoid collisions, there is master ECU which sends out beacon(ID) tells the slave ECU's when they are allowed to transmit.</p>
+</li>
+</ul>
+<p>Possible CAN killer. So it is not an upgrade to previous automotive ethernet but targeting directly CAN.</p>
+
+</body>
+</html>
