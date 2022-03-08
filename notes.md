@@ -162,5 +162,13 @@ in Bus systems like CAN, FLEXRAY, there is a `binary` state at a given time on t
 Operates at base frequency of 33.3 MhzClock.(Gigabit on automative operates at base freq of 125Mhz)
 
 #### Gotcha Points :
+1)  Ethernet is, DC-wise electronically isolated. So it is either capacitive coupled or transformer coupled. (capacitive or transformers are used to bridge)
+
+This is another point why ethernet is so dominant in the industry. Because you can have lots of ground differences in and around the network and ethernet remains unaffected.
+
+2) Point2Point ethernet is, in all moderns forms are `duplex` which means one node can communicate data in one direction `at full speed` and `at the same time` the other node can communicate data in the other direction `at full speed`
+
+Which means, lets say 2 nodes communicating in two-directions in full speed, at 100BaseT connection, it makes 100 * 2 = 200 Mbit per second data transfer. as for gigabit, thats 2 gbits aggregate data.
+
 
 
