@@ -87,3 +87,27 @@ In bus technology, all the node load can be used and it is  locked to 100 or 100
 - Complex topologies can combine these(like mesh)
 
 
+
+#### Hierarchical Star topology :
+
+also known as `tree` topology, where each star topology represents a node and they are also intercoonected to each other via a switch.  you can add / remove nodes without effecting the rest of the nodes.
+
+
+====***=====
+
+Note that today's ethernet network are a `switched network`, devcices connected through switch, it optimizes the traffic flow, buffering eliminates the colisions.
+
+
+![](ss/ss2.png)
+
+In this pic , there are three ports (A,B,C) and physically A is connected to only it's corresponding Port(Display), same for B and C. and Under each node, it works as a separate network.
+This eliminates the possibility of colisions because each node is communicating through only one dedicated port.
+
+
+(this is the difference between this and CAN/FlexRay)
+
+
+### OSI Model
+
+![](ss/OSI.png)
+
