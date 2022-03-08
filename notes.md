@@ -540,3 +540,53 @@ PORTS:
 - - `Port` on a switch 
 
 - - `Port` on a computer.
+
+
+It is all about context. for example are these referring to a physical port or a logical port?
+
+- The switch needs to be configured to forward the desired ports for your application : Switch= layer 2, must be physical.
+
+- The router is setup for port forwarding. Router= layer 3, must be logical.
+
+- The server is connected to wrong port : Needs more information.
+
+
+#### **UDP/ IP:**
+
+
+
+Side note :
+
+ipv4 => 4 bytes
+ipv6 => 128 bit
+
+Lighter than TCP.,
+unreliable by design.
+- - No guarantee of order.
+- - No guarantee of delivery.
+- - Used where timely delivery is more important then serviec guarantees like video streaming.
+
+
+Analogous to a CAN frame.
+
+- No acknowledgement form recipient ( fire and forget)
+
+- Usually no special recipient ( multi or broadcast)
+
+- Easy to `map` CAN messageing over to Ethernet with UDP
+
+Header consists of : 
+
+16 bits source port (katman 1)
+16 bits destination port (katman 1)
+16 bits length (katman 2)
+16 bits checksum (katman 2)
+and then followed by data.
+
+
+0         16       17             32 
+Source Port        Destination Port
+
+Length             Checksum
+
+DATA DATA DATA DATA DATA DATA DATA
