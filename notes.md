@@ -57,6 +57,8 @@ This helps very accurate in time and security critical.
 
 *(100Base-T)/(1000Base-T)*
 
+==> base means this is the speed at the slowest rate
+
 Modern ethernet technologies, be it automotive or not, is NOT a bus technology anymore. Instead, it is *point-to-point technology.* This means that each node is connected to only one other node.
 for multiple communication, we need to introduce a `SWITCH`.
 
@@ -64,6 +66,24 @@ Switch distributes the traffic to the nodes within a network based on their `pys
 
 Today commercially there are 100base and 1000base ethernet, 100 meaning 100Mb/s, 1000 meaning 1Gb/s.
 
+Note that automotive ethenetnet is very cost effective network but not enough for `uncompressed audio and video streaming` since they handle around 10MBits.
+
 
 ![](ss/ss1.png)
+
+
+In bus technology, all the node load can be used and it is  locked to 100 or 1000 mbits. in ethernet, however, it is not the case, aggregate bandwith can exceed 100 or 1000.
+
+## Networking Topologies :
+
+- Defines how device are connected to each other.
+- Defines how the device communicate with each other.
+- Determines network characteristics.
+- Simple Technologies:
+- - Point to Point(port) 
+- - Ring (Also Etnernet, used for safety critical technologies)
+- - Star (ethernet) like one switch with many ports
+- - Bus (chained or attached) like CAN , FLEXRAY
+- Complex topologies can combine these(like mesh)
+
 
