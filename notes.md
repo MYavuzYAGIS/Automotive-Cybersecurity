@@ -228,3 +228,33 @@ It is possible to mix the two technologies, for example, 1000Base-T and 100Base-
 
 # 2- Data Link Layer
 
+In data link layer lives the Ethernet Frame and MAC Addresses.
+
+### The Ethernet Frame:
+
+the lowes level structure to carry all data the data on Ethernet to meet the neetds of Layer2.
+
+- Device Addressing
+- Message Formattings
+- Error Detection
+- QoS (Quality of Service)
+
+
+=> Frames can carry 46 to 1500 bytes of data.
+
+
+![](ss/ss8.png)
+
+Ethernet Frame architecture:
+
+-> **Preamble** holds 7 octets which helps the syncronization with the rest of the data.
+
+-> **Start of Frame** is a 1 octet field which is used to identify the start of the frame.
+
+-> **Destination MAC Address** is 6 octets, unique. that is the first information that is transmitted and used. Also called the `Physical Address of the Network`
+
+-> **Source MAC Address** is 6 octets, unique. Who transmits the message. 
+
+-> **802.1Q Tag** is 4 octets, optional. VLAN Tag. in most cases expecially in WWW it is not used. but in `Automative Ethernet` especially in real-time transmission and protocols that use this real-time transmission do use this for `Routing and QoS` purposes.
+
+-> **EtherType** is 2 octets, identifies the type of the message. Essentuially just a number, that represents the type of data that is coming next in the `payload`. A very common type is `0x0800 for IPV4.`
