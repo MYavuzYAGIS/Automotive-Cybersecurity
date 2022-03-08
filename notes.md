@@ -380,3 +380,65 @@ Conserves bandwith by intelligent forwarding based on the MAC address.
 
 
 Switch routes the traffic in and out of its ports. By definition, ethernet is point2point network. So using switches we can extend the capability of the network.
+
+Also enables multiple streams of data within the same network ( audio, display, console, etc) without speed bottleneck since all streams use their own bandwith. So Aggregate data is not limited to say 100mbits which is not possible in bus-topology networks.
+
+
+**Intelligent Frame Forwarding**
+
+`Ethernet Switches` all internally have adress tables this is how they know how to route the traffic.
+
+- L2 Address Table:
+- - Used by Address Translation Unit (ATU) to translate the MAC address to the port.
+- - Table of Address/Port pairs.
+
+
+- Information Stored:
+- - MAC address
+- - VLAN ID
+- - Destination Port Vector(DVP)(bit array of ports for the MAC)
+- - Static or Learned
+- - Priorities
+
+
+
+So when a source sends a packet, it HAS TO add its source MAC address in the frame hence, it advertising which MAC adress(es) are on the particulat port. then the switch will know which port to send the packet to thanks to the L2 Address Table.
+
+adress table can be static or dynamically learned by the switch. There can be multiple mac addresses per port if you have multiple switches connected to each other.
+
+
+**Unmanaged and Smart Switches**
+
+- No official Delienation of ports.
+
+
+**- Unmanaged Switch:**
+
+Simplest kind. A basic MAC adress table is used.
+
+- - Little or no configuration.
+- - MAC based routing.
+- - Learns L2 address table
+- - Floods unknown DA's
+- - Possibly stataic L2 address table config.
+
+**- Smart Switch:**
+
+Enables VLAN and thereby enables different priorities based on VLAN tags
+
+- - Basic VLAN support(Static config, enforcing tag/priority)
+- - port mirroring
+
+**- Managed Switches:**
+Most sophisticated kind of switch.
+
+- - Enhances QoS and Security
+- - Addition of host processors or embedded cores.
+- - Firmaware esxecures protocols:
+- - - Dynamic VLAN management(DMRP)
+- - - Manage Redundant Paths(Spanning Tree Protocol)
+- - - AVB/TNS protocols
+
+- - Other Advanced Features:
+- - -Deep Packet Inspection
+- - - Inggress Policing and limiting.
