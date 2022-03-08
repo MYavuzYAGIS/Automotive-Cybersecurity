@@ -791,3 +791,59 @@ Cons:
 - Max baud rate 10Mbps.
 
 - to change one message, you need to reprogram all the nodes to understand it.
+
+
+## **MOST- Media Oriented System Transport**
+
+Used in `Infotainment`
+
+Pros: 
+
+- Higher bandwith (upto 150mbit)
+
+- Synchronous
+
+- Isochornous.
+
+- Single twisted pair copper cable or `optical fiber` cabling.
+
+- - Optical fiber is completely immune to electromagnetic disturbance.
+
+
+Cons:
+
+- Proprietary technology.(only one vendor)
+
+- ring topology and master/slave.
+
+- - single point failures takes down entire network.
+
+- - Tools must be a part ofthe ring. Problem with the tool? Ring goes down.
+
+- Became nearly obsolete with automotive ethernet introduced.
+
+
+## **Automotive Ethernet**
+
+Used in `Control-Data, Backbone, Infotainment, Multi-Giga Data, Safety/Time-Critical Data.`
+
+T1 = single twisted pair copper cable.
+
+
+Automotive ethernet is adaptation technology built upon standard ethernet, with better handler Electromagnetic handling and cost efficiancy.
+
+Full-Duplex.
+
+
+### *100Base-T1 : IEEE 802.3bw*
+66,6 MBaud
+
+100Mbit
+
+
+### *1000Base-T1 : IEEE 802.3bp*
+750 MBaud
+Gigabit
+
+### *2.5/5/10G Base-T1: IEEE 802.3ch*
+1406.25/2812.5/5625 MBaud
