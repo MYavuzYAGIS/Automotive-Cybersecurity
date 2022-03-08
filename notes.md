@@ -29,4 +29,7 @@ Unique for CAN is that **`Non-Destructive Arbitration`** for handling message or
 
 This is handled in the arbitration section or the arbitration ID of the can network. So when there is a possible collision risk , the arbitration ID is used to identify the message or packet. and the packet or the message with the smaller ID is sent first, whereas the packet or the message with the larger ID is sent later but *`WITHOUT A NEED FOR RE-TRANSMISSION`*.
 
+so lower ID number transmits first, other one waits, not not getting killed just waits.
+And nodes that transmits the higher ID packet also understands the situatuin and also waits.
 
+This has a drawback: nodes that lost the arbitration (the ones sending the higher ID packet) will have to wait. *this maskes CAN not as time-critical and accurate in time*.
