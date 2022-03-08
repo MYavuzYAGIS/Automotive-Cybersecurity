@@ -772,11 +772,13 @@ Pros:
 
 - clock syncronization deterministic(static frames)
 
-- TDMA- Time Divided Media Access to aviod collisions.
+- TDMA- Time Divided Media Access to aviod collisions.(slots and cycles.)
 
 - fixes problams with CAN.
 
 - With every FlexRay chip, a redundant controller built in.
+
+- Designed for time/safety critical applications but also used in backbone and control data.
 
 
 
