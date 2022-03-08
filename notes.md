@@ -126,11 +126,22 @@ MII is connected to Ethernet MAC.
 
 *Punchline: Why Ethernet is Used and how it changes between regular vs automotive* 
 
-```MAC stays constant and all the layers under Pyhsical layer are also stays constant. This MAC table, once connected, hosts all the addresses etc and statically keeps these. So it gives ability to easily swap the Ethernet PHY and MAC stays the same, also all the other layers are intact.
+```
+MAC stays constant and all the layers under Pyhsical layer are also stays constant. This MAC table, once connected, hosts all the addresses etc and statically keeps these. So it gives ability to easily swap the Ethernet PHY and MAC stays the same, also all the other layers are intact.
 
 This gives ability to change and adapt overtime.
 
 Automotive internet is an adaptation of it where only the physical layer is changed.
 Hence talking about `Automotive Ethernet` basically meaning a change in the Pyhsical layer only
-This is adaptability and flexibility for the thanks to Ethernet!```
+This is adaptability and flexibility for the thanks to Ethernet!
+```
 
+====***=====
+
+#### Consumer Ethernet Media:
+
+Coax ==> 100Base-2 ==> half duplex ==> obsolete in commercial, used in industry for `DiagnosticsOverIP` purposes.
+
+10/100 Ethernet 100MB/s ==> 10/100BASE-TX ==> full duplex => 2 twisted=4 wires.
+
+Gigabit Ethernet 1Gb/s ==> 1000BASE-T ==> full duplex => 4 twisted=8 wires.
