@@ -50,3 +50,20 @@ Eveyn node in FlexRay is aware of time base so this helps each node to understan
 So colisions dont happen in flexray.
 
 This helps very accurate in time and security critical.
+
+
+
+## Automative Ethernet :
+
+*(100Base-T)/(1000Base-T)*
+
+Modern ethernet technologies, be it automotive or not, is NOT a bus technology anymore. Instead, it is *point-to-point technology.* This means that each node is connected to only one other node.
+for multiple communication, we need to introduce a `SWITCH`.
+
+Switch distributes the traffic to the nodes within a network based on their `pysicall adress` that.
+
+Today commercially there are 100base and 1000base ethernet, 100 meaning 100Mb/s, 1000 meaning 1Gb/s.
+
+
+![](ss/ss1.png)
+
