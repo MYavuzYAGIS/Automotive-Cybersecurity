@@ -307,10 +307,8 @@ Point2Point adresses, used to send data to `specific` node.
 
 
 
-===============================***===============================
 
-
-### 2) VLANs
+### 2) VLANs (VLAN Tag && EtherType)
 
 QoS at layer 2 hardwqare.  Virtual Lan means, I want to `virtually` separate the traffic in a network so that I can get practicvally multiple networks that are `logically` separated on the `same pyhsical network`.
 
@@ -322,9 +320,11 @@ Ports assigned to Virtual Lans.
 -> Used to optimize bandwith use with `least` resources.
 
 
-===============================***===============================
-
 **Common Automotive Ethertypes**
+
+this is how ethertype is able to handle multiple types of data and their transmission simultaneously on the same network while keeping data consistent.
+
+Note that these are sent in the ethernet packets.
 
 ```
 General Use: 
@@ -344,3 +344,39 @@ AVB:
 V2X:
 0x88DC for Wave Short Message Protocol
 ```
+
+==> AVB's are used to create custom ether types.
+
+
+### 3) `Frame Check Sequence (CRC):
+
+Cyclical Redundancy Check. If fails, packet is dropped by the switch or Ethernet MAc. 
+`No built-in Error recovery like CAN` ==> `But this is implemented in higher layers like TCP`
+
+
+
+
+
+
+# 3- Switches
+
+Switches make intelligent decisions predominantly on the MAC address but also on VLAN tags, and also based on the ethertype and the data within the payload of a mac frame.
+
+Enables Layer2 Quality of Service (QoS) by:
+-> dropping bad frames.
+
+-> VLAN enfrorcing/managing.
+
+-> Traffic prioritization.
+
+-> Ingress Limiting
+
+-> AVB/TNS protocols.
+
+Conserves bandwith by intelligent forwarding based on the MAC address.
+-> Each pyhsical port connection indepoendent.
+
+-> no collision.
+
+
+Switch routes the traffic in and out of its ports. By definition, ethernet is point2point network. So using switches we can extend the capability of the network.
