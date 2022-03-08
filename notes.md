@@ -1,5 +1,8 @@
 # Automotive Ethernet
 
+# 1- Physical Layer
+
+
 ### General Ethernet :
 
 Ethernet is used for `Bandwith`
@@ -217,3 +220,11 @@ It is possible to mix the two technologies, for example, 1000Base-T and 100Base-
 ***!!!!*** 
 
 ***All these things so far are differences between standard ethernet and automotive ethernet and differences live in OSI model layer 8, which is Physical layer. Everything above Layer 8 (7..1) are the same under the hood.***
+
+
+
+====================***====================
+
+
+# 2- Data Link Layer
+
