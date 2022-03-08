@@ -661,3 +661,30 @@ Networking considerations:
 
 - Time sync across network.
 
+## **Vehicle Networking Applications**
+
+- Safety/Time Critical Data: 
+
+Requires relative high-speed, >10mb/s with `good time sync` and redundancy.
+
+- Control Data:
+
+General purpose for controlling of actuators and sensors, generally `packed` data, 
+Powertrains.
+
+- Backbone:
+
+General purpose for transporting ** data from one system to another**, generally packet data, `Gateway`s.
+
+- Infotainment:
+
+Streaming audio/video data critical. Requires good sync and control data, `high speed > 25mb/s`
+
+- Low-Cost/Speed Data:
+
+as cheap as possible for slow speed non-safefy control: door switches, lights etc.
+
+
+- Multi-Giga Data: 
+
+Currently very high bandwith for `point to point` networks
