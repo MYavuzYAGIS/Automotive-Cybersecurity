@@ -140,8 +140,27 @@ This is adaptability and flexibility for the thanks to Ethernet!
 
 #### Consumer Ethernet Media:
 
-Coax ==> 100Base-2 ==> half duplex ==> obsolete in commercial, used in industry for `DiagnosticsOverIP` purposes.
+Coax ==> 100Base-2 ==> half duplex ==> obsolete in commercial, used in industry for `DiagnosticsOverIP` purposes. (OBD port)
 
 10/100 Ethernet 100MB/s ==> 10/100BASE-TX ==> full duplex => 2 twisted=4 wires.
 
 Gigabit Ethernet 1Gb/s ==> 1000BASE-T ==> full duplex => 4 twisted=8 wires.
+
+
+
+
+
+
+====***=====
+
+
+
+![](ss/ss5.png)
+
+in Bus systems like CAN, FLEXRAY, there is a `binary` state at a given time on the pyhsical layer. Whereas in ethernet, more than 2 logical states can be passed. In Gigabit ethernet this is 5 different states(PAM-5). In automotive physical layer of 100/1000mbps,  there are 3 different states(PAM-3). 
+
+Operates at base frequency of 33.3 MhzClock.(Gigabit on automative operates at base freq of 125Mhz)
+
+#### Gotcha Points :
+
+
