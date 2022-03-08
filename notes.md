@@ -261,4 +261,22 @@ Ethernet Frame architecture:
 
 -> **Payload** is the data that is being transmitted.
 
--> **CRC** is 4 octets, CRC stands for `Cyclical Redundancy Check`,  makes sure that the receiver received all the prior bits in the correct order. **NOTE THAT** if a receiving node receives a frame with a bad CRC like short frame, long frame or a fragment of a frame, it **should** drop the frame and don't tell anybody that you dropped it. So in the low level ,there is no re-transmission.
+-> **CRC** is 4 octets, CRC stands for `Cyclical Redundancy Check`,  makes sure that the receiver received all the prior bits in the correct order. **NOTE THAT** if a receiving node receives a frame with a bad CRC like short frame, long frame or a fragment of a frame, it **should** drop the frame and don't tell anybody that you dropped it. So in the low level ,there is no re-transmission. We handle this problem in ethernet with higher level protocols which will come soon down here.
+
+
+
+A Comparison: In a given time of 110 miliseconds, the ethernet can transmit 12.336 bits at 100mbps whereas CAN can transmit only 8 bytes of data.
+
+wow!
+
+
+
+
+### MAC Address:
+
+MAC address is Low-level/pyhsical address of the network.
+
+- Programmed into hardware devices,
+- 6 bytes loing,each node globally unique.
+- First 3 bytes is a Organizationally Unique Identifier(OUI)
+- **in AutomotiveEthernet, MAC Address = Ethernet Address.**
