@@ -475,9 +475,12 @@ Ethernet is `lossy`:
 
 
 
+`IP` Addresses are called `logical` addresses.
 
+If ethertype in the packet is ipv4 or ipv6, then in layer 3 starting in the payload we have an `IP header`
 
+`IP header` contains information of the protocol(TCP, UDP, ICMP, etc) and the destination and source IP addresses.
 
+What to understand is: `Layer x is encapsulated in layer X-1` mesela Layer 2 frame encapsulates Layer 3 frame. (like onion approach)
 
-
-
+each time a layer is passed, you peel a layer off the packet and process it , and peel again to send it to nexty layer.
