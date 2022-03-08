@@ -553,8 +553,6 @@ It is all about context. for example are these referring to a physical port or a
 
 #### **UDP/ IP:**
 
-
-
 Side note :
 
 ipv4 => 4 bytes
@@ -590,3 +588,27 @@ Source Port        Destination Port
 Length             Checksum
 
 DATA DATA DATA DATA DATA DATA DATA
+
+
+
+
+#### **TCP/ IP:**
+
+- Full-featured transfer protocol.
+- TCP turns ethernet into reliable, dconnection-oriented stream.
+- Analog in CAN is ISO-15765-2.
+
+- Unlike other protocols, TCP has the native concept of connection.
+- - SYN SYN/ACK ACK thing.
+- - Creates an implicit client/server model
+- - web browser is a client, web server is a server.
+- - delivery IS and guaranteed.
+- - order is guaranteed.
+
+
+
+
+
+
+
+
