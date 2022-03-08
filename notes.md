@@ -563,7 +563,7 @@ unreliable by design.
 - - No guarantee of order.
 - - No guarantee of delivery.
 - - Used where timely delivery is more important then serviec guarantees like video streaming.
-
+- - Connectionless.
 
 Analogous to a CAN frame.
 
@@ -609,6 +609,26 @@ DATA DATA DATA DATA DATA DATA DATA
 
 
 
+======================
+
+
+### AVB STACK Components:
+
+![](ss/ss10.png)
+
+AVB stances for `Auido-Video-Bridging` which is important for real-time and replayable streaming.
+These protocols operate in parallel to everything we talked about so far and are separated by ethertype.
+
+
+AVB protocols are like : 
+
+IEEE 802.1Q VLAN tagging 
+
+or
+
+ IEEE 802.1AS clock sync. in GPTP there is a grandmaster clock that sends out clock info and other nodes sync to it.
+Some other protocols are like IEEE 1722 which tells how to transport audio and video itself like mp4 or mp3
 
 
 
+AVBs in automotive industriy are taken and extended to inculde things for `safety critical real-time control` 
