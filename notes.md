@@ -33,3 +33,15 @@ so lower ID number transmits first, other one waits, not not getting killed just
 And nodes that transmits the higher ID packet also understands the situatuin and also waits.
 
 This has a drawback: nodes that lost the arbitration (the ones sending the higher ID packet) will have to wait. *this maskes CAN not as time-critical and accurate in time*.
+
+This is why FlexRay was developed
+
+## FlexRay:
+
+it is similar to CAN in terms of wiring. it is a *MultiDrop* technology BUT `all nodes must be pre-programmed wit a fixed configuration`
+
+up to 10Mb/s. speed.
+also good for plug and play.
+message or packet based communication.
+
+==> *Collision avoidance is based on time slots for each node*
