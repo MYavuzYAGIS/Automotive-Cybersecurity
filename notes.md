@@ -1,5 +1,9 @@
 # Automotive Ethernet
 
+
+
+**<h1>GENERAL OVERVIEW</h1>**
+
 # 1- Physical Layer
 
 
@@ -21,7 +25,7 @@ Bus techologies , compared to ethernet, can be more cost effective given cabling
 
 ### Comparing Ethernet to CAN(Controller Area Network) and FLEXRAY
 
-## CAN:
+## **CAN**:
 
 it is a multidrop (bus) technlogy where user can add / remove nodes.
 
@@ -43,7 +47,7 @@ This has a drawback: nodes that lost the arbitration (the ones sending the highe
 
 This is why FlexRay was developed
 
-## FlexRay:
+## **FlexRay**:
 
 it is similar to CAN in terms of wiring. it is a *MultiDrop* technology BUT `all nodes must be pre-programmed wit a fixed configuration`
 
@@ -632,3 +636,28 @@ Some other protocols are like IEEE 1722 which tells how to transport audio and v
 
 
 AVBs in automotive industriy are taken and extended to inculde things for `safety critical real-time control` 
+
+
+
+
+
+========================================================================================================================
+
+
+**<h1>COMPARING IN VEHICLE NETWORK TECHNOLOGIES</h1>**
+
+
+Networking considerations:
+
+- Topology : Simple vs complex.
+
+- Message collisions
+
+- Addressing of nodes.
+
+- MEssage / DAta identification.
+
+- Redundancy.
+
+- Time sync across network.
+
