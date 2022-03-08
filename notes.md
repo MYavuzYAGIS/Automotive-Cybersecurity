@@ -257,4 +257,8 @@ Ethernet Frame architecture:
 
 -> **802.1Q Tag** is 4 octets, optional. VLAN Tag. in most cases expecially in WWW it is not used. but in `Automative Ethernet` especially in real-time transmission and protocols that use this real-time transmission do use this for `Routing and QoS` purposes.
 
--> **EtherType** is 2 octets, identifies the type of the message. Essentuially just a number, that represents the type of data that is coming next in the `payload`. A very common type is `0x0800 for IPV4.`
+-> **EtherType** is 2 octets, identifies the type of the message. Essentuially just a number, that represents the type of data that is coming next in the `payload`. A very common type is `0x0800 for IPV4.` So means the next octet is the first octet of the IPV4 packet.
+
+-> **Payload** is the data that is being transmitted.
+
+-> **CRC** is 4 octets, CRC stands for `Cyclical Redundancy Check`,  makes sure that the receiver received all the prior bits in the correct order. **NOTE THAT** if a receiving node receives a frame with a bad CRC like short frame, long frame or a fragment of a frame, it **should** drop the frame and don't tell anybody that you dropped it. So in the low level ,there is no re-transmission.
