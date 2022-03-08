@@ -276,7 +276,32 @@ wow!
 
 MAC address is Low-level/pyhsical address of the network.
 
+Example (00-17-4f-08-5D-69)
+
 - Programmed into hardware devices,
 - 6 bytes loing,each node globally unique.
 - First 3 bytes is a Organizationally Unique Identifier(OUI)
 - **in AutomotiveEthernet, MAC Address = Ethernet Address.**
+
+#### Unicast Addresses:
+
+Point2Point adresses, used to send data to `specific` node. 
+-> `Universally Administered Addresses` ==> UAA : globally unique.
+
+
+-> `Locally Administered Addresses` ==> LAA : probably not unique outside an `engineered network`
+
+
+
+#### Multicast Addresses:
+
+-> One to Many addresses.
+
+-> Specific MAC address that **certain** NICs are programmed to accepts.
+
+-> USed for protocol, process, or vendor specific messaging.
+
+-> LSB of the first octet is 1. (01:xx:xx:xx:xx:xx)
+
+-> When MAC address is all 1's (ff:ff:ff:ff:ff:ff) this is called `Broadcast Address` which is a special case where **all** NICs are programmed to accept the message.
+
