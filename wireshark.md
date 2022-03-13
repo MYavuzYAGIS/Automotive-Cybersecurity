@@ -406,6 +406,14 @@ Most commons are:
 - Unique Local Address Range: `fc00::/7` ==> Router comms within an enterprise(private address space gibi)
 
 
-
-
 Ipv6 is compatible with IPv4 using tunneling.
+
+
+As for **IPv6 Header**:
+
+first two header values are `Version` and `Priority/Traffic Class` which allows priorizitaion of the Ipv6 packets. 
+
+next comes `Flow Label` which works as a label for series of  packets in a single flow to uniquely ID them.
+
+Let's go over some IPv6 questions:
+
