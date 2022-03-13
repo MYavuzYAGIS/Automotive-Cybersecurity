@@ -159,3 +159,19 @@ Once we know that all is fine, we can remove any protocol that is not needed in 
 
 
 
+
+**<h2>2- IPv4, IPv6 ve ICMP</h2>**
+
+Unlike ethernet, IP is a end to end protocol not a point to point protocol.
+
+`192.168.1.8` is an IP address, `255.255.255.0` is a subnet. 
+
+IP header holds the information about the packet like version, header length,` DSCP(Differentiated Services Code Point)`, ECN(Explicit Congestion Notification), total length and so forth. Many of the times we will be dealing with `DSCP` part of it to troubleshoot where markings for the packet prioritizing is made.
+
+Another important part is total length whici is the total amount of encapsulated packet including the header itself.
+
+Next is the `identification` field which is used to identify the packet, it is either randomized or sequential which is used to `uniquely id` a packet from a station.
+
+
+**<h3>IPv4</h3>**
+
