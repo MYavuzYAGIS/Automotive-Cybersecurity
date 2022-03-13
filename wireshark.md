@@ -50,5 +50,22 @@ it is also important to colorize the packets in order to create the visibility. 
 **<h2>1- ARP</h2>**
 
 
+**NOTE THAT** ARP does not resolve IPV6 addresses. Meaning IPv6 does not use ARP.  IPV6 uses NDP(Neighbor Discovery Protocol) to resolve the addresses which replaces ARP.
+
 Address Resolution Protocol (ARP) is a protocol used to resolve the MAC address of a host. meaning, it bridges the gap between layer 2 and layer 3.
 
+ARP ne ise yarar nasil calisir?
+
+Bir packet gonderecegin zaman, header olusturmak icin destination IP ve MAC address ihtiyacin var. sen baslangicta kendi IP ve mac adresini biliyorsun, bir de serverinkini.
+
+Target'in MAC adresini bulmak icin ARP kullanilir. ilk once local arp cache'e bakar. eger varsa direkt cevap verir. eger yoksa `arp request` gonderir. Networke bunu broadcast olarak gonderir.
+
+Bu broadcast domain icindeki devices will take this up, will check the IP address that is being resolved and will build and send a reply with  its own mac address as the source mac address.
+
+Yani aslida soyle:
+
+18 numarali bilet kimde ogrenmek istiyorsun. Elindeki listede varsa zaten sorun yok, yoksa ortaliga bagiriyorsun `18 numarali bilet kimdee`?
+
+Herkes biletine bakip `benimki x`, `benimki Y` diye  cevap veriyor.
+
+Sen de sonunda ogrenmis oluyorsun ve header'i yaratip gonderiyorsun.
