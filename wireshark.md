@@ -289,3 +289,48 @@ Internet Message Control Protocol is a messaging suite used to send error messag
 - network problems,
 - routing problems
 - port unreachable/ unavailable and more.
+
+You send a SYN packet to server. Gateway is problematic and does not have a route to destination network. So it sends an ICMP error message (`Destination Unreachable`) to the sender.
+
+
+Another way ICMP is used is during fragmenting a packet. Lets say ytou are sending a packet of 1500 bytes BUT flag says `Do not fragment` however MTU on the router is 1400 so it NEEDs to dissect the packet but it CANT. so it will reply with an ICMP error message(`Destionation Unreachable Fragmentation Needed`).
+
+ An ICMP packet :
+
+ ```
+ Internet Control Message Protocol
+    **Type: 8 (Echo (ping) request)**
+    Code: 0
+    Checksum: 0xe275 [correct]
+    [Checksum Status: Good]
+    Identifier (BE): 34209 (0x85a1)
+    Identifier (LE): 41349 (0xa185)
+    Sequence number (BE): 0 (0x0000)
+    Sequence number (LE): 0 (0x0000)
+    [No response seen]
+    Timestamp from icmp data: Oct 28, 2019 22:00:31.237036000 +03
+    [Timestamp from icmp data (relative): 0.000056000 seconds]
+    Data (1592 bytes)
+ ```
+
+
+Some ICMP types:
+
+- 0: Echo reply
+- 3: Destination unreachable
+- 5: Redirect
+- 8: Echo request
+- 11: Time exceeded(TTL Exceeded)
+- 12: Parameter problem
+- 30: Traceroute
+
+Undear each type are codes that correspond(for gfiving more detailed error.)
+
+LEts say the types is 3, `Destination Unreachable`.  These are the possible codes:
+
+- 0: Network unreachable
+- 1: Host unreachable 
+- 2: Protocol unreachable
+- 3: Port unreachable
+- 4: Fragmentation required/ DF set
+- 9: Network administratively prohibited
