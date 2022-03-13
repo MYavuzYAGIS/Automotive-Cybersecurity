@@ -237,13 +237,55 @@ they generally give an idea based on the ports (lets say destination port is 80,
 
 A robust check would be to check the first packet, and take a look at the IP TTL. in my case, it is 64. **The reason for picking the FIRST packet is to capture the iunitial value of TTL becasue a random packet with TTL 64 or say 50 could belong to any possible TTLs of 255,128,64 but the first packet's ttl will give the initial counter number.**
 
-Then I check a packet on the opposite direction(source,destionation places are changed.) then I see TTL is 51
+Then I check a packet on the opposite direction(source,destionation places are changed.) then I see TTL is 51. This tells me that the `SERVER is 13 HOPS AWAY`!!
+`
+
+because initial counter - current number = 13.
+
+I know this is captured from client side.
+
+REason 1: I dont have routing packets on the outbound direction.
+REason 2 : I do see coming back packets from the server.
+
+
+Another way to know is to look at the delta time. 
+
+Inbound and outbound packets for the same IP alinir. aralarindaki delta time'a bakilir ki bu bizim ornekte 0.46ms. bu kisa bir sure. Sonra 2. packet'in infosuna bakilir. infoda `[SYN,ACK]` yaziyor. bu da clientta oldugumuzu gosteritor. 
+
+
+- 6.  Is there any prioritization in traffic coming from the server? What priority marking is used? 
+
+ I pick a packet coming from the server, open the `Differentiated Services Codepoint` and check if any marking. in my case, there was the marking `Assured Forwarding 11` so it says the packet is not going to be intercepted and dropped.
+
+
+
+- 7.  What IP flags are set on traffic coming from the server? 
+
+ again, pick a packet coming from the server and open the `Flags` section. in my case it is `0x4000` which means `Don't Fragment`
+
+
+- 8 Is the client using incrementing IP Identification numbers? or is it randomizing them? 
+Pick 2 client packets coming one after another and check the `identification` in both of them. if the numbers are consecutive, then it is incrementing. if not, then it is random.
 
 
 
 
+**IP Fragmentation in action**
+
+
+I can use a filter and filter out all the packets with size 1500 and above. once filtered, in the infor section of the packet wireshark will say `Fragmented IP protocol`. Once I open the packet and check the **DSCP** field, it is set to 0000 00. More importantly, in the `Flags` segment, the flag set is `more fragments` meaning although the size of this packet is 1500, more packets are to follow.
+
+`Fragment offset` field gives me the place of the packet in the total packet. (in my case was 0 meaning the first fragment.)
+
+This is all possible due to `do not fragment` flag.
 
 
 
+**ICMP**
 
+Internet Message Control Protocol is a messaging suite used to send error messages to the sender. Used by both endpoints and infrastructire.
 
+- outages
+- network problems,
+- routing problems
+- port unreachable/ unavailable and more.
