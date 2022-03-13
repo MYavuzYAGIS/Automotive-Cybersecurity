@@ -373,3 +373,39 @@ If there wasnt a subsequent successful connection, then the user would experienc
 
 
 **IPv6**
+
+IPv4 has 4.3 billion IP addresses, 32 bit. IPv6 has 340 trillion trillion IP addresses, 128 bit.
+
+lets take a look at a IPv6 address:
+
+`2001:4860:4860:0000:0000:0000:0000:8888`
+
+- 8 blocks of 4 hexadecimal values
+
+- first 3 blocks(48 bytes) are unique network identifier (UNI)
+
+- 4.th block is subnet identifier (SID)(ipv4 uses masks ipv6 uses identifier)
+
+- rest of the 4 blocks are host identifier (HI). used for getting the packet into its destination
+
+
+if there are multiple 0 blocks, it is by convention written as `::`
+
+so above example would be `2001:4860:4860::8888`
+
+
+**The IPv6 ADdress Ranges:**
+
+
+Most commons are:
+
+- Link Local Address Range: `fe80::/64`  ==> local without a router
+
+- Global Address Range : `2000::/3` ==> send `unicast` packet from one device to another 
+
+- Unique Local Address Range: `fc00::/7` ==> Router comms within an enterprise(private address space gibi)
+
+
+
+
+Ipv6 is compatible with IPv4 using tunneling.
