@@ -87,8 +87,8 @@ If the destination is visible (like Apple or Google,) it means that the destiona
 
 **Hands on Demo**:
 
-Lets disect a ARP request:
-
+**Lets disect a ARP request:
+**
 ```
 Address Resolution Protocol (request)
     Hardware type: Ethernet (1)     
@@ -111,5 +111,51 @@ Address Resolution Protocol (request)
 
 - Target MAC address: 00:00:00_00:00:00 (00:00:00:00:00:00)   so this is the information that is missing and being looked for. 00:00:00... means that the target mac address is not known.
 
+- Target IP address: 192.168.10.108 is the IP address that is being looked for.
 
+
+
+**Now lets look at the ARP Response to this request:**
+
+```
+Address Resolution Protocol (reply)
+    Hardware type: Ethernet (1)
+    Protocol type: IPv4 (0x0800)
+    Hardware size: 6
+    Protocol size: 4
+    Opcode: reply (2)
+    Sender MAC address: Apple_e7:ce:6d (a4:5e:60:e7:ce:6d)
+    Sender IP address: 192.168.10.108
+    Target MAC address: BelkinIn_9d:02:73 (94:10:3e:9d:02:73)
+    Target IP address: 192.168.10.1
+```
  
+- Opcode = 2  meaning reply
+
+- Sender MAC address: Apple_e7:ce:6d (a4:5e:60:e7:ce:6d)   so this is the mac address of the sender which was missing.
+
+- Sender IP address: 192.168.10.108
+
+
+As you can see, sender and target IP addresses match, so the ARP reply is valid and MAC address is resolved. 
+
+
+In some cases we see some weird ARP requests that sends requests for entire network. like couple hundred or maybe more limited or less limited numbers of ARP requests.
+
+This `could be ` and indicator to an attack.
+
+The first thing to do is to check the IP origin of the ARP request. For that end, I will create a ARP profile in the wireshark.
+
+as a new coulumn, I will add the `opcode` field which will filter requests and responds. that would be interesting in this case to see if there is any active subnets and actualy any response.
+
+Here is the filter : `arp.opcode==2` This will show all the packets that responded to the requests.
+
+
+Another very interesting filter is `arp.isgratuitous` which means that we are looking for arps that are  gratuitous either as requests or replies. Grattuitous means that the sender and target mac addresses are the same. Meaning sending its own IP and Mac address which means advertising itself.
+
+
+Once we know that all is fine, we can remove any protocol that is not needed in the trace. For a protocol to be removed we use `!{protocolName}` like `!arp`.
+
+
+
+
