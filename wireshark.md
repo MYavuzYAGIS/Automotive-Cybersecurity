@@ -439,3 +439,4 @@ Next is the `Flow Label` which is used to uniquely identify the packets in a flo
 `Hop Limit` ==> how many times the packet can be forwarded. in this case is  this is like TTL in IPv4. and last 2 are source and destination IPs with :: markation.
 
 
+So as packet perspective, it is not very daunting.
