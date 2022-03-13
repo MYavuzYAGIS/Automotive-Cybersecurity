@@ -334,3 +334,42 @@ LEts say the types is 3, `Destination Unreachable`.  These are the possible code
 - 3: Port unreachable
 - 4: Fragmentation required/ DF set
 - 9: Network administratively prohibited
+
+
+Let's go over some ICMP questions:
+
+- 1 How many ICMP packets are in this trace file? 
+ go to display filter, write `icmp` and check the number down the right side.
+
+ - 2 What is the Type of ICMP message? 
+
+pick the icmp packet and under `ICMP`, you see the type and code.
+
+- 3 What is the code value? 
+
+CODE:3 ==> so it is 3 and Port Unreachable.
+
+So that packet went aalll the way through the network, hit the destionation but the port was not open.
+
+- 4 What is the source IP of the sending station of these packets? 
+
+in the Source segment of the packet, it is available.
+
+- 5 Why is this(with code 3) ICMP message being sent? Is something broken? If so, what? 
+
+we go above the first error opcoded ICMP packet and see the network traffic. in my case, there were 2 requests were made in sub-milisecond to same website on different IP addresses. one was successfully resolved whereas other gave the error. since the dirst one was successful, the other one was not needed anyways and was dropped.
+
+One another way is to look ath the returned ICMP packet itself. nice thing about ICMP is that it shows the packet that triggered the error. check below:
+
+`User Datagram Protocol, Src Port: 53, Dst Port: 39550`
+
+ so this informatiuon actually says that you TRIED to reach port 39550 but it was not open so here is the error.
+
+- 6. Will the user experience any application problems from this behavior? 
+
+If there wasnt a subsequent successful connection, then the user would experience a problem.
+
+
+
+
+**IPv6**
