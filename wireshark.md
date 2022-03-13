@@ -415,5 +415,27 @@ first two header values are `Version` and `Priority/Traffic Class` which allows 
 
 next comes `Flow Label` which works as a label for series of  packets in a single flow to uniquely ID them.
 
-Let's go over some IPv6 questions:
+Let's go over some IPv6 packet:
+
+```
+Internet Protocol Version 6, Src: 2001:1:2:3::1, Dst: 2001:1:2:3::2
+    0110 .... = Version: 6
+    .... 0000 0000 .... .... .... .... .... = Traffic Class: 0x00 (DSCP: CS0, ECN: Not-ECT)
+    .... .... .... 0000 0000 0000 0000 0000 = Flow Label: 0x00000
+    Payload Length: 60
+    Next Header: ICMPv6 (58)
+    Hop Limit: 64
+    Source: 2001:1:2:3::1
+    Destination: 2001:1:2:3::2
+```
+
+version: 6 ==> ipv6
+
+next we can see DSCP or Traffic Class. ( in this packet there is not one but normally it is expected)
+
+
+Next is the `Flow Label` which is used to uniquely identify the packets in a flow. IPv6 automatically adds this value to the IPv6 header.
+
+`Hop Limit` ==> how many times the packet can be forwarded. in this case is  this is like TTL in IPv4. and last 2 are source and destination IPs with :: markation.
+
 
