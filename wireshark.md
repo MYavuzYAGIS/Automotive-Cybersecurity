@@ -215,3 +215,35 @@ Questions based on a Pcap file(`IP TTL`)
 
 - 1. How many unique IP stations are transmitting in this trace file? 
 
+go to statistics==>endpoints tab and do not count them manually!
+
+- 2. How many unique IP conversations are there in this trace file?
+
+go to statistics ==> converstaions and do not count them manually!
+
+- 3. What conversation is the busiest? (By bytes)
+
+in statistics ==> conversations, sort them by bytes. (104.17.208.240=192.168.10.108) was the busiest.
+
+- 4.Set a filter for the conversations including address 104.19.162.127. How many packets match that filter?
+
+set the filter `ip.addr==104.19.162.127` and on the lower right side is the visible.
+
+- 5 What side of the conversation was this trace file captured on? Client or server? How can you tell? 
+
+we loook at the `info` column, `source` and `destination` columns.
+
+they generally give an idea based on the ports (lets say destination port is 80, then it is a client side conversation)
+
+A robust check would be to check the first packet, and take a look at the IP TTL. in my case, it is 64. **The reason for picking the FIRST packet is to capture the iunitial value of TTL becasue a random packet with TTL 64 or say 50 could belong to any possible TTLs of 255,128,64 but the first packet's ttl will give the initial counter number.**
+
+Then I check a packet on the opposite direction(source,destionation places are changed.) then I see TTL is 51
+
+
+
+
+
+
+
+
+
