@@ -172,6 +172,46 @@ Another important part is total length whici is the total amount of encapsulated
 
 Next is the `identification` field which is used to identify the packet, it is either randomized or sequential which is used to `uniquely id` a packet from a station.
 
+Helps figure out whether a packet is duplicated or not, and also help track application traffic behind a load balancer.
 
-**<h3>IPv4</h3>**
+`flags` field helps to understand whether the packet is a fragment or not. or fragmentation is allowed or not.
+
+
+`Time to Live` layer helps to see how many routers/or layer 3 switches a packet has hopped through on its way to destination.
+
+`Protocol` field shows which protocol is coming next in the data payload. It could be TCP, ICMP, or other.
+
+
+**IP Fragmentation**
+
+Sometimes there is so much data that it is not possible to send it in a single packet.
+
+Lets assume you are sending a data of 1500 bytes. But VPN tunnel has `MTU` 1400 bytes and rest is reserved for encapsulation. As long as the data is less than MTU, it can be sent in a single packet but if it is greater than that, `flags` field will be checked. If the flags are set to `MF` then it means that the packet is fragmented and needs to be sent in multiple packets(called fragments). Each fragment then holds in their header field on how to reassamble the packet.
+
+
+
+Sometimes, like in encrypted traffic, the packet does not want to be intercepted or dissected.
+
+
+If packet size is big and MTU is lower than that, and also `do not fragment` is set, then router will send an `ICMP` error message to the sender saying it cannot pass the packet.
+
+
+
+**TTL**
+
+For example when you ping to someplace, it gives you the TTL number.(like 51)
+
+***TTL is not a function of time, it is a decrementing counter!!.*** As the packet travels through the network, each router decrements the counter by 1. If the number is reduced to 0, meaning the packet has reached the destination, it will be dropped and ICMP error message will be sent back to the sender.
+
+This works in both directions in the same manner. This way, we can estimate how many routers are there in the network.
+
+
+
+These days TTL starts either at 255(cisco/solaris), or 128(windows), or 64(linux)
+
+**Understanding IP TTL**
+
+Questions based on a Pcap file(`IP TTL`)
+
+- 1. How many unique IP stations are transmitting in this trace file? 
 
