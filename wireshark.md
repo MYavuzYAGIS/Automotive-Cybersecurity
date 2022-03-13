@@ -110,3 +110,6 @@ Address Resolution Protocol (request)
 - Opcode = 1  meaning request
 
 - Target MAC address: 00:00:00_00:00:00 (00:00:00:00:00:00)   so this is the information that is missing and being looked for. 00:00:00... means that the target mac address is not known.
+
+
+ 
