@@ -635,3 +635,51 @@ Domain Name System is a protocol that allows a client to resolve a domain name t
 
 Dns is like a phone book of the internet.
 
+
+Client wants to connect to a URL that IP is not known(not in DNS cache). This request is sent to the DNS server. DNS server looks up the IP address and returns it to the client.
+
+But servers dont hold all the namespaces and IP addresses on their table. 
+
+Client first sends this request to its own DNS server which is known as `DNS recursor`. if in cache, it will quicky respond. If not, it will query the `Root Name Server` asking for the TLD (TopLevel Domain) for x.com for example. Root NameServer will reply with the TLD for .com.(it was queried cunku)
+Then DNS Recursor will query the TopLevelDomain server for the TLD asking `what is the AUTH NS`. TLD will respond with the next server to go ask.
+
+finally a full request will be sent to Authoritative Name Server. (like www.yavuzyagis.com) This will resolve the query and return an updated IP address which will be set back to client as DNS reply
+
+Yani soyle. Sen bir siteye giriyorsun, IP adresi belli degil ve cache'de de yok. Gidip Root servera basvuruyor DNS server, x.com icin TLD nedir. Root server diyor ki git suradaki TopLevelDomain servera sor. o bilir. seni ozellikle bu TLD serverra yonlendiriyor.
+
+O da soruya cevaben diyor ki, git suredaki Auth NS'e sor. o en updated olanlari tutuyor bu site icin. sonra oraya gidiyor ve cevabi aliyorsun.
+
+Root Nameserver ve Auth Nd burda guide olarak calisiyorlar.
+
+ 
+Mesela bir DNS query olsun `pluralsight.com` icin.packet icinde `question` kisiminda questions sorusu bulunur. `Queries` kisminda ise neyi query ettigi bilgisi bulunur.
+
+ Ona cevap olarak gelen DNS query Response asagidaki gibi olur:
+
+```
+Domain Name System (response)
+    Transaction ID: 0x0767
+    Flags: 0x8180 Standard query response, No error
+    Questions: 1
+    Answer RRs: 3
+    Authority RRs: 5
+    Additional RRs: 0
+    Queries
+        www.pluralsight.com: type A, class IN
+    Answers
+        www.pluralsight.com: type CNAME, class IN, cname www.pluralsight.com.cdn.cloudflare.net
+        www.pluralsight.com.cdn.cloudflare.net: type A, class IN, addr *104.16.242.249*
+        www.pluralsight.com.cdn.cloudflare.net: type A, class IN, addr *104.16.243.249*
+    Authoritative nameservers
+        cloudflare.net: type NS, class IN, ns ns5.cloudflare.net
+        cloudflare.net: type NS, class IN, ns ns3.cloudflare.net
+        cloudflare.net: type NS, class IN, ns ns4.cloudflare.net
+    [Request In: 1]
+    [Time: 0.163996000 seconds]
+```
+
+
+NOTE: `www.pluralsight.com: type A, class IN` aslinda request body icinde idi. burda onu tekrar yazmis. Typa A meaning IPv4 address.
+
+
+
