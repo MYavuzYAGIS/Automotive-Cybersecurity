@@ -440,3 +440,14 @@ Next is the `Flow Label` which is used to uniquely identify the packets in a flo
 
 
 So as packet perspective, it is not very daunting.
+
+
+
+
+**<h2>3- UDP, DHCP, DNS</h2>**
+
+
+
+**UDP**
+
+`User Datagram Protocol` does not require a handshake or establishing a connection. Due to its low overhead, it is generally used for `Time Sensitive applications` **that can handle small amount of data loss**. So time critical but NOT safety critical maybe.
