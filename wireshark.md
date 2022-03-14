@@ -686,7 +686,6 @@ NOTE: `www.pluralsight.com: type A, class IN` aslinda request body icinde idi. b
 
 **FTP**
 
-**<h4>FTP vs SFTP vs TFTP</h4>**
 
 FTP , `File Transfer Protocol` is a protocol that allows a client to transfer files to and from a server.
 
@@ -862,3 +861,14 @@ Then server sends Data Packets. After data transfer is finished , comes a [FIN,A
 Using these, we can recombine the packet actually.
 
 click on data, follow tcp stream, on the show and save data as , select `RAW` and voila, recombined the packet and data.
+
+
+**HTTPS and TLS**
+
+HTTPS came in 2000 using encryption over TLS. 
+
+Then in 2015, HTTP 2.0 came out and multiplexed req and res.
+
+in 2019, HTTP 3.0 came out started to use UDP transport.
+
+
