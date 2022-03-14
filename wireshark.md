@@ -867,8 +867,38 @@ click on data, follow tcp stream, on the show and save data as , select `RAW` an
 
 HTTPS came in 2000 using encryption over TLS. 
 
-Then in 2015, HTTP 2.0 came out and multiplexed req and res.
+Then in 2015, HTTP 2.0 came out and multiplexed req and res. Meaning sending multiple requests at once in a single TCP connection.
 
 in 2019, HTTP 3.0 came out started to use UDP transport.
 
 
+How does HTTP (not HTTPS) work?
+
+- client sends request method (GET|POST|PUT|DELETE)
+
+- server responses code and data (200, 404, etc)
+
+
+How does HTTPS work?
+
+- Client hello packet with public-private key pair (cipher). This goes in the first packet.
+
+- Also sending Cipher suit and TLS version to use. 
+
+- Server cretates  server random, selects cipher and public key and sends encrypted data back to client.
+
+- After this exchange, both parties got their keys and readied all to enc/dec data (this is true with TLS 1.3 this is why it is so fast, it needs only 1 round trip to exchange keys)
+
+- And conversation begins like the previous example.
+
+
+
+However, we can actually decrypt the TLS.
+
+- enabling keylogging on the client side by introducing an environment variable in the web browser. This will help logging the keys and then we sniff and use it to decrypt.
+
+We dont need to decrypt for troubleshooting purposes many of the times.
+
+
+
+For example we can see the packet size and response/ data sizes. From that, looking at delta, we can calculate the delay times, measure network round-trip time, see packet loss using TCP retransmissions, duplicate ACKS etc..
