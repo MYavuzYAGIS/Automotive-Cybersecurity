@@ -520,7 +520,7 @@ That is the basic of DHCP and how a client gets a new IP address.
 
 There are some extra steps when analyzing the DHCP packets.
 
-**After getting assigned with an IP address, the client wants to verify that it is the only one that is with that IP address, hence sends an ARP request to the server, if any other client says `I have that IP address too`, then it informs the server saying I need anoter IP address.** 
+**After getting assigned with an IP address, the client wants to verify that it is the only one that is with that IP address, hence sends an ARP request (gratuitous) to the server, if any other client says `I have that IP address too`, then it informs the server saying I need anoter IP address.** 
 
 for this end, the client sends an **DHCP Decline** to the server.
 
@@ -530,6 +530,105 @@ during the DHCP process, the server will indicate to the client the *length of t
 
 anytime during the `lease` the client can send a **DHCP renew** to the server to keep the IP address alive as long as it is available or server tells the client when to request `renew`
 
+Lets go over some questions to better understand DHCP (analyzing DHCP pcap):
+
+
+- 1 In the DHCP discover, what options is the client requesting? 
+
+Beware that the source IP address of the client that sends `dhcp discover` is 0.0.0.0 since it does not have a valid IP address yet.
+
+in the initial discover packet we have the following options:
+
+- DHCP message type: 1 (Discover)
+
+- Client Identifier: that is the MAC address of the client.
+
+- Host name: the name of the client.
+
+- Parameter Request List: the list of options the client wants to receive. in my  case it was  `Subnet Mask` , `Router`, `Domain Name Server`.
+
+- End of options: 0xFF.
+
+
+
+
+- 2. Is this a broadcast packet? 
+
+When I look at that layer 2 of the packet `Ethernet II, Src: NetAlly_a1:17:9f (00:c0:17:a1:17:9f), Dst: Broadcast (ff:ff:ff:ff:ff:ff)` it is clearly said that the destination is Broadcast.
+
+- 3.What is the function of the ARPs in packets 2-4?
+
+ARP packets 2-4 are exactly the same packets broadcasted 3 times. asking whether someone has the IP address that the client is trying to get. We assume that not response was given to this packet.(because in packet 5, DHCP will offer this IP to the client.)
+
+**BEWARE THAT WE ONLY ASSUME THAT ARP RESPONSE WAS NOT GIVEN. WHY DO WE ONLY ASSUME? BECUSE ARP REQUESTS ARE BROADCASTED SO WE CAN SEE THEM BUT RESPONSES ARE UNICASTED SO THERE IS A POSSIBILITY WE DONT TAP ON THEM**
+
+
+- 4 What is the server host name of the DHCP server? 
+
+in the DHCP offer packet, the server host name is `ecosystem.home.cisco.com`.
+
+
+- 5 The server goes above and beyond. What options are offered to the client that did not appear in the discover packet? 
+
+
+One thing interesting is, in the offer packet, there are some options that are not mentioned in the discover packet. these are:
+
+- - Server Identifier: the IP address of the server.
+
+- - IP address lease time: the time the client has to renew the IP address.
+
+- - Rebinding time: the time the client has to rebind the IP address.
+
+- - Subnet Mask: the subnet mask of the network.
+
+- - Broadcast address: the broadcast address of the network.
+
+- - DNS.
+
+
+- 6 In the request packet, why is there no relay agent? 
+
+checking the next DHCP packet(which is sent by the client), DHCP Request, the relay agent is not there. in the packet: Relay agent IP address: 0.0.0.0.
+
+this is a typical behavior, you dont relay yourself, router do that.  we see that relay agent IP address on the way back in the acknowledgement packet.
+
+
+
+- 7 In the request packet, how does the client identify which server it wants an address from? 
+
+in the options section of the request packet, the client identifies the server using the option `DHCP server identifier`. to which the value is an IP address.
+
+- 8  In the DHCP ACK - is this packet a broadcast? 
+
+When we look at the second layer headear (Ethernet II) this is what we see :
+
+```
+Ethernet II, Src: BelkinIn_9d:02:73 (94:10:3e:9d:02:73), Dst: NetAlly_a1:17:9f (00:c0:17:a1:17:9f)
+    Destination: NetAlly_a1:17:9f (00:c0:17:a1:17:9f)
+    Source: BelkinIn_9d:02:73 (94:10:3e:9d:02:73)
+
+```
+
+So destination is clearly specified, hence it is a unicasted packet.
+
+
+- 9 What is the lease time of the accepted address? 
+
+leaase time, rebinding time values are in the options section of the DHCP ACK packet.
+
+in this case it is 24 hours.
+
+- 10 What is the function of packets 8 and 9? 
+
+in my trace file, two packets coming after the DHCP ACK packets are ARP requests.
+
+The use of these packets are to verify that the client has the IP address that the server has assigned to it. to they are broadcasting and advertising themselves to the network using gratuitous ARP.
+
+in the first packet, it sends its own mack address and target IP address is it's own IP address. asking `IF anyone else has the same IP address` and the response is not given. the next packet is ARP announcement packet whath is again a broadcast and telling I have this IP address.
+
+
+
+**Then how does DHCP decline works?**
 
 
 
