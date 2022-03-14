@@ -695,3 +695,170 @@ FTP , `File Transfer Protocol` is a protocol that allows a client to transfer fi
 - SFTP, `Secure File Transfer Protocol` is a secure protocol that provides a secure file transfer. uses SSH.
 
 - TFTP, `Trivial File Transfer Protocol` is a protocol that provides a file transfer without encryption. used within LAN over UDP. Configuration files to network devices.
+
+**FTP under the hood**
+
+- Client sends a request to the server with username and password on the port 21.
+
+- After log in, client asks What directory it has access on the system.
+
+- Server tells the client what folder/folders it has access to.
+
+- Client asks specific files within an directory.
+
+
+If a client asks for a file `passively` then server tells to the client to connect to this port.
+
+- Then client establishes TCP connection to that port.
+
+- Request is made 
+
+- Transfer begins.
+
+
+
+
+Using the PCAP file (Analyzing FTP.pcap), lets answer the questions:
+
+
+- 1 What port does the client connect to on the server to start the command connection? 
+
+On the connection info, the first packet reads : `Transmission Control Protocol, Src Port: 55579, Dst Port: 21, Seq: 0, Len: 0`  directing the request to port 21. so it is 21. Also fom the response, we can see that the server is running FileZilla.
+
+- 2 What initial Login does it use? 
+
+On the packet number 6, `FTP Request` packet, 
+
+```
+File Transfer Protocol (FTP)
+    USER anonymous\r\n
+        Request command: USER
+        Request arg: anonymous
+```
+
+We see that user is trying to login anonymously.
+
+On the next packet, the server says :
+
+```
+File Transfer Protocol (FTP)
+    331 Password required for anonymous\r\n
+        Response code: User name okay, need password (331)
+        Response arg: Password required for anonymous
+```
+
+Then user sends the following packet:
+
+```
+File Transfer Protocol (FTP)
+    PASS chrome@example.com\r\n
+        Request command: PASS
+        Request arg: chrome@example.com
+```
+
+chrome@example.com being the sent password.
+
+The resonse comes:
+
+```
+File Transfer Protocol (FTP)
+    530 Login or password incorrect!\r\n
+        Response code: Not logged in (530)
+        Response arg: Login or password incorrect!
+
+```
+
+One way to follow the conversation in whole rather than packet by packet is to use **Follow >> TCP Stream.**
+
+Here is the full conversation on Follow:
+
+```
+220-FileZilla Server 0.9.60 beta
+220-written by Tim Kosse (tim.kosse@filezilla-project.org)
+220 Please visit https://filezilla-project.org/
+USER anonymous
+331 Password required for anonymous
+PASS chrome@example.com
+530 Login or password incorrect!
+QUIT
+221 Goodbye
+```
+
+You can achieve the same thing also using the filter code : `tcp.stream eq 0` 
+
+
+Lets check an established connection example:
+
+Starting with a new TCP packet of connection request, I follow the TCP stream:
+
+```
+220-FileZilla Server 0.9.60 beta
+220-written by Tim Kosse (tim.kosse@filezilla-project.org)
+220 Please visit https://filezilla-project.org/
+USER chris
+331 Password required for chris
+PASS 
+230 Logged on
+SYST
+215 UNIX emulated by FileZilla
+PWD
+257 "/" is current directory.
+TYPE I
+200 Type set to I
+SIZE /Pluralsight Logo.PNG
+213 5817
+CWD /Pluralsight Logo.PNG
+550 CWD failed. "/Pluralsight Logo.PNG": directory not found.
+PASV
+227 Entering Passive Mode (192,168,10,196,227,188)
+RETR /Pluralsight Logo.PNG
+150 Opening data channel for file download from server of "/Pluralsight Logo.PNG"
+226 Successfully transferred "/Pluralsight Logo.PNG"
+QUIT
+221 Goodbye
+```
+
+So username is chris, password is empty, and the server is FileZilla. Directory is /.
+
+```
+SYST
+215 UNIX emulated by FileZilla
+```
+User is asking what SYSTEM I am on, the response is, well, Unix.
+
+`PASV` means user wants to establish a passive connection. 
+
+```
+File Transfer Protocol (FTP)
+    PASV\r\n
+        Request command: PASV
+```
+
+can also be seen in the packet body. Then in the response, the server returns a chunk of data including the new port number.
+
+```
+File Transfer Protocol (FTP)
+    227 Entering Passive Mode (192,168,10,196,227,188)\r\n
+        Response code: Entering Passive Mode (227)
+        Response arg: Entering Passive Mode (192,168,10,196,227,188)
+        Passive IP address: 192.168.10.196
+        Passive port: 58300 
+```
+How do I get this number? check this?
+
+
+`Entering Passive Mode (192,168,10,196,227,188)\r\n`
+
+after the IP address, there is 227 and 188. so formula is.
+
+(227 X 256) + 188 = 58300
+
+Then a new connection is established on this port:
+
+`Transmission Control Protocol, Src Port: 58300, Dst Port: 55581, Seq: 0, Ack: 1, Len: 0`
+ 
+Then server sends Data Packets. After data transfer is finished , comes a [FIN,ACK] packet that closes connection and then the connection comes back to port 21.
+
+Using these, we can recombine the packet actually.
+
+click on data, follow tcp stream, on the show and save data as , select `RAW` and voila, recombined the packet and data.
