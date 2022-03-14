@@ -628,9 +628,5 @@ in the first packet, it sends its own mack address and target IP address is it's
 
 
 
-**Then how does DHCP decline works?**
 
-
-
-
-
+**DNS**
