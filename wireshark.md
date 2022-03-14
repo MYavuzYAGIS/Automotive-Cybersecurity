@@ -450,4 +450,44 @@ So as packet perspective, it is not very daunting.
 
 **UDP**
 
-`User Datagram Protocol` does not require a handshake or establishing a connection. Due to its low overhead, it is generally used for `Time Sensitive applications` **that can handle small amount of data loss**. So time critical but NOT safety critical maybe.
+`User Datagram Protocol` does not require a handshake or establishing a connection. Due to its low overhead, it is generally used for `Time Sensitive applications` **that can handle small amount of data loss**. So time critical but NOT safety critical maybe. It is a very simple protocol without many of the segments that TCP has.
+
+A UDP header consists of the following fields:
+
+- Source Port
+
+- Destination Port
+
+- Length
+
+- Checksum .  
+
+
+Let's go over some UDP packet and answer some questions:(Based on *Analyzing UDP pcap*)
+
+- 1 . What Applications are using UDP in this trace file? 
+
+We can see on the `Protocol` column, DNS and SNMP are using the UDP protocol.
+
+- 2 What UDP port number does the DNS server use? 
+
+Opening a DNS application and checking the UDP packet header will show the source and destination ports. Generally, UDP lives on the port 53. This pcap file is not exception to that.
+
+Source: 2085
+
+Destination: 53
+
+- 3 Why do we see the ICMP message in packet 5? 
+
+ICMP packet's type is 3 and code is 3 which is `Destination Unreachable, Port Unreachable`.
+
+So there has been a packet that was sent to a port that was not open.
+
+
+The reason was that, there was a SNMP request made to an IP address on port 161 and that returned no port open as ICMP packet. How Did I know this happened because of the ICMP packet?
+
+Because ICMP's source-destination should be used revereselu in the problematic packet. which was ICMP. then to further check, I checked the destination ports in both packets which were 161 and 161. meaning they were same so ICMP was a response to SNMP packet.
+
+==> **Tip: port 161 is generally used for SNMP anyways.**
+
+
