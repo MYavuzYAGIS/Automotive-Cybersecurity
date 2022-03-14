@@ -966,3 +966,84 @@ Extension: application_layer_protocol_negotiation (len=14)
         ALPN string length: 8
         ALPN Next Protocol: http/1.1 **
 ```
+
+- 8 Which versions of TLS is the client advertising? 
+
+again under Extensions:supported_versions, we can see lots of advertised versions.
+
+```
+Extension: supported_versions (len=11)
+    Type: supported_versions (43)
+    Length: 11
+    Supported Versions length: 10
+    Supported Version: Reserved (GREASE) (0xaaaa)
+    Supported Version: TLS 1.3 (0x0304)
+    Supported Version: TLS 1.2 (0x0303)
+    Supported Version: TLS 1.1 (0x0302)
+    Supported Version: TLS 1.0 (0x0301)
+```
+
+- 9 What initial TLS version is the server using? 
+
+For this, I need to check the server hello packet.
+
+under the Transport Layer Security section, we can see the initial TLS version.
+
+`Version: TLS 1.2 (0x0303)`
+
+
+- 10 Which cipher suite did it select to use? 
+
+Under TLS/Handshake Protocol, we can see the cipher suite selected.
+
+`Cipher Suite: TLS_AES_128_GCM_SHA256 (0x1301)`
+
+- 11 What TLS version does it select? 
+
+Here dont be confused with the initial TLS version. The selected TLS version is under the `Supported Version`
+
+```
+Extension: supported_versions (len=2)
+    Type: supported_versions (43)
+    Length: 2
+    Supported Version: TLS 1.3 (0x0304)
+```
+
+So it selected TLS 1.3 version.
+
+
+
+- 12 Do we see which HTTP version the server selected? Why? 
+
+Server sends limited amount of xtensions. many of the things server sent back are not encrypted. Hence, we do not have substantial knowledge about the selecgted HTTP server.
+
+- 13 Any idea which packet from the client is likely the HTTP (1.1 or 2.0) request? 
+
+we know the Client IP address. we look at packet length where client has sent to the server. After the handshake is established, I filter the packets between low and large amounts of payload data.
+
+lower bound datas are like, regular networking requests and replies like handshake cleanup requests. the real requests are generally the larger ones. (like 1300-1400 large not 120-300)
+
+so likely, larger packets are the HTTP requests.
+
+- 14  After this point, are there any other issues in the TCP stream? 
+
+In the wireshark, I can see flags with black background and red colors. These are TCP errors like retransmission, or Previous packet was not catured, or Duplicate ACKs etc.
+
+TCP Previous packet was not catured means there is a gap between TCP sequences. this could be because:
+
+- network dropped it ,
+
+- Wireshark missed it because of overload or misconfig
+
+- this was a geniune packet loss.
+
+Generally Packet was not captured is followed by `TCP Dup ACK` and `TCP Retransmission` flags. first one re-requests the connection to retrieve the data and later one retransmits the data.
+
+
+- 15 If a user was complaining that this application was slow, what would you say is the cause? Client, network, or server? Why? 
+
+We can check the network latency in the capture screen. 150 - 200 miliseconds are above the acceptable latency levels. (we check delta of course)
+
+Here we check the network trip time(which we can calculate it by taking the delta between the SYN and SYN-ACK packet). here in my example it was 0.146 miliseconds which is big. So THERE IS a high-latency already in the network.
+
+Second thing I saw was that there was a packet loss and packet loss recovery which puts onto the network delay.
