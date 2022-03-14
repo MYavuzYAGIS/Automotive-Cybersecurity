@@ -490,4 +490,33 @@ Because ICMP's source-destination should be used revereselu in the problematic p
 
 ==> **Tip: port 161 is generally used for SNMP anyways.**
 
+That's all for UDP for now.
+
+
+
+**DHCP**
+
+Client IP address is assigned by the DHCP server. 
+
+Lets say there are 2 hosts with unique MAC addresses , connected to a switch. In order to be able to communicate, they neeed unique IP addresses. DHCP helps assigning IP addresses dynamically from a central pool. DHCP helps these endpoints to discover servers that are offering addresing. So client , using `DHCP discover` asks **Who is the DHCP server?** 
+
+
+
+DHCP consists of 4 packets:
+
+- 1 ) DHCP discover:  Client *broadcasts* this to the network to find a DHCP server.
+
+- 2 ) DHCP offer: Server sends this broadcast to the client to tell it where to go.
+
+
+There could be more than one DHCP server in the network so can get multiple offers, client then decides which one to accept.
+
+- 3 ) DHCP request: Client sends broadcast request to decided DHcP server to get an IP address.
+
+- 4 ) DHCP ack: Server sends this to the client to tell it that it has an IP address.
+
+
+That is the basic of DHCP and how a client gets a new IP address.
+
+There are some extra steps when analyzing the DHCP packets.
 
