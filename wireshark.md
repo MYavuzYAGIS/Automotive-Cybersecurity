@@ -520,3 +520,18 @@ That is the basic of DHCP and how a client gets a new IP address.
 
 There are some extra steps when analyzing the DHCP packets.
 
+**After getting assigned with an IP address, the client wants to verify that it is the only one that is with that IP address, hence sends an ARP request to the server, if any other client says `I have that IP address too`, then it informs the server saying I need anoter IP address.** 
+
+for this end, the client sends an **DHCP Decline** to the server.
+
+Then server marks this as `assigned alredy` and assigns the next available IP address in the dynamic pool.
+
+during the DHCP process, the server will indicate to the client the *length of the lease* and the *time remaining* for the lease. meaning this is the timeframe this IP is valid. After that, the IP will be released to the dynamic pool for reassignment.
+
+anytime during the `lease` the client can send a **DHCP renew** to the server to keep the IP address alive as long as it is available or server tells the client when to request `renew`
+
+
+
+
+
+
