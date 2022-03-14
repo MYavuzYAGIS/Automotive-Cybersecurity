@@ -630,3 +630,8 @@ in the first packet, it sends its own mack address and target IP address is it's
 
 
 **DNS**
+
+Domain Name System is a protocol that allows a client to resolve a domain name to an IP address and vice versa.
+
+Dns is like a phone book of the internet.
+
