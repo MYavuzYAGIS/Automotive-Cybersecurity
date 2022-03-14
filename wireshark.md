@@ -902,3 +902,67 @@ We dont need to decrypt for troubleshooting purposes many of the times.
 
 
 For example we can see the packet size and response/ data sizes. From that, looking at delta, we can calculate the delay times, measure network round-trip time, see packet loss using TCP retransmissions, duplicate ACKS etc..
+
+
+Lets go over a PCAP file (HTTP over TLS .pcap file) and see how it works:
+
+- 1  What port is the client connecting to on the server? 
+
+the first TCP packet reads"
+
+Transmission Control Protocol, Src Port: 60533, Dst Port: 443, Seq: 0, Len: 0
+
+so the port is 443 which is the HTTPS port.
+
+
+- 2 What is the initial network roundtrip time for this connection?
+
+Initial network roundtrip time is the time between SYN - SYN-ACK handshake.
+When we look at the packets, the delta time between the SYN and SYN-ACK packet is 0.146 miliseconds. 
+
+- 3 In the client hello, what TLS version is being used initially? Why do you think this is the case? 
+
+in the Client hello packet, we can see the TLS version used. `TLSv1.3 Record Layer: Handshake Protocol: Client Hello`  so it is a TLS 1.3 version. Also in the capture screen in the Protocol column it is visible.
+
+The reason TLS 1.3 is used is because it is very fast in terms of round-trip time.
+
+- 4 In the handshake protocol, what TLS version is being initially used?
+
+Again in the Client Hello packet, under the Transport Layer Security section, the initial  TLS version is logged as Version: TLS 1.0 (0x0301) then it was upgraded
+
+- 5 How many cipher suites are being offered to the server? 
+
+Still under the Client Hello packet, under the Transport Layer Security section, there are listed the cipher suites offered. `Cipher Suites (17 suites)` some of them are RSA,EAS, ECDHE and 3DES. server selects one of these.
+
+- 6 Does the client know the name of the server it is communicating to? 
+
+in the client hello packet, we see that client actually knows the server name. Check the Extensions: Server Name Indication section.
+
+```
+Extension: server_name (len=24)
+    Type: server_name (0)
+    Length: 24
+    Server Name Indication extension
+        Server Name list length: 22
+        Server Name Type: host_name (0)
+        Server Name length: 19
+        Server Name: www.pluralsight.com
+```
+
+- 7 n the ALPN info, which HTTP versions are supported by the client? 
+
+ALPN stands for Application Layer Protocol Negotiation which can be found under the extension : EXTENSION: application_layer_protocol_negotiation (len=16)
+
+as for this hello, there are 2 http versions are supported which are HTTP/1.1 and HTTP/2.0.
+
+```
+Extension: application_layer_protocol_negotiation (len=14)
+    Type: application_layer_protocol_negotiation (16)
+    Length: 14
+    ALPN Extension Length: 12
+    ALPN Protocol
+        ALPN string length: 2
+        ALPN Next Protocol: h2   **
+        ALPN string length: 8
+        ALPN Next Protocol: http/1.1 **
+```
