@@ -681,5 +681,17 @@ Domain Name System (response)
 
 NOTE: `www.pluralsight.com: type A, class IN` aslinda request body icinde idi. burda onu tekrar yazmis. Typa A meaning IPv4 address.
 
+**<h2>4- FTP , HTTPS, TLS</h2>**
 
 
+**FTP**
+
+**<h4>FTP vs SFTP vs TFTP</h4>**
+
+FTP , `File Transfer Protocol` is a protocol that allows a client to transfer files to and from a server.
+
+- FTP provides easy file transfer, clear text on wire, not a secure protocol. username, password, filenames, etc. are sent in plain text.
+
+- SFTP, `Secure File Transfer Protocol` is a secure protocol that provides a secure file transfer. uses SSH.
+
+- TFTP, `Trivial File Transfer Protocol` is a protocol that provides a file transfer without encryption. used within LAN over UDP. Configuration files to network devices.
