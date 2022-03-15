@@ -1057,3 +1057,34 @@ There are 2 sequence numbers :
 
 This is the true sequence number, 
 
+
+### **TCP Flags and Options**
+
+This is a flags segment from a SYN packet:
+
+```tcp
+Flags: 0x002 (SYN)
+    000. .... .... = Reserved: Not set
+    ...0 .... .... = Nonce: Not set
+    .... 0... .... = Congestion Window Reduced (CWR): Not set
+    .... .0.. .... = ECN-Echo: Not set
+    .... ..0. .... = Urgent: Not set
+    .... ...0 .... = Acknowledgment: Not set
+    .... .... 0... = Push: Not set
+    .... .... .0.. = Reset: Not set
+    .... .... ..1. = Syn: Set
+    .... .... ...0 = Fin: Not set
+    [TCP Flags: ··········S·]
+```
+
+Now all the flags are 0, which are not set. Only one flag is 1, which is SYN. Which means this is a SYN packet.
+
+000000010 => 0x002 oldugu icin *Flags: 0x002 (SYN)* olarak kaydedilmis. bastan baslayarak 0lari ekle 1 leri ekle iste.
+
+In the SYN packet, what sychronizes is the `initial sequence numbers` between the client and the server.
+
+Another interesting field is the *Window Size.* What windows size is the Advetised Receive Buffer Value. Meaning that **Server cannot send more data than this value back to client at once** because this is the TCP buffer at hand
+
+In my case, the advertised window size is 65535 bytes. (`Window: 65535`)
+
+
