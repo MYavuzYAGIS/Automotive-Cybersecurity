@@ -1037,5 +1037,23 @@ Formul : ($filtre) && $IkinciFiltre
 A 3 way handshake is a TCP connection establishment process where both client and server send 2 SYN and ACK packets to each other.
 
 
-From handshake we can learn `Connection Roundtrip Time` which is the delta time between Syn and the final Ack.
+From handshake we can learn `Connection Roundtrip Time` which is the delta time between Syn and the final Ack no matter we are on the client side or the server side.
+
+Next thing to learn from handshake is the `Initial Sequence Numbers`
+
+When Syn packet is sent, one of the things it advertises is `Initial Sequence Number` which is the sequence number of the first data packet sent by the client. It could be 0 or any other number.
+
+In the syn/ack packet, the server sends `Okaayy! I acknowledge that sequence number`!
+
+There are 2 sequence numbers :
+
+- Relative Sequence Number (RSeq):
+
+ The sequence number of the packet relative to the previous packet in the flood. So the first packet has a RSeq of 0, the second packet has a RSeq of 1, and so on.
+
+ It takes the raw sequence number and zeroes it down for the initial syn.
+
+- Sequence Number(raw):
+
+This is the true sequence number, 
 
