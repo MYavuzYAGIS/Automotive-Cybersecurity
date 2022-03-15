@@ -1,4 +1,4 @@
-# MODULE 1 Analyzing Network Protocols With Wireshark 
+# **<h1>MODULE 1 Analyzing Network Protocols With Wireshark</h1>** 
 
 Packet that Matters:
 
@@ -1047,3 +1047,11 @@ We can check the network latency in the capture screen. 150 - 200 miliseconds ar
 Here we check the network trip time(which we can calculate it by taking the delta between the SYN and SYN-ACK packet). here in my example it was 0.146 miliseconds which is big. So THERE IS a high-latency already in the network.
 
 Second thing I saw was that there was a packet loss and packet loss recovery which puts onto the network delay.
+
+</br>
+
+
+# **<h1>MODULE 2 TCP Foundations with Wireshark</h1>** 
+
+
+
