@@ -1060,7 +1060,7 @@ This is the true sequence number,
 
 ### **TCP Flags and Options**
 
-This is a flags segment from a SYN packet:
+This is a flags segment from a **Client Side SYN** packet:
 
 ```tcp
 Flags: 0x002 (SYN)
@@ -1087,4 +1087,87 @@ Another interesting field is the *Window Size.* What windows size is the Advetis
 
 In my case, the advertised window size is 65535 bytes. (`Window: 65535`)
 
+So this is a number that client can receive at once. And this value is variable not fixed.
 
+During the handshake options are also exchanged. If syn packet, these are advertised by the client. This is a TCP segment for TCP options from a SYN packet.
+
+```tcp
+    Options: (24 bytes), Maximum segment size, No-Operation (NOP), Window scale, No-Operation (NOP), No-Operation (NOP), Timestamps, SACK permitted, End of Option List (EOL)
+        TCP Option - Maximum segment size: 1460 bytes
+        TCP Option - No-Operation (NOP)
+        TCP Option - Window scale: 5 (multiply by 32)
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 942288325, TSecr 0
+        TCP Option - SACK permitted
+        TCP Option - End of Option List (EOL)
+```
+
+Segment size ==> max segment size that client can receive.
+
+Window Scale ==> Take my actual window value and multiply by 2^(Window Scale) (2^5 = 32)
+
+This is only transmitted once !! by client! at syn packet!
+
+TimeStamps ==> This is a timestamp that is sent by the client. If the server also supports the timestamp, it will echo this number back.
+
+SACK permitted ==> This is a **selective acknowledgement packet**. It is sent by the client to the server.  
+
+This is a flags segment from a **Server Side SYN** packet:
+
+```tcp
+Transmission Control Protocol, Src Port: 443, Dst Port: 60533, Seq: 0, Ack: 1, Len: 0
+    Source Port: 443
+    Destination Port: 60533
+    [Stream index: 0]
+    [Conversation completeness: Incomplete, DATA (15)]
+    [TCP Segment Len: 0]
+    Sequence Number: 0    (relative sequence number)
+    Sequence Number (raw): 3705051881
+    [Next Sequence Number: 1    (relative sequence number)]
+    Acknowledgment Number: 1    (relative ack number)
+    Acknowledgment number (raw): 475317135
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x012 (SYN, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Nonce: Not set
+        .... 0... .... = Congestion Window Reduced (CWR): Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..1. = Syn: Set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······A··S·]
+    Window: 29200
+    [Calculated window size: 29200]
+    Checksum: 0x90fa [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), Maximum segment size, No-Operation (NOP), No-Operation (NOP), SACK permitted, No-Operation (NOP), Window scale
+        TCP Option - Maximum segment size: 1460 bytes
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - SACK permitted
+        TCP Option - No-Operation (NOP)
+        TCP Option - Window scale: 10 (multiply by 1024)
+    [Timestamps]
+    [SEQ/ACK analysis]
+
+```
+
+As can be seen:
+
+- Flags are 0x012 (SYN, ACK) which is Acknowledged is set to 1 and Syn is set to 1
+
+- Server sends its own window size (29200) in this case
+
+- Options => support sack, window scale is 10 (multiply by 1024) take my scale windows and multiply by 2^(Window Scale) (2^10 = 1024)
+
+Checking the options some of them are NOPs. so some options are not supported by server. but there are some options they exchanged and supported by both like Maximum segment size, SACK, Window scale.
+
+For any option to be used, both client and server must support it.
+
+
+### **Window Scale Factor**
