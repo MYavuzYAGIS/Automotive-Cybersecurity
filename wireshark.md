@@ -957,7 +957,7 @@ TCP operates in the Transport layer of the OSI model. It is responsible for the 
 
 TCP acts as a bridge between `Pyhsical => DataLink => Network` and `Session => Transport => Application` layers by sitting in between of two blocks.
 
-### **What is a Connection?**
+### **1-What is a Connection?**
 
 A connection can be identified as a four-tuple.
 
@@ -1034,7 +1034,7 @@ Nihai filtre : ==> **(ip.addr==192.168.10.108 && tcp.port==60534 && ip.addr==104
 Formul : ($filtre) && $IkinciFiltre
 
 
-### **TCP Handshake**
+### **2-TCP Handshake**
 
 A 3 way handshake is a TCP connection establishment process where both client and server send 2 SYN and ACK packets to each other.
 
@@ -1251,3 +1251,7 @@ Remove any filter applied to 4-tuple, select packages for each connection, go to
 Filter to apply is `tcp.flags.syn==1` this will give both Syn and SynAcks.
 
 Down below, it says I have 19 out of 894 entire packets.
+
+
+
+### **3- Understanding Sequence and Acknowledgement Numbers**
