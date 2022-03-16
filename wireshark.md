@@ -1255,3 +1255,21 @@ Down below, it says I have 19 out of 894 entire packets.
 
 
 ### **3- Understanding Sequence and Acknowledgement Numbers**
+
+Remember the Initial Sequence Number. Now every btye that the client sends has a sequence number. Again, on the server side same. 
+
+These number between server and client are not important and they are different. all what matters is they make sure the opposite side to know where they are starting to count from.
+
+Here how the machanism work:
+
+Application itself sends the data(app data) down to TCP stack. TCP then ,takes this data (audio,request,email,etc.) and breaks it down accoring to the **Maximum Segment Size** of the receiver of the opposite side can handle.
+
+so lets say server propagated that its mss is 1460 bytes. Client wants to send 8760 bytes in total. Client breaks down the data into 1460 bytes chunks , which makes in total 6 packets.
+
+Then the client sends these data over the wire. Server, upon receiving this data chunks, begins to acknowledge the packets.
+
+To cut down the bandwith usage, the server will NOT send ACK packets for each packets it receives, it can acknowledge multiple packets at once.
+
+Server's tcp ack contains `acknowledgment number`. this number corresponds to the packet number of the last packet it received.
+
+and it tells to client that it could successfully receive the data no need for re-transmission.
