@@ -1241,3 +1241,13 @@ Both client and server advertises in this handshake (SYn and SYN-ACK)
 again, if you miss the handshake, you wont see the options.
 
 to add calculated window size as column, just pick any packet and add the calculated window size as column. Not windows size, calculated window size.!!
+
+- 4 What is the fastest Initial network roundtrip time in the trace file? (Any TCP connection counts)
+
+Remove any filter applied to 4-tuple, select packages for each connection, go to [SEQ/ACK analysis] section and find the smallest iRTT values and compare or add as column.
+
+- 5 How many SYNs are there in this trace? (count SYN/ACK packets too)
+
+Filter to apply is `tcp.flags.syn==1` this will give both Syn and SynAcks.
+
+Down below, it says I have 19 out of 894 entire packets.
