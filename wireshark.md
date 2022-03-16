@@ -1,4 +1,4 @@
-# **<h1>MODULE 1 Analyzing Network Protocols With Wireshark</h1>**
+# **<h2>MODULE 1 Analyzing Network Protocols With Wireshark</h1>**
 
 Packet that Matters:
 
@@ -1272,4 +1272,78 @@ To cut down the bandwith usage, the server will NOT send ACK packets for each pa
 
 Server's tcp ack contains `acknowledgment number`. this number corresponds to the packet number of the last packet it received.
 
-and it tells to client that it could successfully receive the data no need for re-transmission.
+and it tells to client that it could successfully receive the data no need for re-transmission also client can know which packet the server has received.
+
+#### **Determining Packet Loss**
+
+!!!***THIS IS A VERY IMPORTANT FIELD TO UNDERSTAND***!!!
+
+in case one of those packets are missing, it is easy to determine this by looking at the sequence numbers.
+
+Server will automatically indicate what packets are missing. Once the client gets the ACK packets indicating which packets have been received and what is missing, it can start re-transmitting the missing packets.
+
+NOTE: **This kind of `missing MIDDLE packets` (gap in the middle of entire data flow)acknowledgements only happens if both parties are supporting `Selective Acknowledgement`**
+
+
+
+Looking at the sequence number, it is also possible to determine a packet out of order. For understanding and undertaking these kind of analysis, wireshark offers a tool called `StreamGraph`
+
+
+Lets go for a Demo and practice Questions:
+(Sequence and Acnk numbers.pcap)
+
+- The very first thing I do is to check the captured handshake packets.
+
+Here I check the window size, MSS, options , and iRTT values to have a better understanding of the connection.
+
+Each syn packet carries something called `ghost byte` it is not an actual data, but causes the opposite side of the connection to act as if one byte of data was sent.
+
+This is why after the handshakes we see `sequence number` and `acknowledgement number` are all 1 in both directions.
+
+
+So client sends a TCP packet with TCP Segment Length of X bytes. 
+
+In this packet, the Sequence Number =1 and Next Sequence Number = X+1. (X is the TCP Segment Length)
+
+Server, in return sends a 0 byte Ack packet with ACK number = X+1.
+
+meaning I received all the data you wanted to send me this is how I understand that the server is acknowledging the data in its entirety and no data loss..
+
+In the next packet, the client actually starts to send data.
+
+How to recover Gaps in the sequence numbers?
+
+
+in my packet 62, `[TCP Previous segment not captured] 80 → 54442 [ACK] Seq=52237 Ack=1112 Win=17816 Len=1460 [TCP segment of a reassembled PDU]`
+
+**When the Sequence Number + TCP Segment Size it should be equal to Next Sequence Number.**
+
+But when I see the previous packet before this error, it is not corresponding the numbers of this packet's sequence number.
+
+Hence, a packet gone missing.
+
+Client here (expecting data from server) keeps sending duplicate ACK packets. in each duplicate ACK packet, the SACK(selective ACK) number is incremented by the TCP Segment Length. meaning I still keep receiving the data but i am missing that one particular missing packet.
+
+Then client sends `TCP Out of Order` packet. The sequence number of this particular packet is the `Sequence Number` of the missin packet.
+
+Tayib why this was not a TCP Retransmission but TCP out of order?
+
+Because the timespan between the first DUpACK packet and the TCP Out of Order packet is actually less than the iRTT.
+
+so a roundtrip is lets say 0.39 miliseconds but aaaalll this traffic and dupacks started and ended in 0.34 miliseconds. Hence , wireshark is saying, this could be a TCP Retransmission but it is so fast so possibly it came out of order because it is faster than the network roundtrip time.
+
+with the final packet, also we can see the reassambled TCP segments with packet numbers(orders) and their segment sizes.
+
+`[44 Reassembled TCP Segments (63333 bytes): #11(1460), #12(1460), #14(1460), #15(1460), #17(1460), #18(1460), #20(1460), #21(1460), #23(1460), #24(1460), #26(1460), #27(1460), #29(1460), #30(1460), #32(1460), #33(1460), #35(1460), #36(1460)]`
+
+How to visualize?
+
+Select one of the large packets coming from the server. It being selected, go to statistics >> TCP Stream Graphs >> Stevens Graph.
+
+![](ss/stevensGraph.png)
+
+
+Normally I expect a steep direction in the graph, but I see horizontal lines, which means it takes long to move data from one endpoint to another.
+
+
+### **4- Interpreting the TCP Receive Window**
