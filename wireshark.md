@@ -1021,6 +1021,8 @@ now to find the errors, I basically do the following:
 
 - Filtreyi parantez icine al == > (ip.addr==192.168.10.108 && tcp.port==60534 && ip.addr==104.16.211.40 && tcp.port==443)
 
+==> Dikkat edilirse bu filtre aslinda 4-tuple.
+
 - yanina && at.
 
 - yanina ikinci filtre olarak `tcp.analysis.flags` koy. 
@@ -1058,7 +1060,7 @@ There are 2 sequence numbers :
 This is the true sequence number, 
 
 
-### **TCP Flags and Options**
+#### **TCP Flags and Options**
 
 This is a flags segment from a **Client Side SYN** packet:
 
@@ -1170,7 +1172,7 @@ Checking the options some of them are NOPs. so some options are not supported by
 For any option to be used, both client and server must support it.
 
 
-### **Window Scale Factor**
+#### **Window Scale Factor**
 
 It is a value between 0 and 14. this number is exponential value to the 2.
 
@@ -1187,3 +1189,55 @@ The reason it cannot give the true window size in the TCP header is that this va
 so `True window size` is the calculated window size in the TCP header.
 
 **NOTE** ==> if the Calculated windows size is `-1` then it means that We could not catch the handshake.
+
+
+#### **Maximum Segment Size**
+
+Amount of the maximum data can be received in one segment. like if the client says Maximum segment size is 1460 bytes, it means dont send me more than 1460 bytes at once.
+
+In the Syn/Ack, server can also say the maximum segment size. Since these numbers are not negotiated, they can be different in each direction.
+
+
+==
+
+Sometimes there is difference between the Network Tranmission Unit (MTU) and the Maximum Segment Size (MSS).
+
+Sometimes client and server agree on the MSS but the router or another intermediary can change the the packet size on the way to the server because it was configured to do so.
+
+This would happen if the MTU is lower than the agreed upon MSS value. It changes the MSS on the SYN packet to maximum allowd MTU value.
+
+Lets go for a Demo and practice Questions:
+(TCPhandshakesAndOptions.pcap)
+
+Questions:
+
+- 1 Measure the initial network roundtrip time between 2 endpoints:
+
+Endpoints to use here are `ip.addr==192.168.10.184 && tcp.port==57619 && ip.addr==23.59.190.80 && tcp.port==443`, this is the 4-tuple. 
+
+So I check the time between `Syn and ACK`. thats it.
+
+NOTE that! you dont take `time` value, you take `Delta Time` value to calculate this.
+
+**Moreover**, Wireshark also does it for you. on the `SYN-ACK` packet header, under the [SEQ/ACK analysis] section, it tells the iRTT(initial RoundTrip Time) value.
+
+```tcp
+[SEQ/ACK analysis]
+    [This is an ACK to the segment in frame: 151]
+    [The RTT to ACK the segment was: 0.122026000 seconds]
+    [iRTT: 0.122082000 seconds]
+```
+
+- 2 What MSS is in use by the client? The server?
+
+for the client, it is in the SYN packet, under the options segment. in my case it is `TCP Option - Maximum segment size: 1460 bytes`
+
+for the server, it is on the SYN-ACK packet, under the options segment. in my case it is again `TCP Option - Maximum segment size: 1460 bytes`
+
+- 3 What TCP options will be allowed on the connection?
+
+Both client and server advertises in this handshake (SYn and SYN-ACK) 
+
+again, if you miss the handshake, you wont see the options.
+
+to add calculated window size as column, just pick any packet and add the calculated window size as column. Not windows size, calculated window size.!!
