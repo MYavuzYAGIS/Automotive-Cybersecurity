@@ -1171,3 +1171,19 @@ For any option to be used, both client and server must support it.
 
 
 ### **Window Scale Factor**
+
+It is a value between 0 and 14. this number is exponential value to the 2.
+
+So take the window size advertised in the TCP headr and multiply it with (2^(Window Scale))
+
+lets say window size value is 1024 bytes.
+
+window scale factor is 10. 
+
+so the true calculated window size is 1024 * (2^10) = 1048576 bytes.
+
+The reason it cannot give the true window size in the TCP header is that this value in the header is 2-bytes long. So factor is given separately in order to not to break the TCP header structure.
+
+so `True window size` is the calculated window size in the TCP header.
+
+**NOTE** ==> if the Calculated windows size is `-1` then it means that We could not catch the handshake.
