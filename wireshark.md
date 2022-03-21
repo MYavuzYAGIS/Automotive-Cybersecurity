@@ -1361,3 +1361,5 @@ If number is going down, meaning the buffer is loading with data;if number is go
 ```
 
 window size itself cannot be larget than 65535 bytes. but there is multiplier of course called **scale factor**. which helps us to calculate the real window size.
+
+if we take maximum window size and the maximum scale factor, we can have 1 GB of data in the connection.
