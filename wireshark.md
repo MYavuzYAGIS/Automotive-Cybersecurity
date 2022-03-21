@@ -1401,3 +1401,4 @@ If this takes some time, the server can ask the client if any space is opened up
 ### **How can TCP Receive Window Impact the Performance**
 
 Server wants to send 3X packets. Client can only handle 1.5X bcs of its window size. So client can only receive 1.5x of the data.
+
