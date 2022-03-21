@@ -1363,3 +1363,39 @@ If number is going down, meaning the buffer is loading with data;if number is go
 window size itself cannot be larget than 65535 bytes. but there is multiplier of course called **scale factor**. which helps us to calculate the real window size.
 
 if we take maximum window size and the maximum scale factor, we can have 1 GB of data in the connection.
+
+If buffer completely fills and not processed by the client, thats a problem.
+
+
+### **Zero Window Size**
+
+Lets say the client advertised Receive window size is 100. Each time a new data is received, the advertised window size is reduced by the amount of data received. normally we expect the accumulated data to be consumed by the client side application. However sometimes it is not the case.
+
+Let's assume after a long traffic, client says ` I have 2920 bytes` left whereas server keeps pumping 1460 bytes. It can handle 2 more packets.
+
+after the second packet, the TCP receive windows size will be 0 bytes, server wants to send 1460 bytes.
+
+After receiving 2 packets, ther will send ` ACK - Win 0` packet. meaning there is no more place to receive.
+
+Then after some amount of time, it sends an `Update` indicating it opened up space.
+
+If this takes some time, the server can ask the client if any space is opened up.
+
+
+**What causes TCP Zero Window?**
+
+- slow file transfers
+
+- applications with spinning wheels
+
+- client resources are taken up by other process
+
+- too much browsers are open.
+
+- internal application issue 
+
+- faster ingress traffic than the application can handle.
+
+
+
+### **How can TCP Receive Window Impact the Performance**
