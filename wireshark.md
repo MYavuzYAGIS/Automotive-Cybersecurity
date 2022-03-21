@@ -1360,4 +1360,4 @@ NOTE: whoeever is sending the packte, that number is advertising the amount of s
 If number is going down, meaning the buffer is loading with data;if number is going up, application on the client or the server side is opening up new resource for that connection.
 ```
 
-window size itself cannot be larget than 65535 bytes. but there is multiplier of course called **scale factor**.
+window size itself cannot be larget than 65535 bytes. but there is multiplier of course called **scale factor**. which helps us to calculate the real window size.
