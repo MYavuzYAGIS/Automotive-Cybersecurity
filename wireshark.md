@@ -1347,3 +1347,17 @@ Normally I expect a steep direction in the graph, but I see horizontal lines, wh
 
 
 ### **4- Interpreting the TCP Receive Window**
+
+TCP Receive Windows is a buffer in both side of the connetcion that ingress the data. 
+
+Every connection between client and server need their own receive window so no sharing.
+
+Every req,res,ack, the window size is advertised.
+
+NOTE: whoeever is sending the packte, that number is advertising the amount of space they have left in their recive buffer.
+
+```
+If number is going down, meaning the buffer is loading with data;if number is going up, application on the client or the server side is opening up new resource for that connection.
+```
+
+window size itself cannot be larget than 65535 bytes. but there is multiplier of course called **scale factor**.
