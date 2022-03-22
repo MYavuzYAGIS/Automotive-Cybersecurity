@@ -1402,3 +1402,6 @@ If this takes some time, the server can ask the client if any space is opened up
 
 Server wants to send 3X packets. Client can only handle 1.5X bcs of its window size. So client can only receive 1.5x of the data.
 
+what happens to the rest of 1.5X ? either processes these 1.5 and sends the unloaded buffer size and data keeps coming.
+
+This time between the last data transferred in the first burts and the first data received in the second burst called `Lost Troughput`
