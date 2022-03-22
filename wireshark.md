@@ -1405,3 +1405,9 @@ Server wants to send 3X packets. Client can only handle 1.5X bcs of its window s
 what happens to the rest of 1.5X ? either processes these 1.5 and sends the unloaded buffer size and data keeps coming.
 
 This time between the last data transferred in the first burts and the first data received in the second burst called `Lost Troughput`
+
+### **The Importance of the Bandwith Delay Product**
+
+The question is how much the network can handle. Like you can have 10mbps in 20msec latency or you can have 10gbps and 100mbps latency.
+
+These two can handle different amounts of dat.
