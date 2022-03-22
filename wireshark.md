@@ -1410,4 +1410,22 @@ This time between the last data transferred in the first burts and the first dat
 
 The question is how much the network can handle. Like you can have 10mbps in 20msec latency or you can have 10gbps and 100mbps latency.
 
-These two can handle different amounts of dat.
+These two can handle different amounts of data.
+
+Network is like 2 people with buckets and a pipe in between. Not only buckets are being filled and unloaded, also there is the water in the pipe already should be taken into consideration.
+
+
+10mbit and 20msec roundrip time:
+
+10mbps X 0.02 = 200kilobit
+
+200kb/8 = 25kilobytes per second.
+
+this means server can start transmitting data, and before it begins to stop transmitting data it wants to being receiving ACKS from the client. In order to fully utilize the network, the client side should be able to handle 25kbps in TCP receive window.
+
+
+What about 10gbit and 100 msecond roundtrip time?
+
+10000 * 0.1 = 1000Mbits
+
+1000 / 8 = 125Mega Bytes  ==> Hence, the client should be able to handle 125 Megabytes in TCP receive window.
