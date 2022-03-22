@@ -1429,7 +1429,6 @@ Network is like 2 people with buckets and a pipe in between. Not only buckets ar
 
 this means server can start transmitting data, and before it begins to stop transmitting data it wants to being receiving ACKS from the client. In order to fully utilize the network, the client side should be able to handle 25kbps in TCP receive window.
 
-
 What about 10gbit and 100 msecond roundtrip time?
 
 10000 * 0.1 = 1000Mbits
@@ -1437,3 +1436,50 @@ What about 10gbit and 100 msecond roundtrip time?
 1000 / 8 = 125Mega Bytes  ==> Hence, the client should be able to handle 125 Megabytes in TCP receive window.
 
 or else, the server cannot take full adventage of the network connection.
+
+
+==========
+
+
+Let's go with the Questions:
+(TCP Receive Window.pcap)
+
+- 1 Is this connection able to support TCP Window Scaling?
+
+Yes. both the client and the server supports TCP Window Scaling.
+
+- 2 What is the scale factor on the client side? 
+
+in the SYN packet, under the option, the scale factor is set to 6.
+
+- 3 What is the scale factor on the server side? 
+
+in the SYN/ACK packet, under the option, the scale factor is set to 6.
+
+- 4 What is the largest advertised calculated window size on the client? 
+
+crate column `calculated window size` and sort by it. it is 131712 bytes.
+
+- 5 What is the smallest calculated window size on the client (besides the initial SYN in the handshake)?
+
+Do the same take the smaller value 118016 bytes.
+
+- 6  Jump to packet 81 - why is this packet labeled by Wireshark as a TCP Window Update?
+
+Both this window update and the one before that to the same direction have the exact same `Acknowledgement number`. The only difference between them is the calculated window sizes are different. (later one has more)
+
+the data was being processed by the client. once it hit the packet 81, the client actually updated the window size and sent it to server saying, previously(80) I said i have 118k left but actually now(81) I have 131712 left. so this was the update on the calculated window size. 
+
+- 7 . Why is packet 86 not labeled this way? Why does it not say [TCP Window Update]
+
+Although same scenario as the one above in terms of previous packet and this packet has different calculated window sizes and the one later updated the previous one, the main difference is that packet 86 and packet 85 DO NOT HAVE THE SAME ACKNOWLEDGEMENT NUMBER.!!
+
+so WE ARE ACKNOWLIDGNING new data in packet 86 as well as increasing the window size comparing to packet 81 where there was no acknowledgement but only update.
+
+
+- 8 What packet in this connection has the largest delay? Is this due to the TCP Receive Window? Why or why not? 
+
+taking Delta column into consideration the largest delay is on packet 38 which is a GET request and requesting a file from server.
+
+the previous packet (37) was a window update packet. We were still waiting for a new data coming from the server so delay is due to client is taking half a second before sending off the next packet.
+so it was not about TCP window.
