@@ -1408,6 +1408,12 @@ This time between the last data transferred in the first burts and the first dat
 
 ### **The Importance of the Bandwith Delay Product**
 
+Bandwith Delay Product calculation:
+
+`[Speed] x [delay] \ 8 `
+
+this gives how many bytes are required in the TCP window to receive the data.
+
 The question is how much the network can handle. Like you can have 10mbps in 20msec latency or you can have 10gbps and 100mbps latency.
 
 These two can handle different amounts of data.
@@ -1429,3 +1435,5 @@ What about 10gbit and 100 msecond roundtrip time?
 10000 * 0.1 = 1000Mbits
 
 1000 / 8 = 125Mega Bytes  ==> Hence, the client should be able to handle 125 Megabytes in TCP receive window.
+
+or else, the server cannot take full adventage of the network connection.
