@@ -1483,3 +1483,5 @@ taking Delta column into consideration the largest delay is on packet 38 which i
 
 the previous packet (37) was a window update packet. We were still waiting for a new data coming from the server so delay is due to client is taking half a second before sending off the next packet.
 so it was not about TCP window.
+
+https://app.pluralsight.com/course-player?clipId=10163540-1e1c-4f48-8b36-0945a8af75e5
