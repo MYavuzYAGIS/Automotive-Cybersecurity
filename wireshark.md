@@ -1367,7 +1367,7 @@ if we take maximum window size and the maximum scale factor, we can have 1 GB of
 If buffer completely fills and not processed by the client, thats a problem.
 
 
-### **Zero Window Size**
+#### **Zero Window Size**
 
 Lets say the client advertised Receive window size is 100. Each time a new data is received, the advertised window size is reduced by the amount of data received. normally we expect the accumulated data to be consumed by the client side application. However sometimes it is not the case.
 
@@ -1398,7 +1398,7 @@ If this takes some time, the server can ask the client if any space is opened up
 
 
 
-### **How can TCP Receive Window Impact the Performance**
+#### **How can TCP Receive Window Impact the Performance**
 
 Server wants to send 3X packets. Client can only handle 1.5X bcs of its window size. So client can only receive 1.5x of the data.
 
@@ -1406,7 +1406,7 @@ what happens to the rest of 1.5X ? either processes these 1.5 and sends the unlo
 
 This time between the last data transferred in the first burts and the first data received in the second burst called `Lost Troughput`
 
-### **The Importance of the Bandwith Delay Product**
+#### **The Importance of the Bandwith Delay Product**
 
 Bandwith Delay Product calculation:
 
@@ -1508,5 +1508,48 @@ in this case we check whether there was scaling. if not, the client has to unloa
 
 it is not the frist, in down below ther is 1459 bytes one which is even 1 byte less than MSS. in this packet too there was a small delay.
 
+so the reason was that the receive window was being filled.
 
-- Is this due to client, network, or server? What is the next step to troubleshoot?
+
+
+
+
+### **5- Analyzing Retransmissions and Duplicate Acknowledgements**
+
+
+There are couple of different kids of Retransmissions.
+
+
+#### **Time Based Retransmissions**
+
+*normally* retransmissions are all sequence based. Basically if sequence numbers do not match, then there is retransmission.
+
+Wheneveer a packet is sent from the server, a *timer* is started. So if an ACK from the client for that data is not received before the timer expires, then data will be retransmitted.
+
+What is the retransmission timer and how it is set?
+
+Generally it is a bit more than the network roundtrip time.
+
+
+
+#### **Fast Retransmissions**:
+
+fast retransmissions REQUIRE `SACK OPTION`! so both sides needs to support the TCP Selective Acknowledgement.
+
+Lets say the client missed a packet, and server keeps sendind the data. The client starts to send `Dup Ack(SACK)` packets to the server alongside ACK packets for each received packet.
+
+as soon as the server receives 3 Dup Ack (SACK) packets,it will trigger the `fast transmission`
+
+Sometimes server expects 2 Dup Acks, but generally it is 3.
+
+
+#### **Spurious Retransmissions**:
+
+A server sends a packet to client, client acknowledges the packet but server sends the same packet again. that is Spurious Retransmission.
+
+
+#### **Duplicate Acknowledgements**:
+
+General meaning is, there is a packet lets say ACK=1234. so when we see that ACK number again, we have Dup Acks.
+
+https://app.pluralsight.com/course-player?clipId=da87f7c9-e9cc-4419-b489-fb73970a969b
