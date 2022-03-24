@@ -1494,3 +1494,19 @@ Let's analyze the slow output tracefile (slowthroughput.pcap):
 beware that the IP adresses in the tracefile were consequtive and no hanshake was captured.
 
 we can look at TCP segment length one of them is constant 1460 other one is 0. So server is sending the data.
+
+- 2 why there is a 20ms delay on the client side between some packets(like 140)?
+
+we see that this pause in only happening after the server sends large amount of data consecutively.
+
+On the other hand, checking the calculated window size of the client, before each 20 ms delay, is reduced to 2000-3000 bytes.
+
+in this case we check whether there was scaling. if not, the client has to unload some data to receive more.  and this is what happens, in the next packet after the delay we see that Calculated window size is fully unloaded.
+
+
+- 3 Is this delay the only one we see in the trace? What does this delay do to the throughput? 
+
+it is not the frist, in down below ther is 1459 bytes one which is even 1 byte less than MSS. in this packet too there was a small delay.
+
+
+- Is this due to client, network, or server? What is the next step to troubleshoot?
