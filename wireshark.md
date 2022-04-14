@@ -1552,4 +1552,12 @@ A server sends a packet to client, client acknowledges the packet but server sen
 
 General meaning is, there is a packet lets say ACK=1234. so when we see that ACK number again, we have Dup Acks.
 
-https://app.pluralsight.com/course-player?clipId=da87f7c9-e9cc-4419-b489-fb73970a969b
+TCP retransmissions happen due to several reasons.
+
+1- congestion due to discards or buffer floats this happens especially when switching between speeds i.e. from 10gig to 1 gig through a switch.
+
+2- Link level issues like hardware issues, cabling issues etc.
+
+
+================= COURSE DONE =================
+
