@@ -77,6 +77,38 @@ for SA estabblishement, there are couple of different protocols that are used.
 - <u>IKE</u> (Internet Key Exchange) : Uses combination of ISAKMP, OAKLEY, and SKEME
 
 
+=========
+
+
+## **Ipsec in Enterprise**
+
+
+In enterprise level, there are 2 main uses of IPsec:
+
+- <u>Site-to-Site VPN</u>
+
+connect 2 or more sites together. One type of Site-to-Site VPN is `DMVPN` (Dynamic Multicast VPN).
+
+`logically` connects sites, protects `entire` network, provides corporate resources to other sites.
+
+
+
+
+- <u>Remote Access VPN</u>
+
+`logically` connect endpoint to another network.  IPsec using the OS IP stack. protects `individual` devices.
+
+useful in wifi hotspots.
+
+
+
+
+
+
+
+
+
+
 
 
 
