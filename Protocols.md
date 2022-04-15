@@ -100,6 +100,9 @@ connect 2 or more sites together. One type of Site-to-Site VPN is `DMVPN` (Dynam
 
 useful in wifi hotspots.
 
+Bu mesela bir isci evden calisirken isyerinin agina ulassin diye kullanilan vpn.
+
+
 
 
 
