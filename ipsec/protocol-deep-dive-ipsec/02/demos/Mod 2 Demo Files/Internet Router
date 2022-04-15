@@ -1,0 +1,40 @@
+
+!
+hostname Internet
+!
+!
+interface Loopback0
+ description Loopback
+ no ip address
+!
+interface GigabitEthernet0/1
+ description to Globo_HQ
+ ip address 45.45.45.1 255.255.255.0
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!         
+interface GigabitEthernet0/2
+ description to Globo_Site1
+ ip address 90.90.90.1 255.255.255.0
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ redistribute ospf 2 subnets
+ passive-interface Loopback0
+ network 45.45.45.1 0.0.0.0 area 0
+!
+router ospf 2
+ redistribute ospf 1 subnets
+ network 90.90.90.1 0.0.0.0 area 0
+!
+ip forward-protocol nd
+!
+!
+no scheduler allocate
+!         
+end

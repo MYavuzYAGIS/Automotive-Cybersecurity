@@ -1,0 +1,23 @@
+
+hostname Globo_HQ
+!
+!
+interface Loopback0
+ description Loopback
+ no ip address
+!
+interface Loopback450
+ ip address 172.16.45.1 255.255.255.0
+ !
+interface GigabitEthernet0/1
+ description to Internet
+ ip address 45.45.45.2 255.255.255.0
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ network 45.45.45.2 0.0.0.0 area 0
+!
+end

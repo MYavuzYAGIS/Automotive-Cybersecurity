@@ -1,0 +1,27 @@
+
+ipv6 unicast-routing
+!
+interface GigabitEthernet0/1
+ description to Globo_HQ
+ ip address 45.45.45.1 255.255.255.0
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+ ipv6 address 2000:1::1/64
+ ipv6 enable
+ ospfv3 1 ipv6 area 0
+ !
+ interface GigabitEthernet0/2
+ description to Globo_Site1
+ ip address 90.90.90.1 255.255.255.0
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+ ipv6 address 3000:1::1/64
+ ipv6 enable
+ ospfv3 1 ipv6 area 0
+ !
+ router ospfv3 1
+

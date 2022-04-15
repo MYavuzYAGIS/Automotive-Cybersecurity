@@ -1,0 +1,19 @@
+crypto isakmp policy 10
+ encr aes
+ authentication pre-share
+crypto isakmp key PSlab address 45.45.45.2     
+crypto isakmp peer address 45.45.45.2
+ set aggressive-mode password PSlab
+ set aggressive-mode client-endpoint ipv4-address 90.90.90.2 
+crypto ipsec transform-set TRANS esp-aes esp-sha-hmac 
+ mode tunnel
+crypto ipsec profile PRO
+ set transform-set TRANS 
+crypto map MAP 5 ipsec-isakmp 
+ set peer 45.45.45.2
+ set transform-set TRANS 
+ match address 100
+access-list 100 permit ip any any
+ !
+int g0/1
+ crypto map MAP

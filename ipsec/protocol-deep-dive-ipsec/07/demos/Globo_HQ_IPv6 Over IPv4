@@ -1,0 +1,18 @@
+
+!
+crypto isakmp policy 10
+ authentication pre-share
+ encryption aes
+ hash sha256
+crypto isakmp key 0 PSlab add 0.0.0.0
+crypto ipsec trans TRANS esp-aes esp-sha256-hmac
+ mode tunnel
+crypto ipsec pro PRO
+ set trans TRANS
+!
+interface Tunnel0
+ ipv6 add CCCC:1::1/64
+ tunnel source GigabitEthernet0/1
+ tunnel mode gre ip
+ tunnel destination 90.90.90.2
+ tunnel pro ipsec pro PRO

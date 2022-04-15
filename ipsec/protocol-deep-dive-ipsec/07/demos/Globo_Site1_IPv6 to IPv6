@@ -1,0 +1,20 @@
+
+!
+crypto isakmp policy 10
+ authentication pre-share
+ hash sha
+ group 2
+ encryption aes
+crypto isakmp key 0 PSlab add ipv6 0::0/0
+crypto ipsec trans TRANS esp-aes ah-sha-hmac
+crypto ipsec profile PRO
+ set trans TRANS
+!
+int t0
+ ipv6 add cccc:1::2/64
+ ipv6 enable
+ ipv6 cef
+ tunnel source g0/1
+ tunnel destination 2000:1::2
+ tunnel mode ipsec ipv6 
+ tunnel protection ipsec profile PRO

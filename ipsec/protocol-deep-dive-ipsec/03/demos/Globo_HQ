@@ -1,0 +1,43 @@
+hostname Globo_HQ
+!
+crypto isakmp policy 10
+ encr aes
+ authentication pre-share
+ group 2
+crypto isakmp key Globo address 90.90.90.2     
+!
+!
+crypto ipsec transform-set TRANS esp-aes esp-sha-hmac 
+ mode tunnel
+!
+crypto ipsec profile PRO
+ set transform-set TRANS 
+!
+interface Loopback450
+ ip address 172.16.45.1 255.255.255.0
+!         
+interface Tunnel0
+ ip address 192.168.1.1 255.255.255.252
+ no ip redirects
+ ip nhrp network-id 123
+ tunnel source GigabitEthernet0/1
+ tunnel mode gre multipoint
+!
+interface GigabitEthernet0/1
+ description to Internet
+ ip address 45.45.45.2 255.255.255.0
+ ip ospf cost 1
+ duplex full
+ speed auto
+!
+router ospf 1
+ network 45.45.45.2 0.0.0.0 area 0
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ login local
+ transport input telnet ssh
+!

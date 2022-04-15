@@ -1,0 +1,25 @@
+
+crypto ikev2 proposal IKEv2_PROP 
+ encryption aes-cbc-128
+ integrity sha256
+ group 14
+crypto ikev2 policy IKEv2_POL 
+ proposal IKEv2_PROP
+crypto ikev2 profile IKEv2_PROF
+ match identity remote address 0.0.0.0
+ authentication remote pre-share key PSlab
+ authentication local pre-share key PSlab
+crypto ipsec transform-set TRANS esp-aes esp-sha-hmac 
+ mode tunnel
+crypto ipsec profile PRO
+ set transform-set TRANS 
+ set ikev2-profile IKEv2_PROF
+ !
+interface Tunnel0
+ ip address 192.168.1.1 255.255.255.0
+ no ip redirects
+ ip nhrp network-id 123
+ ip nhrp map multi dynamic
+ tunnel source GigabitEthernet0/1
+ tunnel mode gre multipoint
+ tunnel pro ipsec pro PRO

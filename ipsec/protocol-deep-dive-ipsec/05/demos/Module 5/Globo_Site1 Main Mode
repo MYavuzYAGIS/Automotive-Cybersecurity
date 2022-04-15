@@ -1,0 +1,22 @@
+int t0
+ ip add 192.168.1.2 255.255.255.252
+ tunnel mode gre multi
+ tunnel source g0/1
+ ip nhrp network-id 123
+ ip nhrp map multicast 45.45.45.2
+ ip nhrp map 192.168.1.1 45.45.45.2
+ ip nhrp nhs 192.168.1.1
+!
+crypto isakmp policy 10
+ encryption aes
+ hash sha256
+ authentication pre
+crypto isakmp key PSlab2019! add 45.45.45.2
+crypto ipsec trans TRANS esp-aes esp-sha256-hmac
+ mode tunnel
+crypto ipsec pro PRO 
+ set transform TRANS
+!
+int t0
+ tunnel protection ipsec profile PRO
+!
