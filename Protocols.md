@@ -152,9 +152,12 @@ using MOBIKE, keeps VPN conenction active when changing IP addresses. thanks to 
 
 - **<u>it enables `High Availability`:</u>**
 
-IKEv2 comes with redirection feature. if one server for VPN is taken down or went down, the users can be redirected to another server.
+IKEv2 comes with `redirection` feature. if one server for VPN is taken down or went down, the users can be redirected to another server.
 
 
+
+
+For authentication, IKEv2 uses` Pre-Shared Key` (PSK) and `Certificate Authentication`.
 
 
 
