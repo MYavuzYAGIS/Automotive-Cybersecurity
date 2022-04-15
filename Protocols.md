@@ -140,16 +140,19 @@ V2 brought these:
 
 Some benefits of IKEv2 are:
 
-- It is more reliable:
+- **<u>It is more reliable:</u>**
 
 message flow system uses requests followed by responses. Initiator sends a request, and the responder sends a response. If the initiator does not receive a response, it will retry or drops the request. the reliability is on the initiator side.
 
 
-- It is more Mobile:
+- **<u>It is more Mobile:</u>**
 
 using MOBIKE, keeps VPN conenction active when changing IP addresses. thanks to `multihoming`, when interface drops, the traffic is moved to another interface.
 
 
+- **<u>it enables `High Availability`:</u>**
+
+IKEv2 comes with redirection feature. if one server for VPN is taken down or went down, the users can be redirected to another server.
 
 
 
