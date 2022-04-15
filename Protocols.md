@@ -28,7 +28,19 @@ This is used basically in the site-to-site VPN and remote access VPN.
 in ***transport mode***, all of the data is protected but the original IP header is not. Payload is protected by IPsec. This is used generally in P2P applications.
 
 
+### Ipsec building Blocks:
 
+Ipsec Suite either uses **Authentication Header(AH)** or **Encapsulating Security Payload (ESP)**. One difference is that in the former, the data is encrypted.
+
+ ESP and AH both come with options of transport and tunnel.
+
+In the AH transport mode, the payload is encrypted and the original IP header is not protected. In the tunnel mode, the payload is encrypted and the original IP header is protected. A new IP header is appointed to the packet in tunnel mode.
+
+ESP transport and Tunnel modes can be used as it is or with AH.
+
+ESP enapsulates the data so we have both header and trailer in the packet in Transport mode and in Tunnel mode.
+
+in ESP header, different than AH header, there is no next header field and payload length field.
 
 
 
