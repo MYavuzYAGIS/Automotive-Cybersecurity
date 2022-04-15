@@ -80,7 +80,8 @@ for SA estabblishement, there are couple of different protocols that are used.
 =========
 
 
-## **Ipsec in Enterprise**
+### **Ipsec in Enterprise**
+
 
 
 In enterprise level, there are 2 main uses of IPsec:
@@ -103,39 +104,27 @@ useful in wifi hotspots.
 Bu mesela bir isci evden calisirken isyerinin agina ulassin diye kullanilan vpn. ticari bireysel VPNler de bu tip, hotspotshield, NordVPN gibi.
 
 
-
-
-
 as for IPsec implementations, there are 2 main types:
 
 
 - <u>GRE over IPSec</u>
 
-
 way more commen. 
 
-encapsulates entire packet. 
-
-
-
-
+encapsulates entire packet.  this is essentially DMVPN over IPSec.
 
 
 - <u>IPSec over GRE  </u>
 
 much less common. only the payload is protected via IPsec. routing information stays visible in the GRE portion of the datagram.
 
+### <u>**IKEv2**</u>
 
+<u>**What is IKE**?</u>
 
+IKE is Intrnet Key Exchange that uses ISAKMP, OAKLEY, and SKEME for establishing SA for securing network traffic.
 
-
-
-
-
-
-
-
-
+Although IKEv1 is still used, IKEv2 is the new standard and IKEv1 is obsolete.
 
 
 
