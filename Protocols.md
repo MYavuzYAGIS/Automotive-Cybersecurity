@@ -126,6 +126,31 @@ IKE is Intrnet Key Exchange that uses ISAKMP, OAKLEY, and SKEME for establishing
 
 Although IKEv1 is still used, IKEv2 is the new standard and IKEv1 is obsolete.
 
+V2 brought these:
+
+- new authentication method EAP (Extensible Authentication Protocol) alongside PKS and PKI
+
+- brought MOBIKE (Multicast Opportunistic Key Exchange) which allows dynamically change IP adresses without needing to re-establish the SA.
+
+- in V1, SA lifetime was negotiated, in V2, SA lifetime is configured locally and faster negotiation.
+
+- Flexible traffic selection per SA.
+
+
+
+Some benefits of IKEv2 are:
+
+- It is more reliable:
+
+message flow system uses requests followed by responses. Initiator sends a request, and the responder sends a response. If the initiator does not receive a response, it will retry or drops the request. the reliability is on the initiator side.
+
+
+- It is more Mobile:
+
+using MOBIKE, keeps VPN conenction active when changing IP addresses. thanks to `multihoming`, when interface drops, the traffic is moved to another interface.
+
+
+
 
 
 
