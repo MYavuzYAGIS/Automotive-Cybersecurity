@@ -43,9 +43,38 @@ ESP enapsulates the data so we have both header and trailer in the packet in Tra
 in ESP header, different than AH header, there is no next header field and payload length field.
 
 
+Afther the headers, there is `Security Association (SA)`. 
+
+Security Association in IPsec suite is a `unidirectional connection` that gives devices the capability to use AH or ESP services. for a bidirectional comms, a pair of SA is needed.
+
+<u>In order SA to be established, the following steps are needed:</u>
+
+- **SPI**: Security Parameter Index. It is a unique number that is used to identify the SA.
+
+- **Security Protocol Identifier**: It is a number that identifies the protocol that is used in the SA. (50 for AH or 51 for ESP)
+
+- **Destination IP Address**
 
 
+For key management, it is either done manually or automated using IKEv1 or IKEv2.
 
+***IKE*** (Internet Key Exchange) is a protocol that is used to establish a key management between two computers. default one is IKEv2.
+
+
+Next building block is **Crypto Algorithm**. These are used for Encryption , Authentication , Integrity and Pseudorandom Number Generation.
+
+
+====
+
+for SA estabblishement, there are couple of different protocols that are used.
+
+- <u>ISAKMP</u> (Internet Security Association Key Management Protocol) :  Used for procedures and formats to establish SA. It helps us build the SA.
+
+- <u>OAKLEY</u> (One-Way Authentication Key Exchange Protocol) : gives key-exchange mechanissm. Used to exchange key over insecure connection using Diffie-Hellman.
+
+- <u>SKEME</u> (Security Key Exchange Method) :gives anonimity and reputability through key-exchange techniques.
+
+- <u>IKE</u> (Internet Key Exchange) : Uses combination of ISAKMP, OAKLEY, and SKEME
 
 
 
