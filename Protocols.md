@@ -157,7 +157,7 @@ IKEv2 comes with `redirection` feature. if one server for VPN is taken down or w
 
 
 
-For authentication, IKEv2 uses` Pre-Shared Key` (PSK) and `Certificate Authentication`.
+For authentication, IKEv2 uses` Pre-Shared Key` (PSK) and `Certificate Authentication`. Apart from that uses EAP.
 
 
 
