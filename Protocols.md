@@ -100,10 +100,30 @@ connect 2 or more sites together. One type of Site-to-Site VPN is `DMVPN` (Dynam
 
 useful in wifi hotspots.
 
-Bu mesela bir isci evden calisirken isyerinin agina ulassin diye kullanilan vpn.
+Bu mesela bir isci evden calisirken isyerinin agina ulassin diye kullanilan vpn. ticari bireysel VPNler de bu tip, hotspotshield, NordVPN gibi.
 
 
 
+
+
+as for IPsec implementations, there are 2 main types:
+
+
+- <u>GRE over IPSec</u>
+
+
+way more commen. 
+
+encapsulates entire packet. 
+
+
+
+
+
+
+- <u>IPSec over GRE  </u>
+
+much less common. only the payload is protected via IPsec. routing information stays visible in the GRE portion of the datagram.
 
 
 
