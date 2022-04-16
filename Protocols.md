@@ -238,6 +238,18 @@ Derived from CAK used to encrypt data as mentioned earlier.
 A `Key Server` generates SAK.  If you have if you have one switch connected to another switch on ethernet link and MacSec is enabled on this switch, one of these switches will be a Key Server. You can either configure one of these switches as higher priority to make it key server
 
 
+if you enable MacSec on an interface, it drops all frames except MAcsec encrypted frames. But you can configure macsec profile to allow unprotected traffic in macsec negotiation fails.
+
+***===========***============***==============***==============***==============***
+
+
+
+
+
+
+
+
+
 
 
 
