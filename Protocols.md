@@ -203,12 +203,39 @@ Data is the encrypted payload. looks like a random hash value.
 
 ### <u> MacSec Terminology</u>:
 
+1. <u>**MacSec Key Agreement Protocol**</u>
+
+Used to discover Macsec capable peers and used to negotiate encryption keys. These keys are for `data encryption` and `Security Associataion Key Encryption`(SAK)
 
 
+2. <u>**Connectivity Association (CA)**</u>
+
+Similar to `IPSec SA` but for MacSec. Defines a secure relationship between MacSec peers.
 
 
+3. <u>**Connectivity Association Key(CAK) **</u>
+
+Static or Dynamic Key exchanged by macsec speakers. This can be seen as `primary key` that is used to device all other session keys.
+
+So CAK is used to derive SAK keys and this SAK keys are used to encrypt the user data.
+
+So this CAK can be statically confiugred or can be distributed by the server.
+
+4. <u>**Connectivity Association Key Name (CKN) **</u>
+
+Any name that defines a CAK.
 
 
+5. <u>**Primary and Fallback Keys **</u>
+
+Primary key is used to negotiate an MKA if this fails, Fallback key is used.
+
+6. <u>** Security Association Keys(SAK)**</u>
+
+Derived from CAK used to encrypt data as mentioned earlier.
+
+
+A `Key Server` generates SAK.
 
 
 
