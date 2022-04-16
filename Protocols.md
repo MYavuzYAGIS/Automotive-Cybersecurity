@@ -235,7 +235,7 @@ Primary key is used to negotiate an MKA if this fails, Fallback key is used.
 Derived from CAK used to encrypt data as mentioned earlier.
 
 
-A `Key Server` generates SAK.
+A `Key Server` generates SAK.  If you have if you have one switch connected to another switch on ethernet link and MacSec is enabled on this switch, one of these switches will be a Key Server. You can either configure one of these switches as higher priority to make it key server
 
 
 
