@@ -159,9 +159,62 @@ IKEv2 comes with `redirection` feature. if one server for VPN is taken down or w
 
 For authentication, IKEv2 uses` Pre-Shared Key` (PSK) and `Certificate Authentication`. Apart from that uses EAP.
 
+***===========***============***==============***==============***==============***
 
 
 ## <u>**MacSec**</u>
+
+Macsec is defined in 802.1AE as `point2point security protocol` providing `data confidentialiity, integrity, and origin authenticity` (all CIA triad.) for traffic over LAyer 1 or Layer 2 links and is part of larger security ecosystem.
+
+Technically, on the transmit side of the link,MAcsec adds `Mac Security Tag` (SecTag) and `Integrity Check Value` (ICV) to the packet and can optionally encrypt the packet. on the receive side of the link the MacSec engine can identify and decrypt the packet, check integrity, provide `replay protection` and remoce SecTag and ICV. Invalid frames are discarded or monitored.
+
+
+There is a need to protec data that is transmitted over the in-vehicle ethernet that is connecting `ECU`s together.
+
+Data security protocols like MacSec are often deployed in Ethernet  Local Area Networks(LAN) that support `mission critical applications`. 
+
+**Macsec prt the `IEEE 802.1AE` standard PREVENTS LAYER 2 SECURITY THREATS SUCH AS PASSIVE WIRETAPPING, INTRUSION, MITM, AND REPLAY ATTACKS BY OFFERING LINE-RATE ENCRYPTION AND PROTECTION OF TRAFFIC LASSING OVER LAYER 1 AND/OR LAYER 2 LINKS.**
+
+Although it is desirable, it is **not practical to secure the entire network against physical access** by determined attackers. **Macsec allows only authorized systems that attach to and interconnect LANs in a network** to maintain confidentiality and integrity of data and take measures against data theft.
+
+
+- **<u>Where does Macsec fit within OSI-layer model?</u>**
+
+
+On the layer 1, there is Automotive Ethernet Physical Layer (AEPL) which is the layer that connects the physical layer of the vehicle to the network. these are like 100baseT, 1000baseT etc.
+
+On the next layer, which is Layer 2, there is IEEE Ethernet MAc + VLAN(802.1Q) + AVB(802.1Qav) + TSN + `MacSec`. Hence, macsec is a layer 2 protocol that is sitting on top of the bare metal.
+
+On the layer 3, there is IPv4 and IPv6 which are protected by `IpSec`. Hence IpSec is a layer 3 protocol.
+
+
+
+- **<u>What are some common Security Threats?</u>**
+
+These are some of the common threats against Ethernet Lan:
+
+- - Eavesdropping (compromising routers, links, DNS, or algorithms)
+
+- - Sending arbitrary data including IP headers.
+
+- - Replay attacks.
+
+- - Tampering message in transit.
+
+- - writing malicious code and deceiving people into running it.
+
+- - exploiting bugs in software to take over machines ans use them as base for future attacks.
+
+
+
+
+
+
+
+
+
+
+
 
 While IPsec is encryption at Layer 3, MacSec is encryption at Layer 2 which is Ethernet layer.
 
