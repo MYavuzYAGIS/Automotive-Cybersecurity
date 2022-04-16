@@ -166,7 +166,7 @@ For authentication, IKEv2 uses` Pre-Shared Key` (PSK) and `Certificate Authentic
 
 Macsec is defined in 802.1AE as `point2point security protocol` providing `data confidentialiity, integrity, and origin authenticity` (all CIA triad.) for traffic over LAyer 1 or Layer 2 links and is part of larger security ecosystem.
 
-Technically, on the transmit side of the link,MAcsec adds `Mac Security Tag` (SecTag) and `Integrity Check Value` (ICV) to the packet and can optionally encrypt the packet. on the receive side of the link the MacSec engine can identify and decrypt the packet, check integrity, provide `replay protection` and remoce SecTag and ICV. Invalid frames are discarded or monitored.
+Technically, on the transmit side of the link,MAcsec adds `Mac Security Tag` (SecTag, 8 to 16 bytes) and `Integrity Check Value` (ICV, 8 to 16 bytes) to the packet and can optionally encrypt the packet. on the receive side of the link the MacSec engine can identify and decrypt the packet, check integrity, provide `replay protection` and remoce SecTag and ICV. Invalid frames are discarded or monitored.
 
 
 There is a need to protec data that is transmitted over the in-vehicle ethernet that is connecting `ECU`s together.
@@ -204,14 +204,6 @@ These are some of the common threats against Ethernet Lan:
 - - writing malicious code and deceiving people into running it.
 
 - - exploiting bugs in software to take over machines ans use them as base for future attacks.
-
-
-
-
-
-
-
-
 
 
 
@@ -266,6 +258,13 @@ Used to discover Macsec capable peers and used to negotiate encryption keys. The
 Similar to `IPSec SA` but for MacSec. Defines a secure relationship between MacSec peers.
 
 
+After authentication and key exchange are performed, a secure communication link,  called `Secure Channel` is established using Macsec from one node inside CA to another.  in MAcSec protected network, each node has at least one `unidirectional secure channel`. The Secure channel does not expire and lasts for the duration of  the communication between two nodes. Each secure channel is associated with an `identifier` : the `Secure Channel Identifier` SCI. 
+
+
+Within each secure channel(both transmit and receive), Secure Associations are defined. each Secure association has a corresponding `Secure Association Key` (SAK) and is identified by the Association Number field of the SecTag header. Secure Associations have limited duratuion. this is called Key Rotation.
+
+
+
 3. <u>**Connectivity Association Key(CAK) **</u>
 
 Static or Dynamic Key exchanged by macsec speakers. This can be seen as `primary key` that is used to device all other session keys.
@@ -287,6 +286,10 @@ Primary key is used to negotiate an MKA if this fails, Fallback key is used.
 
 Derived from CAK used to encrypt data as mentioned earlier.
 
+**Within each Secure Association, `replay protection` can be performetd by checking the Packet Number field of SecTAG header agaisnt the packer number locally stored since ehac macsec packet has a uniqe sequential packet and each packet number can be used only once.**
+
+
+
 
 A `Key Server` generates SAK.  If you have if you have one switch connected to another switch on ethernet link and MacSec is enabled on this switch, one of these switches will be a Key Server. You can either configure one of these switches as higher priority to make it key server
 
@@ -298,10 +301,29 @@ if you enable MacSec on an interface, it drops all frames except MAcsec encrypte
 
 
 
+### <u>**What is IEEE 802.1X**</u>
+
+
+IEEE 802.1X is a network authentication protocol that opens ports for network access when a user's identity is authenticated it also authorizes them for acess to the network.
+
+IEEE 802.1X is an Port-Based Network Access Control(PNAC) standard that provides protected authentication for secure network access.
+
+an 802.1X network is `different from home networks in one MAJOR way`: it  has an authntication server called `RADIUS Server` which checks user's credentials to see if they are an active member of the organization and , depending on the netwrk policies, ggrants them various access rights. This helps unique credential creation for each user, eliminating the reliance on single network password that can be easily cracked or stolen.
+
+the RADIUS server is able to do it in various ways, typically over LDAP or SAML protocol.
 
 
 
 
+### <u>**What are possible MACsec use cases within Ethernet Network**</u>
+
+If a hacker taps into the macsec disabled network, the flowing data can be obtained by hacker and can be used to perform attacks. Hacker can target switches, can tap into the network, or can monitor the device.
+
+if macsec is enabled, tapping or eavesdropping, or replay attacks are not possible since packets are numbered, encrypted. **HOWEVER** hacker CAN disrupt the network using DOS attack if DOS prevention is disabled. in this case, neither hacker nor the vehicle can receive the packets. if DOS prevention is Enabled, the Video stream(i.e.) remains disturbed but DOS does not propogate through the Ethernet phy.
+
+
+
+Macsec is cost-effective and could be used in combination with other technologies like IPsec, TLS, etc.
 
 
 
