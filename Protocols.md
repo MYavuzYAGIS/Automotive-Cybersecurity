@@ -163,4 +163,55 @@ For authentication, IKEv2 uses` Pre-Shared Key` (PSK) and `Certificate Authentic
 
 ## <u>**MacSec**</u>
 
+While IPsec is encryption at Layer 3, MacSec is encryption at Layer 2 which is Ethernet layer.
+
+Remember this : ==> `IEEE 802.1AE`
+
+Compared to IPsec:
+
+- MacSec provides STRONGER ENCRYPTION performance at HIGHER SPEEDS.
+
+- Macsec can encrypt user data at UP TO 800Gig Ethernet Speeds without any hardware offloading.
+
+- Application to any network that relies on Ethernet so can be used in many places => so Data Center, Corporate environment, Service Provider, etc.
+
+
+### Packet Structure:
+
+A captured MacSec packet has some options and payloads.
+
+-> <u>**802.1AE Security Tag.**</u>
+
+This Tag has some option flags like VER, ES, E.
+
+E flag is set to 1 if the packet is `encrypted`.
+
+
+-> <u>**ICV Value**</u>
+
+ICV is a checksum that is used to verify the integrity of the packet.
+
+-> <u>**Port Identifier.**</u>
+
+shows on what port the packet was captured on.
+
+-> <u>**Data**</u>
+
+Data is the encrypted payload. looks like a random hash value.
+
+
+
+### <u> MacSec Terminology</u>:
+
+
+
+
+
+
+
+
+
+
+
+
 ## <u>**ArpSec**</u>
