@@ -430,18 +430,25 @@ It has 3 steps:
 - it `Detects` anomalies based on deviation from `normal`. Prevents by discarding frames when possible.
 
 
+<u>**Comparing CAn and Ethernet Rules Generation**</u>
+
+- both of the them require recordings to generate rules out of it.
+
+
+- Both of them use `files` where CAN uses DBC extension, ethernet uses XML.
+
+
+- Both of them allow user to edit rules manually.
+
+- Rule generation is simple in CAn Bus(but can get complicated if j1939 is used) and is complex in ethernet due to network nature (Mac adresses, DHCP, DoIO etc protocols)
+
+- CAN is static, predictive and deterministic and uses whitelisting. But ethernet is more volatile, it uses both black and white lists simultaneously, also `signature based` detection. Signature based detection is not implemented in Can Bus.
 
 
 
+<u>**CAn and Ethernet IDS/IPS Architecture**</u>
 
-
-
-
-
-
-
-
-
+- https://youtu.be/VOycf8nSWPQ?t=1438
 
 
 
