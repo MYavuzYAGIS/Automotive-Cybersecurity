@@ -367,6 +367,20 @@ Creating security assurance level.
 
 It is a reference that regulators point to. In order to enforce a standard, now regulators have a reference point.
 
+The scope of ISO 21424 :
+
+- Risk Management (Assess, monitor, evaluate potential risks.)
+
+- Product Development (security of systems, hardware&software, performing TARA(Threat Analysis Risk Assessment) )
+
+
+- VARA (vulnerability analysis risk assessment)
+
+- Operation, maintenance, and processess. Starting from beginning to the end, covers all aspects.
+
+- process overview and interdepencencies.
+
+- An `Assurance Level` is defined with ISO 21424 which is `Cybersecurity Assurance Level` this is like common security assurance level like how secure is the system or how much trust you can put onto it.
 
 
 
@@ -376,6 +390,10 @@ It is a reference that regulators point to. In order to enforce a standard, now 
 
 
 
+
+
+
+https://github.com/osqzss/gps-sdr-sim
 
 
 
