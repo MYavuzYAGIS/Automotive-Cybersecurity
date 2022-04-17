@@ -363,6 +363,9 @@ Macsec is cost-effective and could be used in combination with other technologie
 # <h1>CyberSecurity Notes</h1>
 
 
+## <u>**ISO/SAE 21434**</u>
+
+
 ==> Automotive Cybersecurity standarts are defined by `ISO/SAE 21434` 
 
 Helped creating common terminology accross the industry. 
@@ -398,15 +401,18 @@ The scope of ISO 21424 :
 
 
 
+## <u>**CanBus IDS/IPS vs Ethernet IPS/IDS**</u>
 
 
 
-https://github.com/osqzss/gps-sdr-sim
 
 
-https://www.youtube.com/watch?v=3d1PZjgVirc
 
-https://www.youtube.com/watch?v=VOycf8nSWPQ
+
+
+
+
+
 
 
 
