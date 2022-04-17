@@ -363,8 +363,9 @@ Helped creating common terminology accross the industry.
 
 Helped creating minimum base criteria for cybersecurity in the vehicle.
 
+Creating security assurance level.
 
-
+It is a reference that regulators point to. In order to enforce a standard, now regulators have a reference point.
 
 
 
