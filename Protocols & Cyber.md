@@ -395,13 +395,9 @@ The scope of ISO 21424 :
 
 
 
-
-
-
-
-
-
 ## <u>**CanBus IDS/IPS vs Ethernet IPS/IDS**</u>
+
+### <u>**Comparing Can and Ethernet**</u>
 
 
 CanBus is a Bus topology which means when a message leaves and ECU, it is guaranteed to reach any neighbir ecu on the same bus. Meaning there is no way to stop an attack using software which reside in the gateway since it is just listening to the traffic. Gateway can only stop propogation of the message from one bus to another but not on the same bus.
@@ -419,16 +415,19 @@ In terms of `source identification`, there is no source ID in can bus there is o
 In ethernet, on the other hand, there is `distinct unicast` that means it has source and destination mac addresses, all clear. and etherenet support both unicast and multicast hence, with ethernet it is much easier to detect the source of a message.
 
 
+Beware that `automotive ethernet` is not necessarily about ethernet, it is about  all the networking. For example, on top of ethernet sits MAC, and then on top of that sits IP, on top of that sits TCP/IP or UDP/IP. To the application level, there is DoIP.
 
+### <u>**Can and Autmotive Ethernet IDS/IPS work process**</u>
 
+IDS/IPS is designed to counter an attacker manipulating network traffic via a malicious application, hacked ECU or other controller.
 
+It has 3 steps:
 
+- It `learns` the normal.
 
+- it `monitors` the network traffic and the `Routing` function of gateway rules
 
-
-
-
-
+- it `Detects` anomalies based on deviation from `normal`. Prevents by discarding frames when possible.
 
 
 
