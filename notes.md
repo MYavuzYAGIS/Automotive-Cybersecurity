@@ -731,7 +731,7 @@ Used in `Low-cost/Speed data, Backbone, Control Data.`
 
 Pros:
 
-- Low cost single-twisted pair copper cable.
+- Low cost single-twisted pair copper cable.(twisted pairs are used in CAN-HS)
 
 - most widely used well proven Automotive Networking Topology
 
