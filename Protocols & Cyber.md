@@ -505,3 +505,43 @@ Impossible to determine ECU origin. Need to add digital signature using 3rd part
 **Ethernet:**
 
 To capture a packet flow, you need to follow full OSI 7 layers individually and another problem is many fields are dynamically assigned per instance.
+
+
+<u>**Diagnostics**</u>
+
+
+**Canbus:**
+
+- Using UDS protocol,
+
+- Many attack options like hacker engaging diagnostics while normal driving.
+
+- Detection and some prevention is possible but somewhat complex since it must be based on a combination of considerations such as vehicle context and usage of transport protocols.
+
+
+**Ethernet:**
+
+- based on DoIP and layered UDS protocol.
+
+- Complex mechanism with multiple architectures and implementatitions(like DHCP)
+
+- Many attack options like hacker engaging diagnostics while normal driving.
+
+- sometimes detection is complex, especially if attacker is launched from compromised ECU from within the vehicle.
+
+
+
+
+
+
+
+
+
+
+<u>**Diagnostics**</u>
+
+
+**Canbus:**
+
+
+**Ethernet:**
