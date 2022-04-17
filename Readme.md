@@ -2,6 +2,13 @@
 
 This repository contains my personal handwritten notes on `Automotive Cybersecurity`, `Automotive Ethernet Protocols`, and `Network Diagnosis & Protocols`.
 
+
+All the Markdown files are my handwritten notes. I also compiled them to PDF format for exporting to e-reader.
+
+I know that the naming of the markdown files are not very helpful, but I was not planning to opensource them initially, so I did not bother much.
+
+If you want to help fixing it, I am down for a PR.
+
 ## <u>Origin?</u>
 
 I used various online resources to compile this repository including leading publishing houses.
