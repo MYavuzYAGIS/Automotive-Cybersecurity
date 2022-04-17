@@ -446,9 +446,44 @@ It has 3 steps:
 
 
 
-<u>**CAn and Ethernet IDS/IPS Architecture**</u>
+<u>**CAN and Ethernet IDS/IPS Architecture**</u>
 
-- https://youtu.be/VOycf8nSWPQ?t=1438
+IDS systems are essentially sdk integrated into ecu. This ECU can be an existing ECU like gateway or a dedicated ECU attached to CAN bus.
 
+Incoming message/frame is `routed` to IDS/IPS to be processed.
 
+the IDS/IPS inspects the message/frame and returns its findings with the associated information.
 
+In case of anomaly, an event is reported.
+
+when configured as IPS, when possible, the anomalous packet is discarded.
+
+**Canbus:**
+
+In Canbus, these IDPS will most likely be integrated into gateway, in other cases, it can be connected directly into ecus.
+
+If we use IDS not IPS, it just taps into network so there is no need for changes in the vehicle.
+
+**Ethernet:**
+
+it `definitely` goes into gateway. it serves as automotive backbone. 
+
+<u>**Message Formality**</u>
+
+**Canbus:**
+
+Relatively easy to validate the format since the message is very short. only exception is CanBus TP(transport protocol) and SAE j1939 TP is used which adds more complexity.
+
+**Ethernet:**
+
+Etherned side of the message is much harded, needs 7 layer `Deep Packet Inspection(DPI)` to determine individual message format validity. For example:
+
+- Ethernet frame
+
+- IP header
+
+- UDP header
+
+- DoIP PDU header
+
+- UDS PDU header
