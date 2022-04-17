@@ -458,6 +458,10 @@ In case of anomaly, an event is reported.
 
 when configured as IPS, when possible, the anomalous packet is discarded.
 
+Can message is determined to be passing or not based on message ID, if valid, it is passed else, it is discarded. There is a possibility that a compromised ECU can send a message with a valid ID and if it is not a periodic message, it is not possible to determine it was an attack.
+
+
+
 **Canbus:**
 
 In Canbus, these IDPS will most likely be integrated into gateway, in other cases, it can be connected directly into ecus.
@@ -487,3 +491,6 @@ Etherned side of the message is much harded, needs 7 layer `Deep Packet Inspecti
 - DoIP PDU header
 
 - UDS PDU header
+
+
+
