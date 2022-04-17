@@ -404,17 +404,9 @@ The scope of ISO 21424 :
 https://github.com/osqzss/gps-sdr-sim
 
 
+https://www.youtube.com/watch?v=3d1PZjgVirc
 
-
-
-
-
-
-
-
-
-
-
+https://www.youtube.com/watch?v=VOycf8nSWPQ
 
 
 
