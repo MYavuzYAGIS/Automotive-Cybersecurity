@@ -9,6 +9,7 @@ I know that the naming of the markdown files are not very helpful, but I was not
 
 If you want to help fixing it, I am down for a PR.
 
+
 ## <u>Origin?</u>
 
 I used various online resources to compile this repository including leading publishing houses.
@@ -18,6 +19,8 @@ Secondly, I used pluralsight expert and deepDive courses.
 Thirdly, I used field-expert talks and conferences on YouTube.
 
 Finally, I used official documentations and other sources.
+
+PS: the repo is still growing with new commits.
 
 ## <u>What is it in here?</u>
 
