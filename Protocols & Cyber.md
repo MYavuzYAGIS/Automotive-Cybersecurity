@@ -364,7 +364,7 @@ Macsec is cost-effective and could be used in combination with other technologie
 
 
 ## <u>**ISO/SAE 21434**</u>
-
+ 
 
 ==> Automotive Cybersecurity standarts are defined by `ISO/SAE 21434` 
 
@@ -404,9 +404,19 @@ The scope of ISO 21424 :
 ## <u>**CanBus IDS/IPS vs Ethernet IPS/IDS**</u>
 
 
+CanBus is a Bus topology which means when a message leaves and ECU, it is guaranteed to reach any neighbir ecu on the same bus. Meaning there is no way to stop an attack using software which reside in the gateway since it is just listening to the traffic. Gateway can only stop propogation of the message from one bus to another but not on the same bus.
+
+On the other hand, the ethernet is a star topology meaning on each port there is exactly one device is connected any device that is sent by the device can be inspected by the gateway.
 
 
+Since ethernet is MUCH more speedy comparing to the Can, any IDS or IPS system needs lots of horsepower to be able to undertake full or partial analysis.
 
+Message length in Can bus is only 8 bytes (60 for Can FD) compared to Ethernet which is 1500 bytes.
+
+
+In terms of `source identification`, there is no source ID in can bus there is only Message ID. So you cannot tell who sent the message. This can be done using encapsulated protocols like `j1939` but standard does not have message origin identification. Can bus does not have any specific `message destionation` as well, it only has `message id` which is a `multicast` address that anyone can listen to it.
+
+In ethernet, on the other hand, there is `distinct unicast` that means it has source and destination mac addresses, all clear. and etherenet support both unicast and multicast hence, with ethernet it is much easier to detect the source of a message.
 
 
 
