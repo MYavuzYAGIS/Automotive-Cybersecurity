@@ -546,7 +546,7 @@ Other options are possible such as independent SMS over cellular.
 
 **Ethernet:**
 
-SOME/IP messages to telematics, API sending messages to microcontroller.
+a) **`SOME/IP `messages to telematics, API sending messages to microcontroller.**
 
 
 SOME/IP is an AUTOSAR standard where SOME stands for `Scalable service oriented middleware` which is used for standardization of: 
@@ -555,10 +555,6 @@ SOME/IP is an AUTOSAR standard where SOME stands for `Scalable service oriented 
 - payload serialization rules
 - service discovery mechanism
 - remote procedure call mechanism(RPC)
-
-Syslog format for direct interface to SIEM at the SOC.
-
-other proprietary formats over IP are possible.
 
 Advantages of SOME/IP Protocol
 SOME/IP protocol has many advantages compared to traditional automotive protocols like CAN, LIN, and MOST. Some of the worth-noting advantages of SOME/IP are the following:
@@ -577,7 +573,9 @@ SOME/IP protocol has many advantages compared to traditional automotive protocol
 
 7. SOME/IP can be implemented on many automotive operating systems and even embedded firmware with no operating system.
 
+b) **Syslog format for direct interface to SIEM at the SOC.**
 
+c) **other proprietary formats over IP are possible.**
 
 
 
