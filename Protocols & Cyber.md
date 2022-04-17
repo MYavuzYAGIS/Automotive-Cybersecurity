@@ -440,7 +440,7 @@ It has 3 steps:
 
 - Both of them allow user to edit rules manually.
 
-- Rule generation is simple in CAn Bus(but can get complicated if j1939 is used) and is complex in ethernet due to network nature (Mac adresses, DHCP, DoIO etc protocols)
+- Rule generation is simple in CAn Bus(but can get complicated if j1939 is used because dynamic adressing comes into play) and is complex in ethernet due to network nature (Mac adresses, DHCP, DoIO etc protocols)
 
 - CAN is static, predictive and deterministic and uses whitelisting. But ethernet is more volatile, it uses both black and white lists simultaneously, also `signature based` detection. Signature based detection is not implemented in Can Bus.
 
