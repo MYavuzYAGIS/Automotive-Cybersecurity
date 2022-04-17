@@ -460,6 +460,7 @@ when configured as IPS, when possible, the anomalous packet is discarded.
 
 Can message is determined to be passing or not based on message ID, if valid, it is passed else, it is discarded. There is a possibility that a compromised ECU can send a message with a valid ID and if it is not a periodic message, it is not possible to determine it was an attack.
 
+Ethernet Packet is filtered based on filtering rules initially. if it is not in white and blacklist, the default rule applies.
 
 
 **Canbus:**
@@ -493,4 +494,14 @@ Etherned side of the message is much harded, needs 7 layer `Deep Packet Inspecti
 - UDS PDU header
 
 
+<u>**Protocol Message Flow**</u>
 
+**Canbus:**
+
+Relatively easy to validate flow, with requests and responses, and order of messages.
+
+Impossible to determine ECU origin. Need to add digital signature using 3rd party compression softwares or SecOC.
+
+**Ethernet:**
+
+To capture a packet flow, you need to follow full OSI 7 layers individually and another problem is many fields are dynamically assigned per instance.
