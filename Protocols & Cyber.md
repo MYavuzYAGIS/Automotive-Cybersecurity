@@ -529,9 +529,53 @@ To capture a packet flow, you need to follow full OSI 7 layers individually and 
 
 - sometimes detection is complex, especially if attacker is launched from compromised ECU from within the vehicle.
 
+When running diagnostics in the test workshop using multiple vehicles connected to each other and the test machine, in order to prevent vehicle attacking to another vehicle, the configuration should be set to `multiplexler` not `full-mesh` so central gateway can talk to each vehicle but vehicles can talk to each other.
+
+On media diagnosticsin CAN, the MOST system will not be incpected due to it is `airgapped`and low cyber risk. Also Automotive-Ethernet AVTP(Audio-Video Transfer Protocol) , which is not airgapped and very intense in traffic, will probably not be inspected but can be tested by partial sampling for protocol integrity.
 
 
 
+<u>**Reporting**</u>
+
+
+**Canbus:**
+
+CanBus telematics messages. CAN id will send messages to be conveyed to SOC and analyzed there
+
+Other options are possible such as independent SMS over cellular.
+
+**Ethernet:**
+
+SOME/IP messages to telematics, API sending messages to microcontroller.
+
+
+SOME/IP is an AUTOSAR standard where SOME stands for `Scalable service oriented middleware` which is used for standardization of: 
+
+- header format,
+- payload serialization rules
+- service discovery mechanism
+- remote procedure call mechanism(RPC)
+
+Syslog format for direct interface to SIEM at the SOC.
+
+other proprietary formats over IP are possible.
+
+Advantages of SOME/IP Protocol
+SOME/IP protocol has many advantages compared to traditional automotive protocols like CAN, LIN, and MOST. Some of the worth-noting advantages of SOME/IP are the following:
+
+1. Being a service-oriented protocol, it is interoperable and scalable. New parameters and functions can be easily added to a vehicle system using SOME/IP. Only the header layout must be identical in all implementations of SOME/IP within a network.
+
+2. SOME/IP offers great flexibility for all types of data communication in a closely coupled inter-ECU ecosystem by providing communication of scalar data values to complex data structures.
+
+3. SOME/IP provides large bandwidth for data communication in the range of 100Mbps and takes care of not wasting the bandwidth at all by providing all data communications in a client-server configuration.
+
+4. SOME/IP allows the implementation of complicated service interfaces by supporting many different data types and multiple RPC mechanisms.
+
+5. The data from the server ECU can be communicated to client ECU via unicast, multicast, and broadcast.
+
+6. Being a middleware, it is suitable even for CPU-intensive applications.
+
+7. SOME/IP can be implemented on many automotive operating systems and even embedded firmware with no operating system.
 
 
 
