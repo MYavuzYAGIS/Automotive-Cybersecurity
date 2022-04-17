@@ -218,8 +218,14 @@ Compared to IPsec:
 
 - Macsec can encrypt user data at UP TO 800Gig Ethernet Speeds without any hardware offloading.
 
+- Very little latency.
+
 - Application to any network that relies on Ethernet so can be used in many places => so Data Center, Corporate environment, Service Provider, etc.
 
+- Allows to protect all protocols virtually, including layer 2 protocols like AVB TP (IEEE 1722)
+- The smallest attack surface on Ethernet-based links for attacks with physical access to a medium
+
+IPSEC and TLS are software based but MacSec is hardware(phy and switches) based. so it makes it more robust and secure!
 
 ### Packet Structure:
 
@@ -371,17 +377,9 @@ The scope of ISO 21424 :
 
 - Risk Management (Assess, monitor, evaluate potential risks.)
 
-- Product Development (security of systems, hardware&software, performing TARA(Threat Analysis Risk Assessment) )
+- Product Development (security of systems, hardware&software, 
 
-
- ==> Cybersecurity Interface Agreement(CIA) is a formal agreement between OEM and Supplier on how to implement the security requirements.
-
- ==> they agree on plan and timelines.
-
- ==> then they freeze the requirements
-
- ==> OEM will share cybersecurity requirements with the supplier.
-
+- performing TARA(Threat Analysis Risk Assessment) )
 
 
 - VARA (vulnerability analysis risk assessment)
