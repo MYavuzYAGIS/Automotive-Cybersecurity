@@ -411,9 +411,11 @@ This way attacker becomes the gateway then the attacker attacks to the real gate
 from this point on, all the client packets are sent to attacker. If attacker does not forward but keep collecting these data this is called `blackhole` because attacker never sends these packets to the intended destination.
 
 
-Mitigation is through `Port Security`
+Mitigation is through `Port Security`.
 
+Another mitigation is `802.1X` which is a network authentication protocol that opens ports for network access when a user's identity is authenticated it also authorizes them for acess to the network. This is superior to port security.
 
+Another mitigation is `Dynamic ARP Inspection` which is a feature of switches that allows the switch to dynamically inspect the ARP table and determine if the ARP table entry is valid or not.
 
 
 
