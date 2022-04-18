@@ -686,19 +686,23 @@ c) **other proprietary formats over IP are possible.**
 
 - for access control, Ethernet access Control and SOME/IP is used
 
--
-
-
-
-
-
-
-
-
 ## <u>**SecOC**</u>
 
 SecOC = Secure OnBoard Communication.
-https://www.youtube.com/watch?v=muz9yoSncqM
+
+SecOC protects CAN, ethernet, Flexray etc. communications. Adds security to the onboard communication.
+
+normally Can bus , when reached, can be tapped into and tampered.
+
+This adds integrity and authenticity to the communication by being attached to the outgoing message.
+
+
+
+
+
+
+
+
 https://www.youtube.com/watch?v=LE6juLgilA4
 
 ## <u>**key management systems**</u>
