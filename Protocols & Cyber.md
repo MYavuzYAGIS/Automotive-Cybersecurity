@@ -692,18 +692,73 @@ SecOC = Secure OnBoard Communication.
 
 SecOC protects CAN, ethernet, Flexray etc. communications. Adds security to the onboard communication.
 
-normally Can bus , when reached, can be tapped into and tampered.
+normally Can bus , when reached, can be tapped into and tampered or even through `SOTA`(Software Over The Air) can be used to change the firmware.
 
 This adds integrity and authenticity to the communication by being attached to the outgoing message.
 
+in-vehicular communication vulnerabilities can be prevented by using SecOC in the comunication networdk. SecOC adds security to the `outgoing` message to achieve `integrity and authenticity` ofthe message.
+
+It is specified to check the authenticity of a single transmitted PDU (Protocol Data Unit) in order to detect attacks such as replay attacks, message tampering, and denial of service attacks.
+
+With SecOC implementation, **the attacker HAS TO know the sender's secret key in order to spoof a message.**
+
+on the **sender ECU**, the SecOC module is sitting between PDURouter, CryptoService Manager and the counter.
+
+1- PDU Router receives a PDU from an upper layer.
+
+2- passes message to SecOC module to add authentication.
+
+3- SecOC obtains `Freshness Value` from the counter.
+
+4- SECOC then generates `authenticator` using  services from CryptoService Manager.
+
+This authenticator is `freshness value + secret key` using secret key
+
+5- SecOC then attaches the freshness value and authenticator to the `PDU Frame` and returns it to the PDU router.
+
+6- PDU router then passes it to the destination interface. 
+
+
+CSM module provides cryptographic services for SecOC.!
+
+authenticator is also known as` MAC, Message Authentication Code` if keys are symmetrical, if asymmetric, then it is called as `signature`.
 
 
 
+on the **receiver ECU**,
+
+
+1- PDU router receives a secured PDU with authentication added from network interface.
+
+2- this frame is sent to SecOC module for authentication
+
+3- SecOC module strips authenticator and freshness value from the secure frame and freshness value is compared with the current counter value in the counter module.
+
+4- if the received frame is not a fresh one then it is considered a `replay attack` and discarded.
+
+5- through CSM,new authenticator is generated using the secret key and freshness value for comparison with the received authenticator value.
+
+since the frehness value and secret key are the same, the keys are expected to be the same.
+
+6- if auth is successful, then PDU is sent back to PDUR for further processing.
+
+
+==
+
+CAN bus has the limitation. Classical CAN frames provide a payloadsize of only 8 bytes. the PDU along with freshness value and authenticator cannt be supported in one frame. This leaves 2 options:
+
+1) Truncate these fields to shorten the lenghts.
+
+2) Send authenticator in another frame.(available in Autosar)
+
+
+Between two, the tradeoff are the `security level` and `impact on busload`.
 
 
 
+Networks like CAN FD, Flexray and Ethernet do not have payload limits.
 
-https://www.youtube.com/watch?v=LE6juLgilA4
+
 
 ## <u>**key management systems**</u>
 https://www.youtube.com/watch?v=Qa7-8mZYkkM
