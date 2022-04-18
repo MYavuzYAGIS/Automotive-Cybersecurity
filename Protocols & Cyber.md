@@ -346,10 +346,25 @@ Macsec is cost-effective and could be used in combination with other technologie
 
 ## <u>**SSH**</u>
 
+secure shell.
 
+Just like HTTP and HTTPS, the protocols SSH and TELNET are also operate in the OSI model's layer 5 which is `session` layer. 
 
+In the OSI model, `Appliacation, Presentation, Session and Transport` layers are called `Host` layers while the remaninng `Network, Data Link and Physical` layers are called `Media` layers.
 
+<u>Network Layer</u> ==> routers, Ipv4, Ipv6, ICMP. address assingment, routing between network nodes and control of moving network traffic possible.
 
+<u>Data Layer</u> ==> Once the network is connected in the layer 3, Data Link layer transmits the data. A data frame is a data that holds link layer header.
+
+A data link layer frame has the following parts: Frame Header: It contains the source and the destination addresses of the frame and the control bytes. Payload field: It contains the message to be delivered. Trailer: It contains the error detection and error correction bits.
+
+SSH works in one of 3 ways:
+
+- RSA rhost authentication (rhost and shost, but a bit weakly secured)
+
+- Private-key authentication ( cari olan islem bu.)
+
+- Password authentication
 
 
 
@@ -639,3 +654,19 @@ https://www.youtube.com/watch?v=Qa7-8mZYkkM
 
 https://www.youtube.com/watch?v=CC3frh-Kjv4 ==> very important
 https://www.youtube.com/watch?v=D52CsJqE_R4
+
+TAKE SOME IMPORTANT PARTS
+https://app.pluralsight.com/library/courses/ethernet-operation-switch-configuration/table-of-contents
+https://app.pluralsight.com/library/courses/comptia-network-plus-networking-concepts/table-of-contents
+https://app.pluralsight.com/library/courses/using-unit-testing-python/table-of-contents
+
+
+`All People Seem To Need Data Processing`  ===> OSI model ezber
+
+A — Application — All
+P — Presentation — People
+S — Session — Seem
+T — Transport — To
+N — Network — Need
+D — Data Link Layer — Data
+P — Physical — Processing
