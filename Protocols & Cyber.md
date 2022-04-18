@@ -350,16 +350,6 @@ Macsec is cost-effective and could be used in combination with other technologie
 
 
 
-
-
-
-
-
-
-
-
-
-
 # <h1>CyberSecurity Notes</h1>
 
 
@@ -548,42 +538,77 @@ Other options are possible such as independent SMS over cellular.
 
 a) **`SOME/IP `messages to telematics, API sending messages to microcontroller.**
 
+***What is SOME/IP?***
 
-SOME/IP is an AUTOSAR standard where SOME stands for `Scalable service oriented middleware` which is used for standardization of: 
+
+SOME/IP is a middleware where SOME stands for `Scalable service oriented middleware` which creates absraction in automotive and used for standardization of: 
 
 - header format,
 - payload serialization rules
 - service discovery mechanism
 - remote procedure call mechanism(RPC)
 
+data needs to be serialized. the faster the communication, the more resouce hungry the serialization. so there needs to be a fast and efficient middleware to serialize data. Due to string operations, text-based serialization and deserialization(JSON, XML these are self descriptive(structured) and text based) are very slow so a binay operation neededd. SOME/IP allows you to build the most efficient hi-speed performance system,formatting is optimized for low resources and high speed directly works on binary data.
+SOME/IP is like XML and JSOn, which are very slow. SOME/IP works on binary data and non-descriptive. it is fastest due to `zero-copy` and nearly as fast as Raw struct which is not serialization.
+
+
+
 Advantages of SOME/IP Protocol
 SOME/IP protocol has many advantages compared to traditional automotive protocols like CAN, LIN, and MOST. Some of the worth-noting advantages of SOME/IP are the following:
 
-1. Being a service-oriented protocol, it is interoperable and scalable. New parameters and functions can be easily added to a vehicle system using SOME/IP. Only the header layout must be identical in all implementations of SOME/IP within a network.
+1. Some/IP is license Free.
 
-2. SOME/IP offers great flexibility for all types of data communication in a closely coupled inter-ECU ecosystem by providing communication of scalar data values to complex data structures.
+2. SOME/IP designed automotive use cases in mind, scales very well.
 
 3. SOME/IP provides large bandwidth for data communication in the range of 100Mbps and takes care of not wasting the bandwidth at all by providing all data communications in a client-server configuration.
 
-4. SOME/IP allows the implementation of complicated service interfaces by supporting many different data types and multiple RPC mechanisms.
+4. SOME/IP is supported by `AUTOSAR`, very fast in serialization, has `built in service discovery`
 
 5. The data from the server ECU can be communicated to client ECU via unicast, multicast, and broadcast.
 
-6. Being a middleware, it is suitable even for CPU-intensive applications.
+6. Being a middleware, it is suitable even for CPU-intensive applications, and OS-agnostic.
 
-7. SOME/IP can be implemented on many automotive operating systems and even embedded firmware with no operating system.
+
+
 
 b) **Syslog format for direct interface to SIEM at the SOC.**
 
 c) **other proprietary formats over IP are possible.**
 
 
+<u>**Some TakeAways**</u>
+
+- threats and risks are much more severe in automotive ethernet than in CAN bus.
+
+- several areas are similar so some R&D effort on CAN can be used for ethernet.
+
+- IDPS for ethernet is much more complex than for CAN.
+
+- designing IDPS for autmotife ethernet requires expertise both in automoive field and in IT networking.
+
+- For network security, SSL/TLS, VPN, IPSec protocols are for backend connectivity, MacSEc can protect all multicast, unicast, broadcast messages at line-speed. SecOC allows application layer protection for selected use cases.
+
+- for access control, Ethernet access Control and SOME/IP is used
+
+-
 
 
-<u>**Diagnostics**</u>
 
 
-**Canbus:**
 
 
-**Ethernet:**
+
+
+## <u>**SecOC**</u>
+
+SecOC = Secure OnBoard Communication.
+https://www.youtube.com/watch?v=muz9yoSncqM
+https://www.youtube.com/watch?v=LE6juLgilA4
+
+## <u>**key management systems**</u>
+https://www.youtube.com/watch?v=Qa7-8mZYkkM
+
+
+===
+
+https://www.youtube.com/watch?v=CC3frh-Kjv4 ==> very important
