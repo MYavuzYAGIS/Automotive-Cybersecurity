@@ -411,6 +411,8 @@ This way attacker becomes the gateway then the attacker attacks to the real gate
 from this point on, all the client packets are sent to attacker. If attacker does not forward but keep collecting these data this is called `blackhole` because attacker never sends these packets to the intended destination.
 
 
+Mitigation is through `Port Security`
+
 
 
 
