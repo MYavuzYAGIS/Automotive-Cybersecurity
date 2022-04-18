@@ -334,7 +334,17 @@ Macsec is cost-effective and could be used in combination with other technologie
 
 
 
-## <u>**ArpSec**</u>
+## <u>**ARP & ArpSec**</u>
+
+ARP's only job is to map logical address(IP) to physical address(MAC). Just like building numbers do not help you to figure out how to go to this house, IP addresses do not help you figure out how to traverse the network to reach a destination. Hence, ARP helps this traversing.
+
+==> ARP helps to figure out of **known** IP addresses to **unknown** physical addresses. For this end, physical address should be added into the datagram.
+
+So once IP is resolved to MAc address, Destination MAc is added to the datagram. it is a `MUST`
+
+First checks the memory (Arp cache) to see if the IP address is already known. if not,it dynamically resolves the mac address to the ip address.
+
+
 
 
 
@@ -365,31 +375,6 @@ SSH works in one of 3 ways:
 - Private-key authentication ( cari olan islem bu.)
 
 - Password authentication
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # <h1>CyberSecurity Notes</h1>
 
@@ -670,3 +655,12 @@ T — Transport — To
 N — Network — Need
 D — Data Link Layer — Data
 P — Physical — Processing
+
+
+
+
+
+
+
+
+https://app.pluralsight.com/course-player?clipId=481d6ce6-f7b4-4a53-b504-238a0cb00364
