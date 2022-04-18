@@ -336,6 +336,11 @@ Macsec is cost-effective and could be used in combination with other technologie
 
 ## <u>**ARP & ArpSec**</u>
 
+ARP is unauthenticated, insecure and primarily broadcast protocol. 
+
+this kind of broadcasts are stopped either by routers or alike Layer 3 devices on the network. 
+
+
 ARP's only job is to map logical address(IP) to physical address(MAC). Just like building numbers do not help you to figure out how to go to this house, IP addresses do not help you figure out how to traverse the network to reach a destination. Hence, ARP helps this traversing.
 
 ==> ARP helps to figure out of **known** IP addresses to **unknown** physical addresses. For this end, physical address should be added into the datagram.
@@ -343,6 +348,67 @@ ARP's only job is to map logical address(IP) to physical address(MAC). Just like
 So once IP is resolved to MAc address, Destination MAc is added to the datagram. it is a `MUST`
 
 First checks the memory (Arp cache) to see if the IP address is already known. if not,it dynamically resolves the mac address to the ip address.
+
+
+**ARP Security **
+### <u>**ARP broadcast storms*</u>
+
+For ARP's working mentality, all the nodes in the system receive some sort of ARP messages and use them in their buffers.
+
+Too much broadcast traffic is called `ARP broadcast storm` and can cause the network to become unstable. If storm becomes very strong, it causes Denial of Service.
+
+This kind of problem also causes memory and processor overloads and sometimes crashing of the machines.
+
+Why do Broadcast storms occur?
+
+- Bad NIC or Pyhical Loop which is a hardware problem.
+
+- `Spanning Tree Protocol`(STP) Loop or Device Misconfiguration , which is a software problem.
+
+- Malicious Attacks.
+
+
+Using HUB instead of switch is a bad idea for exampple because it is not programmable and not intelligent on protocols and it does not have flood avoidance. 
+
+Switches can handle this problem if `Spanning Tree Protocol` is enabled and there is no miscfguration.
+
+how to avoid this or DDOS type of problems?
+
+- **Rate-limiting** the traffic. Depending on the vendor, you can limit broadcast,directly limit ARP, or rate the packet/second, bit/second , percent of bandwidth.
+
+To succesfully handle this, you need to know the baseline, `normal` traffic. There are also dangers of limiting legitimate traffics.
+
+**IDPS systems** are also good ways to avoid this. they can help baseline setting, localize the source of the problems, can potentially help isolating network issues.
+
+### <u>**CAM Table Flood*</u>
+
+Switches dynamically associate the MAC addresses of any attached devices with the port to which they are connected on the switch based on the source MAC addresses of the packets passing into the physical interface.
+Hence, they `allocate memory and buffer locations` called **content addressable memory (CAM)**.
+
+There is , of course a limit for this listing. 
+
+Maximum is 4096 entries. when an attacker connects to this switch, one of the entries is written with his mac address. What happens when the list is full?
+
+in the older switches, whether packet was multicast, unicast, or broadcast, they would flood out all active ports with the packets which turns our switch into a `hub`. this is `MAC table flood attack`.
+
+If switch floods,it can be seen by unauthorized people or potentially can cause Dos.
+
+
+To mitigate this `Port Security` should be implemented on `per-port` basis on switches. Port Security's primary function is to authenticate and validate decices to physical ports based on MAC address.
+It can use whitelisting for MAC addresses(this port accepts these MAC addresses)or can check `maximum allowed list entries`. These can be persistent or non-persistent and goes away on each reboot.
+
+Even the attacker learn the whitelisted MAC addresses and spoof it, after trying to flood the switch, Port Security can terminate the port connection and deny attacker from flooding the entire table.
+
+
+
+### <u>**Arp Poisoning, Blackhole, Spoofing, MITM*</u>
+
+**ARP Poisoning** is to manipulate the ARP table of the target device to change the MAC-IP binding of the target device to another desirable MAC address.
+
+This is done by spoofing the default gateway. This is done by tricking the clients on the network that the IP address of the default gateway is at the attacker's MAC address. how? keep sending ARP messages to client with tricky message and fill their cache without giving them time to correct it.
+This way attacker becomes the gateway then the attacker attacks to the real gateway to trick it by changing the clients IP bound to attacker's MAC. From that point on, whenever the real gateway distributes the packets, it is redirected to the attacker.
+
+from this point on, all the client packets are sent to attacker. If attacker does not forward but keep collecting these data this is called `blackhole` because attacker never sends these packets to the intended destination.
 
 
 
@@ -663,4 +729,3 @@ P — Physical — Processing
 
 
 
-https://app.pluralsight.com/course-player?clipId=481d6ce6-f7b4-4a53-b504-238a0cb00364
