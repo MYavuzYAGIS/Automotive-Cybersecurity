@@ -921,27 +921,55 @@ Are IDPS the most important security mechanism?
 
 There is a hype in IDS and IPS systems. but instead of going through IDS, you can stgart with createing the parth to transport `events` from vehicles to your backend and then incrementally add `events` and look at your data.
 
-IPS on the other hand , has **actively** intervening mechanisms which can cause vehicle to go out of control, not-desirable.
+IPS on the other hand , has **actively** intervening mechanisms which can cause vehicle(especially autonomus cars) to go out of control, not-desirable.
 
-IDS is JUST a tool in your secuirty toolbx, and you need to craete a strategy for it.
-
-
+IDS is JUST a tool in your secuirty toolbox, and you need to craete a strategy for it.
 
 
+5)
+
+Security does not allow testing.
+
+This myth comes from the encryption of the data. However that is not correct. Think of this way:
+
+- SecOC is authentication only and there is no encryption.
+
+- IPSec, TLS and MACsec support authentication only modes.
+
+How to handle `auth` does not let me change anything problem?
+
+- add secure process to turn secuity on ECU on and off.
+
+- add a secure process to share keys between test system and ECU.
+
+As long as you know your tool chains and you design your process, testing is possible.
+
+==============***=============
+
+Standard ethernet cannot be used in cars , the EMC emission is not automotive compliant. automotive ethernet(100 and 1000 BASE T1) made some changes on phy layer to meet the requirements:
+
+- full duplex comms
+- avaliability and low cost
+- reliable and fast link establishment (100 miliseconds is the upper bound)
+- very low bit-rate error
+- appropriate EMI and EMC missions.
+
+
+Testing Considerations:
+
+1- Define test levels according to the **V-Model**.
+
+2) Design approprioate Test concept and specifications.
+
+3) Implementation Levels: Component,EoL,Partial Network,Full Network and vehicle test solutions.
+
+4) Ensure reproducibility of test results.
 
 
 
 
 
 
+https://app.pluralsight.com/library/courses/applied-cryptography-getting-started/table-of-contents 
 
-
-
-
-https://www.youtube.com/watch?v=D52CsJqE_R4
-
-TAKE SOME IMPORTANT PARTS
-
-
-
-
+Very short but good inforeation on cryptography.
