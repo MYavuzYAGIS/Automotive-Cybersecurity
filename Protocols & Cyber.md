@@ -443,6 +443,8 @@ SSH works in one of 3 ways:
 # <h1>CyberSecurity Notes</h1>
 
 
+NOTE: . The main function of the **gateway** is communication protocol transactions, for example, transforming FlexRay format data to CAN data, or transforming CAN data to LIN data.
+
 ## <u>**ISO/SAE 21434**</u>
  
 
@@ -887,23 +889,13 @@ Like if not stored on chip, how will it execute secure boot check, or signature 
 but in any case you need to address as holistic problem.
 
 
-
-
-
-## <u>**VPN/FireWalls/Proxies**</u>
-
-
-
-
-
 ===
 
 https://www.youtube.com/watch?v=CC3frh-Kjv4 ==> very important
 https://www.youtube.com/watch?v=D52CsJqE_R4
 
 TAKE SOME IMPORTANT PARTS
-https://app.pluralsight.com/library/courses/ethernet-operation-switch-configuration/table-of-contents
-https://app.pluralsight.com/library/courses/comptia-network-plus-networking-concepts/table-of-contents
-https://app.pluralsight.com/library/courses/using-unit-testing-python/table-of-contents
+
+
 
 
