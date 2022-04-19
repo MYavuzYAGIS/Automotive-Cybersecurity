@@ -913,6 +913,25 @@ But say, do we need to secure UDP Network Management(UDPnm) for network manageme
 
 Main idea is, if two sides of the bridge are secure, you dont need a security for the bridge. Because if you implement MacSec, which protects everything sitting on top of it, an external attacker cannot modify antyhing.
 
+for internal attacker, who is controlling a compromised ECU, say Head Unit, you can use ACL, or sort of firewalls. But you dont put them on TCP layer, but below it to protect it. So , you DONT need built in secuirty for everyhing as long as you think secuirty first and design things accordingly.**Make sure you have access control and filtering.**
+
+4)
+
+Are IDPS the most important security mechanism?
+
+There is a hype in IDS and IPS systems. but instead of going through IDS, you can stgart with createing the parth to transport `events` from vehicles to your backend and then incrementally add `events` and look at your data.
+
+IPS on the other hand , has **actively** intervening mechanisms which can cause vehicle to go out of control, not-desirable.
+
+IDS is JUST a tool in your secuirty toolbx, and you need to craete a strategy for it.
+
+
+
+
+
+
+
+
 
 
 
