@@ -418,12 +418,6 @@ Another mitigation is `802.1X` which is a network authentication protocol that o
 Another mitigation is `Dynamic ARP Inspection` which is a feature of switches that allows the switch to dynamically inspect the ARP table and determine if the ARP table entry is valid or not.
 
 
-
-
-
-
-
-
 ## <u>**SSH**</u>
 
 secure shell.
@@ -758,10 +752,26 @@ Between two, the tradeoff are the `security level` and `impact on busload`.
 
 Networks like CAN FD, Flexray and Ethernet do not have payload limits.
 
+================================================
+
+## <u>**Vehicle Key Management Systems**</u>
 
 
-## <u>**key management systems**</u>
-https://www.youtube.com/watch?v=Qa7-8mZYkkM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ===
@@ -773,22 +783,5 @@ TAKE SOME IMPORTANT PARTS
 https://app.pluralsight.com/library/courses/ethernet-operation-switch-configuration/table-of-contents
 https://app.pluralsight.com/library/courses/comptia-network-plus-networking-concepts/table-of-contents
 https://app.pluralsight.com/library/courses/using-unit-testing-python/table-of-contents
-
-
-`All People Seem To Need Data Processing`  ===> OSI model ezber
-
-A — Application — All
-P — Presentation — People
-S — Session — Seem
-T — Transport — To
-N — Network — Need
-D — Data Link Layer — Data
-P — Physical — Processing
-
-
-
-
-
-
 
 
