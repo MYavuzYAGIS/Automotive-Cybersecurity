@@ -884,6 +884,7 @@ Like if not stored on chip, how will it execute secure boot check, or signature 
 
 - - Depending on the VKMS implementation, on-chip software might be in or out of scope.
 
+but in any case you need to address as holistic problem.
 
 
 
