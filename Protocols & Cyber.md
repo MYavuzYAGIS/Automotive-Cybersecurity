@@ -757,9 +757,102 @@ Networks like CAN FD, Flexray and Ethernet do not have payload limits.
 ## <u>**Vehicle Key Management Systems**</u>
 
 
-Do not forget that we have remote access to the vehicles.
+<u>Automotive CyberSecurity Threat Scenarios</u>
 
-Also you have customer data collected and maybe stored.
+- Do not forget that we have remote access to the vehicles.
+
+- Also you have customer data collected and maybe stored.
+
+- Now we have internal networks which means easy internal attack traversal (lateral movement.)
+
+- Access to ECU-application meanis theft of intellectual properties.
+
+- We have more software, meaning better attack surface.
+
+
+<u>Some Ways to Mitigate these.</u>
+
+- **Debug Access Protection**. This may help to prevent gain access to car network. (especially JTAG and UART)
+
+- **Reverse Engineering Protection**. (through encryption and/or obfuscation of Data-at-rest)
+
+- Add **Secure Boot** for preventing malicious software from being flashed over ethernet. (checking signatures)
+
+- use **SecOC**.
+
+- Common approach should be **Distributed Trust**. 
+
+- **Code Signing**
+
+
+Root of Trusts are : Symmetrical Keys, Asymmetrical Keys, Password Protection, certification.
+
+
+Distributed trust boils down to Vehicle Key Management Systems. This means secure generation, storage, distribution and destruction of keys.
+
+<u>***The **Goals** of Vehicle Key Management Systems are:***</u>
+
+- ***Create*** cryptographic material:
+- - which can be symmetric, asymmetric, password protected, or certificate protected.
+
+- - Cyryptographic material can be platform, product, or even ECU specific(most complex but most secure).
+
+- - *Good Enough* Randomness is hard to achieve. (random bit generation)
+
+
+- ***Distribute*** cryptographic material:
+
+- - these keys should be accessible to control units.
+
+- - Keys must be stored in the control units in manifacturing.
+
+- - ECUs are mostly manufactured on-premies at the supplier-sites but they belong to OEMs so secure onboard comms is something OEM has to make sure it works.
+
+- - in the final assembly of the card, all keys distributed MUST fit together.
+
+
+- ***Store*** cryptographic material:
+
+- - access to locked control units must be possible after shipping the car.
+
+- - cryptographic material must be stored **securely** **on-chip**
+
+- - Software supported hardware security.
+
+
+- ***Additional Requirements***:
+
+- - **Security**: the material must be protected.
+
+- - **Availability**: Manufacturer must continue development and support 24/7.
+
+- - **Scalability**: huge amount of keys/passwords/certs must be managed.
+
+
+================================================
+
+
+Architecture is divided into 3 layers:
+
+- **Backend**:
+
+main component is the database which is used for <u>creating</u> and <u>storing</u> the cryptographic material.
+
+It is usually set for `High Availability` in mind. Also, for the better security, **Hardware Security Modules** (HSM) are used alongside database.
+
+HSM is in charge of data-at-rest encryption and randomness generation.
+
+
+Key <u>Disstribution</u> and <u>Management</u> is taken care by attached services/applications.
+
+different interfaces are used like REST API, KMS-interfaces, OPENPGP for eMAil, proprietary interfaces etc.
+
+
+interfaces may implement server-side services like encryption and signing.
+
+- **FrontEnd**:
+
+- **In-Vehicle**
 
 
 
@@ -768,9 +861,7 @@ Also you have customer data collected and maybe stored.
 
 
 
-
-
-
+## <u>**VPN/FireWalls/Proxies**</u>
 
 
 
