@@ -892,7 +892,7 @@ but in any case you need to address as holistic problem.
 ===
 
 
-## <u>**Exceprts from YouTube Videos by Technica**</u>
+## <u>**Exceprts from YouTube Videos**</u>
 
 1)
 End to End (E2E) does not mean `Application to Application` only. They all sit on a system. Thinking of the security measurements, many of them go below the application layer which are `Stack` layer and `Hardware` layer. Of these, there are MacSEc, IPSec,SecOC none of them are Application to Application.
@@ -965,7 +965,8 @@ On the left side of the V-Model there is system model from more abstract to more
 On the right side of the V-Model there is the integration and test levels.
 
 
-- USer Requirements --> Vehicle Test
+- User Requirements --> Vehicle Test
+
 entire product test, on test/prototype vehicles.focus is bring car into prod maturity.
 
 - System Requirements --> System Test
@@ -985,19 +986,16 @@ Component test which is Grey Box, functionalk requirements testing
 CI. automated tests, high-frequency commits and PRs
 
 
-
-
 2) Design approprioate Test concept and specifications.
 
+
+
 3) Implementation Levels: Component,EoL,Partial Network,Full Network and vehicle test solutions.
+
+You need to consider the multitude of protocols. Physical and layer testing. individual components test(HIL). ethernet test suite, ethernet network integration test.
+
 
 4) Ensure reproducibility of test results.
 
 
-
-
-
-
-https://app.pluralsight.com/library/courses/applied-cryptography-getting-started/table-of-contents 
-
-Very short but good inforeation on cryptography.
+### <u>**Autosar**</u>
