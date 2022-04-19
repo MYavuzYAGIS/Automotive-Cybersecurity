@@ -757,7 +757,9 @@ Networks like CAN FD, Flexray and Ethernet do not have payload limits.
 ## <u>**Vehicle Key Management Systems**</u>
 
 
+Do not forget that we have remote access to the vehicles.
 
+Also you have customer data collected and maybe stored.
 
 
 
