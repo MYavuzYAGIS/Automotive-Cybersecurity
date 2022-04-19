@@ -832,7 +832,7 @@ Distributed trust boils down to Vehicle Key Management Systems. This means secur
 ================================================
 
 
-Architecture is divided into 3 layers:
+<u>***Architecture is divided into 3 layers***:</u>
 
 1) **Backend + Middleware**:
 
