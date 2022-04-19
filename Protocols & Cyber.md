@@ -834,25 +834,40 @@ Distributed trust boils down to Vehicle Key Management Systems. This means secur
 
 Architecture is divided into 3 layers:
 
-- **Backend**:
+1) **Backend + Middleware**:
 
 main component is the database which is used for <u>creating</u> and <u>storing</u> the cryptographic material.
 
 It is usually set for `High Availability` in mind. Also, for the better security, **Hardware Security Modules** (HSM) are used alongside database.
 
-HSM is in charge of data-at-rest encryption and randomness generation.
+Database are used because HSM are small in memory to keep all these data.
 
+HSM is in charge of data-at-rest encryption and randomness generation.
 
 Key <u>Disstribution</u> and <u>Management</u> is taken care by attached services/applications.
 
 different interfaces are used like REST API, KMS-interfaces, OPENPGP for eMAil, proprietary interfaces etc.
 
-
 interfaces may implement server-side services like encryption and signing.
 
-- **FrontEnd**:
+2) **FrontEnd**:
 
-- **In-Vehicle**
+frontend directly talks to the backend to undertake tasks like:
+
+- - getting keys and flash them to ECUs in manufacturing.
+
+- - Caching OEM-keys for asynchronous supplier-side manufacturing.
+
+- - retrieve unit-specific passwords for root-cause analysis.
+
+depending on the use case, the frontend side application can be manual GUI, another machine ,or some library which is used by another software.
+
+Sometimes even offline use-cases have to be supported by the VKMS like in-line flashing verification checks.
+
+
+
+
+3) **In-Vehicle**
 
 
 
