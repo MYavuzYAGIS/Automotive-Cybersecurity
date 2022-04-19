@@ -302,7 +302,19 @@ A `Key Server` generates SAK.  If you have if you have one switch connected to a
 
 if you enable MacSec on an interface, it drops all frames except MAcsec encrypted frames. But you can configure macsec profile to allow unprotected traffic in macsec negotiation fails.
 
+
+Some info on Automotive MKA(MAcSec Key Agreement)
+
+it handles key exhcnage and comparison. in automotive in comparion to regular MKA, the key exhance timeout is reduced from 8 seconds to 30 miliseconds.
+
+
+
+
+
+
 ***===========***============***==============***==============***==============***
+
+
 
 
 
@@ -998,4 +1010,3 @@ You need to consider the multitude of protocols. Physical and layer testing. ind
 4) Ensure reproducibility of test results.
 
 
-### <u>**Autosar**</u>
