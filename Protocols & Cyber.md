@@ -959,6 +959,34 @@ Testing Considerations:
 
 1- Define test levels according to the **V-Model**.
 
+
+On the left side of the V-Model there is system model from more abstract to more concrete.
+
+On the right side of the V-Model there is the integration and test levels.
+
+
+- USer Requirements --> Vehicle Test
+entire product test, on test/prototype vehicles.focus is bring car into prod maturity.
+
+- System Requirements --> System Test
+
+testing behavior of `whole system` black box, HIL and SIL (software in the loop)
+
+- System Architectural Design --> System Integration Test
+
+test on target, performed onDUT/HIL, mainly black box testing. focus is integration and stability.
+
+- Software REquirements --> Component TEst
+
+Component test which is Grey Box, functionalk requirements testing
+
+- SoftwareDesign + Software integration  
+
+CI. automated tests, high-frequency commits and PRs
+
+
+
+
 2) Design approprioate Test concept and specifications.
 
 3) Implementation Levels: Component,EoL,Partial Network,Full Network and vehicle test solutions.
