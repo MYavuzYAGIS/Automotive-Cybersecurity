@@ -905,6 +905,15 @@ In automotive security, unlike IT , IP spoofing, port Spoofing etc can be preven
 
 3)
 
+Do every protocol need security build in?
+
+for example DoIP(lives in OSI 5-7) reaches out of the vehicle so it makes sense to secure it. You can enforce security within or support it with TLS below it, or the combination of both.
+
+But say, do we need to secure UDP Network Management(UDPnm) for network management by building security into the protocol? Technica does not think so. :D
+
+Main idea is, if two sides of the bridge are secure, you dont need a security for the bridge. Because if you implement MacSec, which protects everything sitting on top of it, an external attacker cannot modify antyhing.
+
+
 
 
 
