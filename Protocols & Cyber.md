@@ -860,6 +860,8 @@ frontend directly talks to the backend to undertake tasks like:
 
 - - retrieve unit-specific passwords for root-cause analysis.
 
+you want to store them in the backend but use it on the frontend for the key security.
+
 depending on the use case, the frontend side application can be manual GUI, another machine ,or some library which is used by another software.
 
 Sometimes even offline use-cases have to be supported by the VKMS like in-line flashing verification checks.
@@ -867,9 +869,20 @@ Sometimes even offline use-cases have to be supported by the VKMS like in-line f
 
 
 
-3) **In-Vehicle**
+3) **In-Vehicle(network and on-chip)**
 
 
+Processor/CPU + Rom/Flash + HSM.
+
+- - Every crypto material managed by the VKMS will eventually be distributed into an ECU for in-vehicle purposes like SecOC, SecureBoot, IP-Protection.
+
+- - Certain modules will always be present on chip for security and practicality reasons. these are Secure way of storing (Secure Hardware Extension(SHE), Software based HSM), A library/stack of hardware providing cryptographic services.(AUTOSAR Crypto Stack, Cryptoprocessor).
+
+HSM on the chip is required for the protection of the keys stored on the chip so they are not extracted or extracted easily. SHE is specifically designed for this purpose.
+
+Like if not stored on chip, how will it execute secure boot check, or signature checks.
+
+- - Depending on the VKMS implementation, on-chip software might be in or out of scope.
 
 
 
