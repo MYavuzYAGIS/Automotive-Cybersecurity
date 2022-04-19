@@ -891,7 +891,16 @@ but in any case you need to address as holistic problem.
 
 ===
 
-https://www.youtube.com/watch?v=CC3frh-Kjv4 ==> very important
+
+## <u>**Exceprts from YouTube Videos by Technica**</u>
+
+
+End to End (E2E) does not mean `Application to Application` only. They all sit on a system. Thinking of the security measurements, many of them go below the application layer which are `Stack` layer and `Hardware` layer. Of these, there are MacSEc, IPSec, SecOC none of them are Application to Application.
+
+
+
+
+
 https://www.youtube.com/watch?v=D52CsJqE_R4
 
 TAKE SOME IMPORTANT PARTS
