@@ -37,6 +37,7 @@ I have compiled the following topics:
 - IDS/IPS for ethernet & CanBus.
 
 - Some Reference Books.
+- ISTQB Foundation Level Notes.
 
 
 ## <u>Why?</u>
