@@ -156,15 +156,51 @@ In this model, work is divided into features or by `fixed time cycles`
 Instead of making one major activity at a time, you do everything in small increments in fixed time cycles.
 
 - <u>RUP</u>:
+- 
+Rational Unified Process. bigger deliveries
+
+longer iterations.
 
 - <u>Scrum</u>:
 
+iteartions are shorter, but more frequent. smaller deliveries
+Part of AGILE
+
 - <u>Kanban</u>:
+
+- Part of AGILE
+fluid roles, tasks are shared by everyone, no scrum-master, timelines evolve.
+
 
 - <u>Spiral</u>:
 
+experimental increments, most flexible model.
 
 
+## <u>**Test Levels**</u>
+
+- <u>**Component (unit - module) Testing**</u>
+
+Component is the smallest unit of testing which can be tested in isolation. 
+
+
+
+
+- <u>**Integration Testing**</u>
+
+
+
+
+- <u>**System Testing**</u>
+
+
+
+- <u>**Acceptance Testing**</u>
+
+
+
+
+- <u>**Alpha and Beta Testing**</u>
 
 
 
