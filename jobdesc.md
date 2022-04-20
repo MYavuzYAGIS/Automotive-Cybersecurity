@@ -44,3 +44,49 @@ Your Technica Engineering Recruiting Team
 
 
 https://www.linkedin.com/jobs/search/?currentJobId=2981001274&f_C=2360894&geoId=92000000
+
+
+TIMELY MAIL:
+
+Here are some topics that can be covered on technical interview:
+
+Regarding Security: (Since you come from networking/security background these will be the main points Technica will value for your profile)
+
+The expectation is to know the IPsec protocols like IKE, AH, ESP and most of all being able to read (understand) and analyse the traces/packets in order to find a root cause of a problem.
+Have some knowledge about TLS, Macsec, Firewalling.
+IPsec VPN Tunneling
+Example questions: What is the difference between routing and switching, how a switch knows where to send the package, which protocols are needed to establish IPsec connection etc.
+Regarding Ethernet:
+
+The expectation is to know well the ethernet protocols like TCP/IP, UDP, DHCP etc. and most of all being able to read (understand) and analyse the traces/packets in order to find a root cause of a problem.
+Threre can be questions regarding the ISO OSI model, protocol headers.
+The knowledge of Some/IP protocol will be an asset (nice to know).
+Regarding programming:
+
+Some basic programming/automation knowledge is required.
+Example topics that can be covered: Data structure, OOP paradigms, programming patterns.
+Regarding automotive and testing: (These ones are of course optionoal since you don’t have an automotive/testing background, so these are just nice to know 😊)
+
+Some knowledge from "ISTQB foundation level" is expected, eg. what is the difference between functional and non-functional testing or verification and validation.
+Ability to analyze traces/packets and differentiate BUS systems like CAN/CAN-FD, LIN, Flexray
+knowledge of General E/E architecture,
+V-Model
+DTC
+Flashing.
+ 
+
+If you have any questions or you need help, please do not hesitate to contact me!
+
+I hope that all will be successful, we keep our fingers crossed for you and wish you good luck in the interview!
+
+
+
+
+
+
+
+
+
+
+
+

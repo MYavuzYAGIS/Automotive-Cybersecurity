@@ -1001,13 +1001,26 @@ CI. automated tests, high-frequency commits and PRs
 2) Design approprioate Test concept and specifications.
 
 
-
 3) Implementation Levels: Component,EoL,Partial Network,Full Network and vehicle test solutions.
 
 You need to consider the multitude of protocols. Physical and layer testing. individual components test(HIL). ethernet test suite, ethernet network integration test.
 
 
 4) Ensure reproducibility of test results.
+
+
+
+## <u>**ISTQB foundation level**</u>
+
+
+SRS -> Software Requirements Specification
+
+HLD -> High Level Design
+
+Planning for testing is the most important part of testing.
+
+
+
 
 
 https://www.educba.com/types-of-cipher/ ==>important on ciphers (symmetrical etc)
