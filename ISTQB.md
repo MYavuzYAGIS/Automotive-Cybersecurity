@@ -255,6 +255,55 @@ Coverage gap ==> how much of the system is not covered by tests.
 
 
 
+### <u>**Non-Functional Testing**</u>
+
+It is not about the functionality but regarding User experience.
+
+Like UI, security, speed performance, usability. You ask `how ` questions like how fast, how secure, how stable.
+
+all the functions could be working, so passing functional test, but it could be slow, crashing, unstable, etc.
+
+Non-functional testing includes:
+
+- usability (can be fixed in alpha beta testing)
+- performance (needs stress testing, load testing, endurance testing)
+- security ( needs pentesting, ethical hacking, white-hat hacking.)
+
+
+### <u>**BlackBox- Whitebox Testing**</u>
+
+This is another way of grouping the test types. a counterpart to functional testing - non-functional testing.
+
+Blackbox: you dont look into what is inside the system, you look at the system as a whole. You rely on documentation and requirements.
+
+send input, verify output.
+
+Whitebox: knowing what is happenign inside the box and how it works. this is mostly done by devs during unittests.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
