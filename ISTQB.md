@@ -109,13 +109,33 @@ There are 2 Main Models:
 
 1) <u>**Sequential**</u>
 
+- <u>V-Model:</u>
+
+Unlike the waterfall model, the V-Model integrates the stages with testing. Main idea in V-Model is `Early testing`
+
+Each development phase is linked with a testing phase like 
+
+<br>
+low-level design ==> Unit testing.
+
+High-level design ==> Integration testing.
+
+System-design-and-development ==> System testing.
+
+Analysis ==> acceptance testing.
+
+Unlike Waterfall, which is a linear process, the V-Model is more synchronized approach. Testing starts earlier than waterfall.
+
+<br>
+
+- <u>Waterfall</u>
+
+
 simple and in-bulk deployment but not flexible and could be slow. one blockage could cause next steps to be blocked.
 
 Also any phase can become a bottleneck and very late feedback threat.
-- <u>V-Model:</u>
 
-
-- <u>Waterfall</u>
+It adds additional stress to testers.
 
 Each of these steps given above are done sequentially for each big feature requested.
 
@@ -125,7 +145,15 @@ then testers test, if bugs, send back to devs, they fix them, deliver the next v
 
 then as the situatuion requires, minor updates and maintenance is undertaken.
 
-2) <u>**Iterative**</u>
+2) <u>**Iterative(incremental)**</u>
+
+instead of working in bulk, you work in small increments and in each step, you test and fix the bugs. so instead of 10 features 
+
+at a time, you work on one or two features at a time.
+
+In this model, work is divided into features or by `fixed time cycles`
+
+Instead of making one major activity at a time, you do everything in small increments in fixed time cycles.
 
 - <u>RUP</u>:
 
