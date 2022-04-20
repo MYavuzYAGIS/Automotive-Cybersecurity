@@ -1,6 +1,11 @@
 # <u>**ISTQB foundation level**</u>
 
+
+
 <br/>
+
+
+SDLC -> Software Development Life Cycle Models like Waterfall and Agile
 
 SRS -> Software Requirements Specification
 
@@ -41,5 +46,55 @@ These should be caught in testing.
 - Absence of error is fallacy. Meaning even if you catch tons of defects, you cannot guarantee there is not anymore.
 
 
-### <u>**7 Test Process Fundamentals.**</u>
+### <u>**Test Process Fundamentals.**</u>
+
+
+- <u>Test Planning</u>
+
+What test techniques do you use and how? Schedule and deadlines? 
+
+- Test Monitoring and Control
+
+What was planned vs what is actually happening? Are we on track on plan and deadlines?
+
+
+- <u>Test Analysis</u>
+
+Business requirement, functional and non-funcional requrements, designs, documenation,code  etc.
+
+All of these are test basis upon which the tests will be written.
+
+
+- <u>Test Design and Implementation</u>
+
+All so far was to analyze what to test. Now it is time to how to test.
+
+This process entails designing and prioritizing the tests cases, identifying test data.
+
+Design is how to test, implementation is `Do we have eveything we need to test?`
+
+Implemenattion entails creating procedures and automated test scripts, setting up environment,preparing test data.
+
+
+
+- <u>Test Execution and Completion</u>
+
+SUT -> System Under Test.
+
+In this step you execute the designed and implemented tests and compare the results with the expected results.
+
+
+Test completion means creating a test report, also ensureing that all defetc report are documented.
+
+
+
+
+
+
+
+
+
+
+
+
 
