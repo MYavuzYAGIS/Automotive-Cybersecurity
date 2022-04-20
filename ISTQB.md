@@ -185,14 +185,33 @@ Component is the smallest unit of testing which can be tested in isolation.
 
 
 
-
 - <u>**Integration Testing**</u>
 
+We had tested units (components) individually before, now we connect them and test them together.
+
+Each time, we add another unit and test again.
+
+indivudually working units may go crazy when connected together. Integration tests this.
+
+Here we tests `component integration` which is testing components together and `system integration` means whether this integration is
+
+compatible with other, external components.
 
 
+Here you test:
+
+- subsystems
+- databases
+- microservices
 
 - <u>**System Testing**</u>
 
+Once the all units are tested and also integration test is completed, now this interconnected units compose a system.
+
+This level is testing the whole system.
+
+This is like full integration testing of all modules. You dont test different combinations of the components but test the system
+as a whole.
 
 
 - <u>**Acceptance Testing**</u>
