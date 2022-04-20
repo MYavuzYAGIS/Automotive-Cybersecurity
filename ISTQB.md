@@ -213,16 +213,44 @@ This level is testing the whole system.
 This is like full integration testing of all modules. You dont test different combinations of the components but test the system
 as a whole.
 
+2 POINT:
+
+- tester does not test from WITHIN the system but from OUTSIDE the system using interfaces or endpoints.
+
+- considers system's paths and flows. So tests a path of actions in the system.
+
 
 - <u>**Acceptance Testing**</u>
 
+similar to system testing, but we test the system from the end-user perspective.
+
+Acceptance testing has `Alpha` and `Beta` levels.
+
+both carried out by independent tester or potential customers.
+
+Alpha happens at the developer's site whereas beta testing happens at the customer's site.
+
+
+## <u>**Test Types !!**</u>
+
+A test type is a group of test activities aimed at testing a specific aspect of a system.
 
 
 
-- <u>**Alpha and Beta Testing**</u>
+### <u>**Functional Testing**</u>
+
+Testing the functionality of a system.  Does it work as expected? function = work.
+
+Unit testing, integration testing, system testing, UI testing are all types of **functional** testing.
+
+System and UI testing compose acceptance testing so functional testing also covers acceptance testing.
+
+What are functional coverage and coverage gap?
 
 
+Coverage ==> how much of the system is covered by tests.
 
+Coverage gap ==> how much of the system is not covered by tests.
 
 
 
