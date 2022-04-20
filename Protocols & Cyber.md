@@ -1010,3 +1010,4 @@ You need to consider the multitude of protocols. Physical and layer testing. ind
 4) Ensure reproducibility of test results.
 
 
+https://www.educba.com/types-of-cipher/ ==>important on ciphers (symmetrical etc)
