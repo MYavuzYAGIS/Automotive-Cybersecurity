@@ -35,7 +35,7 @@ Failure is simply an observable defect.
 These should be caught in testing.
 
 
-### <u>**7 Testing Principles**</u>
+## <u>**7 Testing Principles**</u>
 
 - Testing shows the presence of defects, not their absence.
 - Exhaustive testing is impossible, nor practical. An important sampling and testing on it is smart choice.
@@ -76,7 +76,6 @@ Design is how to test, implementation is `Do we have eveything we need to test?`
 Implemenattion entails creating procedures and automated test scripts, setting up environment,preparing test data.
 
 
-
 - <u>Test Execution and Completion</u>
 
 SUT -> System Under Test.
@@ -85,6 +84,57 @@ In this step you execute the designed and implemented tests and compare the resu
 
 
 Test completion means creating a test report, also ensureing that all defetc report are documented.
+
+
+
+## <u>**SDLC Models**</u>
+
+Regardless which model you choose, there is a common ground of stages:
+
+- Requirement analysis
+
+- Design
+
+- Development
+
+- Testing
+
+- Deployment
+
+- Maintenance
+
+
+
+There are 2 Main Models:
+
+1) <u>**Sequential**</u>
+
+simple and in-bulk deployment but not flexible and could be slow. one blockage could cause next steps to be blocked.
+
+Also any phase can become a bottleneck and very late feedback threat.
+- <u>V-Model:</u>
+
+
+- <u>Waterfall</u>
+
+Each of these steps given above are done sequentially for each big feature requested.
+
+First business analyst makes analysis, then it is designed, then devs develop it and it is handed to tester as version 1.0,
+
+then testers test, if bugs, send back to devs, they fix them, deliver the next version (1.1) and so on then delivered to customer.
+
+then as the situatuion requires, minor updates and maintenance is undertaken.
+
+2) <u>**Iterative**</u>
+
+- <u>RUP</u>:
+
+- <u>Scrum</u>:
+
+- <u>Kanban</u>:
+
+- <u>Spiral</u>:
+
 
 
 
