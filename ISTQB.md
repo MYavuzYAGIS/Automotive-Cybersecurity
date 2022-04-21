@@ -289,7 +289,11 @@ Whitebox: knowing what is happenign inside the box and how it works. this is mos
 
 
 
-## <u>Verification and Validation</u>
+
+
+===========================================
+
+## <u>**Verification and Validation**</u>
 
 ISO 26262-6 is the main functional safety standard with respect to software development for high-integrity in-vehicle applications. It defines requirements and constraints for software development, verification and validation processes.
 
@@ -318,6 +322,9 @@ Verification is done by the QA team while Validation is done by the involvement 
 Comparing Verification vs Validation testing, Verification process comes before validation whereas Validation process comes after verification.
 
 
+## <u>**General E/E Knowledge**</u>
+
+https://www.youtube.com/watch?v=wPJ3gF-8_Ik&list=PLLKv-zcGiHJEiwb31Wd9m4Cj0FnvlCS24
 
 
 
