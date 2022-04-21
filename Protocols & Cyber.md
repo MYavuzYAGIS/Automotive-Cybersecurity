@@ -1052,6 +1052,38 @@ Comparing Verification vs Validation testing, Verification process comes before 
 
 E/E stands for **'Electrical/Electronic'**
 
+There were no electrrical/electronic parts in the vehicles in the 70s, maybe some small parts to toggle the lights.
+
+Then came remote door unlock. and gradually put on.
+
+These small electrical systems made use of `Electronic Control Units` (ECU) to apply rules or perform calculations which were wired to sensors, motors, actuators etc.
+
+each of these components means more **cost** and **weight** to the vehicle.
+
+
+what if we wire ECUs to each other? that reduces the wire and costs.
+
+This means, creation of `network` in the vehicle so ECU can send / receive data.!
+
+also, per regulations, ECUs are asked to undertake `Diagnostics` , aka OBD.
+
+OEMs wanted to reduce the cost by finding ways to use single ECU in different (but similar) vehicles. This led them developing ECUs than can be tuned (calibrated) to match the vehicles.
+
+With the advent of technology, we increased the thinking power of ECUS from single core 8 bit to multi core 32 bit, even adding AI.
+
+With being connected to GPS or Web servers, the vehicles became a part of greater network. This also helped offboard calculations to be made instead of putting heavy loads on the ECU. (yani disardan aliyor veriyi mesela bazen, kendi hesaplamiyor.)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
