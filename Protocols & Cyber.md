@@ -1124,8 +1124,9 @@ what about **HCP**?
 as stated above, HCP is a new generation of ECU . High-Performance Computing Platform.
 
 
+nowadays, vehicles use Ethernet networks to move high volume data and they evaulate this data to build a picture of their environment to make predictions as to what happens next and how to behave or how to determine them precisely.
 
-
+this requires more horse-power than ECU can provide. HCPs are primarily used for `Data-centric processing` (DCP)
 
 
 
