@@ -213,6 +213,8 @@ This level is testing the whole system.
 This is like full integration testing of all modules. You dont test different combinations of the components but test the system
 as a whole.
 
+This is where End2End testng or Front2Back testing comes in.
+
 2 POINT:
 
 - tester does not test from WITHIN the system but from OUTSIDE the system using interfaces or endpoints.
@@ -283,12 +285,37 @@ Whitebox: knowing what is happenign inside the box and how it works. this is mos
 
 
 
+## <u>**Static Testing**</u>
 
 
 
+## <u>Verification and Validation</u>
+
+ISO 26262-6 is the main functional safety standard with respect to software development for high-integrity in-vehicle applications. It defines requirements and constraints for software development, verification and validation processes.
 
 
+ISO 26262  guide automotive engineers to identify hazards, risks, and resulting safety goals. The check on how well the design meets those goals comes through verification and validation.
 
+In **verification**, systems and supporting software undergo quality audits, testing, and expert reviews to confirm that all are designed to specification. During **validation**, product tests – including full operation of systems and components – ensure the end product will function as intended and confirm the adequacy of the safety goals.
+
+ISO 26262 (―Road Vehicles - Functional Safety‖) is a standard for the design and verification of automotive systems and a buzzword!
+
+
+Verification process includes checking of documents, design, code and program whereas Validation process includes testing and validation of the actual product.
+
+Verification does not involve code execution while Validation involves code execution.
+
+Verification uses methods like reviews, walkthroughs, inspections and desk-checking whereas Validation uses methods like black box testing, white box testing and non-functional testing.
+
+Verification checks whether the software confirms a specification whereas Validation checks whether the software meets the requirements and expectations.
+
+Verification finds the bugs early in the development cycle whereas Validation finds the bugs that verification can not catch.
+
+Comparing validation and verification in software testing, Verification process targets on software architecture, design, database, etc. while Validation process targets the actual software product.
+
+Verification is done by the QA team while Validation is done by the involvement of testing team with QA team.
+
+Comparing Verification vs Validation testing, Verification process comes before validation whereas Validation process comes after verification.
 
 
 
