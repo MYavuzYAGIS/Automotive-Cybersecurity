@@ -1050,6 +1050,9 @@ Comparing Verification vs Validation testing, Verification process comes before 
 ## <u>**General E/E Knowledge**</u>
 
 
+DONT FORGET THAT CAN/FLEXRAY/LIN/ETHERNET ETC ARE NOT ECU! THEY CONNECT TO ECU.
+
+
 E/E stands for **'Electrical/Electronic'**
 
 There were no electrrical/electronic parts in the vehicles in the 70s, maybe some small parts to toggle the lights.
@@ -1129,13 +1132,15 @@ nowadays, vehicles use Ethernet networks to move high volume data and they evaul
 this requires more horse-power than ECU can provide. HCPs are primarily used for `Data-centric processing` (DCP)
 
 
+What is `Data-centric processing`?
 
+some common vehicle environments require very fast data processing mesela otonom suruculu araclari dusun, yerleri surekli degisen objeleri takip edip ona gore haber vermesi lazim.
 
+for this end, we need `high-bandwith` network and large amount of memory. also we need `GPU` for processing the data because they split tasks into thousands of small pieces and execute them in parallel thanks to their hundreds of cores.
 
+while ECUS use single stream of signal data, HCP needs dynamic, `service oriented` communication because single stream is not enough.
 
-
-
-
+to meet the modern needs (like HCP), AUTOSAR developed a new set of specifications for the `Autosar Adaptive Platform` that runs on a POSIX operating system. (like linux.)
 
 
 
