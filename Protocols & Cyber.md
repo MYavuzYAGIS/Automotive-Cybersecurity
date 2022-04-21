@@ -1180,6 +1180,24 @@ to overcome this, **`GATEWAYS`** were introduced. Gateway is a `router`,central 
 
 
 
+later on, with the advent of Automotive Ethernet, `functional domain controller` (FD-C) was introduced. they were connected via AE to ethernet SWITCHES and aggreate functions that were originally hosted by ECUs.
+
+HCP runs Infotainments, and can also run `Predictive Traction Control`.
+
+</br>
+
+![](ss/EE.png)
+
+
+</br>
+
+to problem was, there is lots lots of cabling and wiring. to adress this, we can divide a vehicle into topological zones, each with a `Zone Domain Controller` (ZDC) with busses to `IO Nodes`. that gather inputs and provide outputs relying on little amount of ECUS.
+
+
+
+
+
+
 
 
 So what is **AUTOSAR**?
