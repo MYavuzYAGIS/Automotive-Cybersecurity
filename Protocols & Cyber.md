@@ -1174,6 +1174,13 @@ While ECUs rely on `hard real-time` behaviors (ince ayarlanmis deadlines), HCP r
 
 
 
+with the 2000's there has been an ECU explosion. there were lots of ECUS in the vehicles but this had some bottleneck. because there is a limit for how many ECUs can be used in a CAN Bus.
+
+to overcome this, **`GATEWAYS`** were introduced. Gateway is a `router`,central hub in the vehicle that securely interconnects and processes data across heterogeneous vehicle networks to and from functional domains such as powertrain, chassis and safety, body control, infotainment, telematics and advanced driving assistance systems.
+
+
+
+
 
 So what is **AUTOSAR**?
 
@@ -1234,6 +1241,13 @@ When your vehicle’s ECM is directly connected to your company via telematics, 
 DTC operates on **UDS** (Unified Diagnostic Services) protocol which is an ISO standard that defines structures of diagnostic requests and responses.
 
 **Unified Diagnostic Services (UDS)** is an automotive protocol that lets the diagnostic systems communicate with the ECUs to diagnose faults and reprogram the ECUs accordingly (if required). It is called unified because it combines and consolidates all the standards like KWP 2000, ISO 15765 and others.
+
+
+
+
+
+
+
 
 
 
@@ -1338,12 +1352,12 @@ Example: Suppose we have a class called, “Animal” and two child classes, “
 
 
 
-#### <u>**Programming Stuff**</u>
+#### <u>**Software Design Patterns**</u>
 
 
+https://refactoring.guru/design-patterns
 
-
-
+https://www.youtube.com/watch?v=tv-_1er1mWI
 
 
 
