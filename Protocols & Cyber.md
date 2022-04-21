@@ -1108,6 +1108,11 @@ in classical times, there were little or no ECU specification standardisation, s
 
 Because of lack of standardisation, there was no eaasy way to add new features to ECUS or move functions. This caused adding more and more ECUS for even small stuff to be handled.
 
+Hence both manufacturers and suppliers agreed on the necessity of a standardisation. The result was 
+
+*Automotive Open System Architecture (AUTOSAR)* which standardized the specifications for  ECU  software.
+
+it not only standarddized but also set `methodology`  and `file formats`(Autosar XML) to be used by software tools.
 
 
 
