@@ -1386,6 +1386,8 @@ https://www.youtube.com/watch?v=1z0ULvg_pW8
 
 
 
+
+
 #### <u>**Software Design Patterns**</u>
 
 
@@ -1397,3 +1399,15 @@ https://www.youtube.com/watch?v=tv-_1er1mWI
 
 
 https://www.educba.com/types-of-cipher/ ==>important on ciphers (symmetrical etc)
+
+
+https://www.youtube.com/watch?v=sZjpxU12_eI => IPSEC on wireshark
+
+https://community.f5.com/t5/technical-articles/understanding-ipsec-ikev1-negotiation-on-wireshark/ta-p/281176 => IPSEC on wireshark
+
+
+
+https://www.reddit.com/r/wireshark/comments/tnttds/analysis_and_troubleshooting_ipsec_vpns_with/
+
+
+https://www.youtube.com/watch?v=CuxyZiSCSfc
