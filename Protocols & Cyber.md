@@ -1100,6 +1100,17 @@ In some defect situations, ECU can accept diagnostic requests and send diagnosti
 
 So what is **AUTOSAR**?
 
+for ECU ==> AUTOSAR Classic Platform
+
+for HCP ==> AUTOSAR Adaptive Platform
+
+in classical times, there were little or no ECU specification standardisation, so vehicle manufacturers had to specify everything else themselves while the suppliers had to cope with many similar but different specifications.
+
+Because of lack of standardisation, there was no eaasy way to add new features to ECUS or move functions. This caused adding more and more ECUS for even small stuff to be handled.
+
+
+
+
 
 
 
