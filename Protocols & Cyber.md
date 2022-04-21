@@ -1093,11 +1093,12 @@ Video and other `heavy` data also used in `Advanced Driver Assistance Systems` (
 
 Can , Lin, Flexray are `Signal oriented architectures` whereas Ethernet also allows vehicle E/E systems to use `Service-Orientated architecture` (SOA).
 
+In some defect situations, ECU can accept diagnostic requests and send diagnostic responses. On borad Diagnostics(OBD) standardises requests, responses related to emissions control systems, their structures and contents.
+
+ If there is  a problem in the ECU, like fault memory, this is logged and also sent in form of DTC for diagnosis.
 
 
-
-
-
+So what is **AUTOSAR**?
 
 
 
@@ -1130,7 +1131,7 @@ The engine control module (ECM) functions as the main computer on all newer mode
 
 When your vehicle’s ECM is directly connected to your company via telematics, app, or gateway, you can find out in real-time from your desk in the home office what’s going on with the vehicle. KeepTruckin’s vehicle diagnostics automatically monitors fault codes through its direct connection to on-board vehicle diagnostics.
 
-DTC operates on **UDS** (Unified Diagnostic Systems) protocol.
+DTC operates on **UDS** (Unified Diagnostic Services) protocol which is an ISO standard that defines structures of diagnostic requests and responses.
 
 **Unified Diagnostic Services (UDS)** is an automotive protocol that lets the diagnostic systems communicate with the ECUs to diagnose faults and reprogram the ECUs accordingly (if required). It is called unified because it combines and consolidates all the standards like KWP 2000, ISO 15765 and others.
 
@@ -1140,6 +1141,7 @@ DTC operates on **UDS** (Unified Diagnostic Systems) protocol.
 
 ### <u>**Flashing ECU**</u>
 
+updating the ECU is done through UDS protocol.
 
 Flashing = Tuning.
 
@@ -1151,7 +1153,7 @@ You can undertake flashing:
 
 1) via external hardware.
 
-2) application protocols.
+2) application protocols.(UDS) ==> to the flash bootloader(FBL)
 
 3) FOTA (Flash Over The Air). ==> communicate over ETHERNET.
 
@@ -1171,6 +1173,21 @@ To put it simply, V-Model (where V stands for verification and validation) split
 
 
 ![](ss/V-model.png)
+
+
+
+
+### <u>**OOP and Programming stuff**</u>
+
+
+
+#### <u>**OOP**</u>
+
+
+
+
+#### <u>**Programming Stuff**</u>
+
 
 
 

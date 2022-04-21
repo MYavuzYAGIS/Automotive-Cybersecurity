@@ -1,7 +1,4 @@
 
-![](ss/autosar.png)
-
-
 # <u>What is This Repo?</u>
 
 This repository contains my personal handwritten notes on `Automotive Cybersecurity`, `Automotive Ethernet Protocols`, and `Network Diagnosis & Protocols`.
