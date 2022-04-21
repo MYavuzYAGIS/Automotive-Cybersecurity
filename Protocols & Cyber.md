@@ -1050,7 +1050,9 @@ Comparing Verification vs Validation testing, Verification process comes before 
 ## <u>**General E/E Knowledge**</u>
 
 
-DONT FORGET THAT CAN/FLEXRAY/LIN/ETHERNET ETC ARE NOT ECU! THEY CONNECT TO ECU.
+DONT FORGET THAT CAN/FLEXRAY/LIN/ETHERNET ETC ARE NOT ECU! THEY CONNECT TO ECU and ECU were BEFORE these network systems!!!! 
+
+ONCE ECU vardi (ABS, fuel-injection gibi) sonra CAN etc geldi.
 
 
 E/E stands for **'Electrical/Electronic'**
@@ -1143,9 +1145,32 @@ while ECUS use single stream of signal data, HCP needs dynamic, `service oriente
 to meet the modern needs (like HCP), AUTOSAR developed a new set of specifications for the `Autosar Adaptive Platform` that runs on a POSIX operating system. (like linux.)
 
 
+modern vehicles need both hardware-centric (ECU) platforms and software-centric (HCP) platforms together.
+
+
+**What do future vehicles need alongside `predictability`?**
+
+
+Autosar adaptive platform (for HCP) provides access to the computing power needed by future vehicles which are ACES functions.
+
+ACES (Advanced Driver Assistance System) is a new generation of `Autosar Adaptive Platform` (ADAP) that is designed to meet the needs of future vehicles.
+
+A ==> Automation
+
+C ==> Connectivity
+
+E ==> Electrification (less carbon emission)
+
+S ==> Sharing.
+
+HCP can provide all these ACES functions!
 
 
 
+While ECU programs depend on signals, they cannot perceive Objects so languages like C are used. But HCP can and has to rely on objects so OOP is used, like C++.
+
+
+While ECUs rely on `hard real-time` behaviors (ince ayarlanmis deadlines), HCP rely on POSIX operating systems and ACES functions.
 
 
 So what is **AUTOSAR**?
@@ -1174,6 +1199,7 @@ AUTOSAR RTE is the Run-Time Environment (RTE) that is the heart of the AUTOSAR E
 
 
 
+Autosar adaptive platform (for HCP) provides access to the computing power needed by future vehicles which are ACES functions.
 
 
 
