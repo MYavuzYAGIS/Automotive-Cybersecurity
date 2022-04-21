@@ -1098,6 +1098,50 @@ In some defect situations, ECU can accept diagnostic requests and send diagnosti
  If there is  a problem in the ECU, like fault memory, this is logged and also sent in form of DTC for diagnosis.
 
 
+Main ECU software are :
+
+```
+BSW (Basic Software)
+
+RTE (Runtime Environment)
+
+Application Software
+
+Flash Bootloader
+```
+
+
+Everytime a ECU boots, flash bootloader runs and checks the main ECU software is valid or not.
+
+it is also used when software update is in progress. the ECU software is stored in `non-volatile memory` (NVM) meaning on reboot, memory is not erased.
+
+the FBL provides diagnostic services that allow the whole NVM to be erased and re-flashed by a network connection. also can verify the data.
+
+
+
+what about **HCP**?
+
+as stated above, HCP is a new generation of ECU . High-Performance Computing Platform.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 So what is **AUTOSAR**?
 
 for ECU ==> AUTOSAR Classic Platform
@@ -1110,11 +1154,17 @@ Because of lack of standardisation, there was no eaasy way to add new features t
 
 Hence both manufacturers and suppliers agreed on the necessity of a standardisation. The result was 
 
-*Automotive Open System Architecture (AUTOSAR)* which standardized the specifications for  ECU  software.
+*Automotive Open System Architecture (AUTOSAR)* which standardized bthe specifications for  ECU  software y dividing the architecture into the stacks and modules with well-defined responsiblities.
 
 it not only standarddized but also set `methodology`  and `file formats`(Autosar XML) to be used by software tools.
 
 
+AUTOSAR `foundation` specification helps Autosar classic and adaptive platforms to be used together.
+
+
+at the heart of AUTOSAR architecture is the `Run-Time Environment` (RTE) which is a software stack that provides the basic services for the ECU.
+
+AUTOSAR RTE is the Run-Time Environment (RTE) that is the heart of the AUTOSAR ECU architecture. It provides the infrastructure services that enable communication between AUTOSAR software components. It is acting as the means by which AUTOSAR software-components access basic software modules including the OS and communication service.
 
 
 
