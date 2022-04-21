@@ -1074,7 +1074,13 @@ With the advent of technology, we increased the thinking power of ECUS from sing
 With being connected to GPS or Web servers, the vehicles became a part of greater network. This also helped offboard calculations to be made instead of putting heavy loads on the ECU. (yani disardan aliyor veriyi mesela bazen, kendi hesaplamiyor.)
 
 
-https://www.youtube.com/watch?v=xHfInsMEYdQ&list=PLLKv-zcGiHJEiwb31Wd9m4Cj0FnvlCS24&index=3
+A new generation of ECU, called HCP (High-Performance Computing Platform) is coming up. Embedded systems perform single,specific job and have specialized Embedded Software.
+
+In vehicles, these embedded systems are ECU. These provide the control functions.(logic functions, if this happens, do this.) also they provide diagnostics, calibration etc.
+
+Unlinke microprocessors, these  microcontrollers that ECUs use come with a dedicated ram and storage.
+
+
 
 
 
