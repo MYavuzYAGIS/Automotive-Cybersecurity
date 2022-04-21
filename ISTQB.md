@@ -35,17 +35,6 @@ Failure is simply an observable defect.
 These should be caught in testing.
 
 
-## <u>**7 Testing Principles**</u>
-
-- Testing shows the presence of defects, not their absence.
-- Exhaustive testing is impossible, nor practical. An important sampling and testing on it is smart choice.
-- Early testing saves money and time.
-- Defects cluster together(1 cause another)
-- Pesticide Paradox: To find new bugs, you need to make reviews and changes to the test.
-- Testing is content dependent. Which app requires more security testing.
-- Absence of error is fallacy. Meaning even if you catch tons of defects, you cannot guarantee there is not anymore.
-
-
 ### <u>**Test Process Fundamentals.**</u>
 
 
@@ -287,44 +276,67 @@ Whitebox: knowing what is happenign inside the box and how it works. this is mos
 
 ## <u>**Static Testing**</u>
 
+**Static Testing** 
+
+
+Unlinke dynamic testing, in static testing, the code is never executed. it is used *early* in the SDLC process to ID issues that may cause problems in the later dev stages. 
+
+Static analysis is a tool-dtiven evaluation of any work product with structure (like code, documentation, etc.) it is especially important for **safety-critical systems**.
+
+Static analysis is often incorporated into the CI/CD process.
+
+
+
+Mesela bir belgeyi, specificationu, documentationu alip, onun icinde mantik analizleri yapiyoruz. Hukuk metni okur gibi.
+
+
+
+**Static Testing vs Dynamic Testing**
+
+They can have the same objectives like assessing quality of design, product, security, performance, etc; identify defects. But static and dynamic testing should be regarded as complementary to each other as they aim to find defects as soon as possible.
+
+Dynamic testing is hard. requires lots of overhead like designing, implementing, executing, reporting the test results.
+
+Static testing: defects are found in the work products, no code execution, can identify hhidden defects.
+
+
+
+
+
+*Reviews* are manual static testing , reading manual and code documentation and requirements specifications.
+
+
+There are 4 types of static testing:
+
+- <u>**Informal reviews**</u>
+
+reviewing without a formal process and documenting outputs. like 2 devs helping each other.
+
+
+- <u>**Formal reviews**</u>
+
+requires team effort, usually technical pairs of the author and other bodies meet and discuss for defects and document. no author lead.
+
+
+- <u>**Software inspection**</u>
+
+demands detailed examination of the work product using clearly defined goals. 
+
+
+- <u>**Walkthroughs**</u>
+
+lead by the work product, aim to find defects and alternative implementations. Biri elinde kagit tek tek uzerinden geciriyor takimi.
+
+
+
+
+
 
 
 
 
 ===========================================
 
-## <u>**Verification and Validation**</u>
-
-ISO 26262-6 is the main functional safety standard with respect to software development for high-integrity in-vehicle applications. It defines requirements and constraints for software development, verification and validation processes.
-
-
-ISO 26262  guide automotive engineers to identify hazards, risks, and resulting safety goals. The check on how well the design meets those goals comes through verification and validation.
-
-In **verification**, systems and supporting software undergo quality audits, testing, and expert reviews to confirm that all are designed to specification. During **validation**, product tests – including full operation of systems and components – ensure the end product will function as intended and confirm the adequacy of the safety goals.
-
-ISO 26262 (―Road Vehicles - Functional Safety‖) is a standard for the design and verification of automotive systems and a buzzword!
-
-
-Verification process includes checking of documents, design, code and program whereas Validation process includes testing and validation of the actual product.
-
-Verification does not involve code execution while Validation involves code execution.
-
-Verification uses methods like reviews, walkthroughs, inspections and desk-checking whereas Validation uses methods like black box testing, white box testing and non-functional testing.
-
-Verification checks whether the software confirms a specification whereas Validation checks whether the software meets the requirements and expectations.
-
-Verification finds the bugs early in the development cycle whereas Validation finds the bugs that verification can not catch.
-
-Comparing validation and verification in software testing, Verification process targets on software architecture, design, database, etc. while Validation process targets the actual software product.
-
-Verification is done by the QA team while Validation is done by the involvement of testing team with QA team.
-
-Comparing Verification vs Validation testing, Verification process comes before validation whereas Validation process comes after verification.
-
-
-## <u>**General E/E Knowledge**</u>
-
-https://www.youtube.com/watch?v=wPJ3gF-8_Ik&list=PLLKv-zcGiHJEiwb31Wd9m4Cj0FnvlCS24
 
 
 

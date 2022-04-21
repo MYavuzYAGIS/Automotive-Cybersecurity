@@ -1050,6 +1050,40 @@ Comparing Verification vs Validation testing, Verification process comes before 
 https://www.youtube.com/watch?v=wPJ3gF-8_Ik&list=PLLKv-zcGiHJEiwb31Wd9m4Cj0FnvlCS24
 
 
+## <u>**DTC and Flashing and V-Model**</u>
+
+
+### <u>**DTC**</u>
+
+DTC stands for **Diagnostic Trouble Code**.
+
+DTC is a code used to diagnose malfunctions in a vehicle or heavy equipment. While the malfunction indicator lamp (MIL)—also known as the check engine light—simply alerts drivers that there is an issue, a DTC identifies what and where the issue is. DTCs are also called engine vehicle fault codes codes, and can be read with a scanner that plugs directly into the port of a vehicle.
+
+DTC is used by a vehicle's onboard diagnostics (OBD) system to alert when a malfunctuion is detected.
+
+When the vehicle’s OBD system detects a problem, it generates a specific DTC code and transmits the alert to the vehicle’s instrument panel as a warning light. In vehicles equipped with a telematics system, the alert can be delivered directly to the fleet. The system can be set up to deliver the alert right to the maintenance department.
+
+These codes were created by the Society of Automotive Engineers (SAE) to help vehicles comply with emission regulations. SAE is now called SAE International, and it is the professional organization that develops standards for automotive engineers.
+
+**How do DTC codes work?**
+
+Diagnostic Trouble Codes or OBD-II (in light-duty vehicles) or J1939 (in heavy-duty vehicles) trouble codes are codes that the vehicle’s OBD system uses to notify you about a problem. Each code corresponds to a fault detected in the vehicle. When the vehicle’s computer detects an issue that requires attention, it will activate the corresponding trouble code.
+What does a DTC mean in a vehicle?
+
+The engine control module (ECM) functions as the main computer on all newer model vehicles. The ECM is also commonly referred to as the engine control unit (ECU) or powertrain control module (PCM).
+
+When your vehicle’s ECM is directly connected to your company via telematics, app, or gateway, you can find out in real-time from your desk in the home office what’s going on with the vehicle. KeepTruckin’s vehicle diagnostics automatically monitors fault codes through its direct connection to on-board vehicle diagnostics.
+
+DTC operates on **UDS** (Unified Diagnostic Systems) protocol.
+
+
+
+
+
+
+
+
+
 
 
 
