@@ -1089,7 +1089,9 @@ Sequence of voltages are applied to the network, that often directly represent b
 So each bit correspods to a voltage.
 
 
+Video and other `heavy` data also used in `Advanced Driver Assistance Systems` (ADAS)
 
+Can , Lin, Flexray are `Signal oriented architectures` whereas Ethernet also allows vehicle E/E systems to use `Service-Oriented architecture` (SOA).
 
 
 
