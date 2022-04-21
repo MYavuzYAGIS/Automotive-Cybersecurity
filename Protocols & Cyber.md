@@ -1180,7 +1180,7 @@ to overcome this, **`GATEWAYS`** were introduced. Gateway is a `router`,central 
 
 
 
-later on, with the advent of Automotive Ethernet, `functional domain controller` (FD-C) was introduced. they were connected via AE to ethernet SWITCHES and aggreate functions that were originally hosted by ECUs.
+later on, with the advent of Automotive Ethernet, `Functional Domain Controller` (FD-C) was introduced. they were connected via AE to ethernet SWITCHES and aggreate functions that were originally hosted by ECUs.
 
 HCP runs Infotainments, and can also run `Predictive Traction Control`.
 
@@ -1191,7 +1191,10 @@ HCP runs Infotainments, and can also run `Predictive Traction Control`.
 
 </br>
 
-to problem was, there is lots lots of cabling and wiring. to adress this, we can divide a vehicle into topological zones, each with a `Zone Domain Controller` (ZDC) with busses to `IO Nodes`. that gather inputs and provide outputs relying on little amount of ECUS.
+to problem was, there is lots lots of cabling and wiring. to adress this, we can divide a vehicle into topological zones, each with a `Zone Domain Controller` (ZDC) with busses to `IO Nodes`. that gather inputs and provide outputs relying on little amount of ECUS. still ethernet and switches are used here in interconnectedness.
+
+this HCP, ZDC, and IO nodes enable `Software-defined vehicles`. 
+
 
 
 
@@ -1365,6 +1368,19 @@ Because derived objects share the same interface as their parents, the calling c
 
 Example: Suppose we have a class called, “Animal” and two child classes, “Cat,” and “Dog.” If the Animal class has a method to make a noise, called, “makeNoise,” then, we can override the "makeNoise" function that is inherited by the sub-classes, "Cat" and "Dog," to be “meow” and “bark,” respectively. Another function can, then, be written that accepts any Animal object as a parameter and invokes its "makeNoise" member function. The noise will be different: either a “meow” or a “bark” depending on the type of animal object that was actually passed to the function.
 
+
+
+
+
+
+
+
+
+
+
+#### <u>**Special Swithc/Hub/Router Section**</u>
+
+https://www.youtube.com/watch?v=1z0ULvg_pW8
 
 
 
