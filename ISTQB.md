@@ -100,6 +100,8 @@ There are 2 Main Models:
 
 - <u>V-Model:</u>
 
+V stands for verification and validation
+
 Unlike the waterfall model, the V-Model integrates the stages with testing. Main idea in V-Model is `Early testing`
 
 Each development phase is linked with a testing phase like 

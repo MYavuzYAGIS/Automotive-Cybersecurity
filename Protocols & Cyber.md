@@ -971,6 +971,8 @@ Testing Considerations:
 
 1- Define test levels according to the **V-Model**.
 
+V stands for verification and validation
+
 
 On the left side of the V-Model there is system model from more abstract to more concrete.
 
@@ -1047,7 +1049,39 @@ Comparing Verification vs Validation testing, Verification process comes before 
 
 ## <u>**General E/E Knowledge**</u>
 
-https://www.youtube.com/watch?v=wPJ3gF-8_Ik&list=PLLKv-zcGiHJEiwb31Wd9m4Cj0FnvlCS24
+
+E/E stands for **'Electrical/Electronic'**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## <u>**DTC and Flashing and V-Model**</u>
@@ -1076,9 +1110,45 @@ When your vehicle’s ECM is directly connected to your company via telematics, 
 
 DTC operates on **UDS** (Unified Diagnostic Systems) protocol.
 
+**Unified Diagnostic Services (UDS)** is an automotive protocol that lets the diagnostic systems communicate with the ECUs to diagnose faults and reprogram the ECUs accordingly (if required). It is called unified because it combines and consolidates all the standards like KWP 2000, ISO 15765 and others.
 
 
 
+
+
+### <u>**Flashing ECU**</u>
+
+
+Flashing = Tuning.
+
+Flashing means embedding the software into the chip just like flashing a ROM into your phone.
+
+One of the major reasons to consider while designing the Flash Bootloader is the need for compliance with **ISO 26262 Standard for functional safety**.
+
+You can undertake flashing:
+
+1) via external hardware.
+
+2) application protocols.
+
+3) FOTA (Flash Over The Air). ==> communicate over ETHERNET.
+
+
+
+ECU flash can be segmented into 2 section:
+
+1) Program Flash (PFlash) : flashing into where the entire code resides,and is responsible for control logics like entire car program or changing visual commander to voice commander etc.
+
+2) Data Flash (DFlash) : flashing into where the data resides, and targets the variables (constants, maps, curves) and referred when the software needs like re-flashing for setting maximum speed or uploading new map.
+
+
+
+### <u>**V-Model**</u>
+
+To put it simply, V-Model (where V stands for verification and validation) splits the development process into two parts – the left arm of the V consists of requirement analysis, function design, and software development while the right arm concentrates on the verification and validation activities followed by the release. The V-model is an extension of the waterfall methodology. V-Model emphasizes testing, particularly the need for early test planning.
+
+
+![](ss/V-model.png)
 
 
 
