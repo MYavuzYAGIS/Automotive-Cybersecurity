@@ -1084,10 +1084,9 @@ Networks allow ECUs to share information with a reduced risk of undetected error
 
 the networks used between ECU's within vehicle E/E system is called `serial communications` where serial means single stream of communication.
 
+Sequence of voltages are applied to the network, that often directly represent binary digits (bits.)
 
-
-
-
+So each bit correspods to a voltage.
 
 
 
