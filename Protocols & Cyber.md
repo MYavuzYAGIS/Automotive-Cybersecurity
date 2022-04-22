@@ -316,6 +316,18 @@ Data is the encrypted payload. looks like a random hash value.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ### <u> MacSec Terminology</u>:
 
 1. <u>**MacSec Key Agreement Protocol**</u>
@@ -518,6 +530,28 @@ SSH works in one of 3 ways:
 - Private-key authentication ( cari olan islem bu.)
 
 - Password authentication
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # <h1>CyberSecurity Notes</h1>
 
@@ -1409,15 +1443,53 @@ To put it simply, V-Model (where V stands for verification and validation) split
 
 <br/>
 
+
+***Very Good Explanation!***
+
 Quick notes on 3 of them:
+
+
+Hubs and switches are used to **CREATE** networks while routers are used to **CONNECT** networks.
+
 
 - **Switch:**
 
+has multiple ports. but unlike hub, a switch is intelligent. swtich can learn phtical addresses (MAC) and stores them in switch table. Hence, when a packet comes, it only goes to the intended device. so switches are far more efficient and secure than hubs.
+
+like hubs, switches are also used for local area network, meaning internal networks.
+
+They dont exchange data out of their own nwtworks.
+
+Swtiches are generally **IP blind**, hence they cannot handle external network traffic like internet
 
 - **Hub:**
 
+Connects devices on an **internal** network. has multiple ethenet ports. not intelligent because does not filter data.
+
+only thing a hub knows is whether a device is connected or not.
+
+
+when a data packet arrives to one of the ports, data is **copied** to all the other ports so all devices see that data packet. this is why it creates security and bandwith issues.
+
+it acts as a broadcaster.
+
+hubs too are generally **IP blind**, hence they cannot handle external network traffic like internet
+
 
 - **Router:**
+
+forwards data based on **IP address** hence can externally communicate.
+
+When a packet comes in, it inspects the IP address and understands whether it is for its own network or for external network. If intended for local network, it receives it ; if for external network, it forwards it to another network.
+
+the router is a gateway of a network.
+
+So you can build 2 interconnected networks, being interconnected by a shared router and for each network, a swich handles their respective internal traffic handling.
+
+
+
+
+
 
 
 
@@ -1844,7 +1916,6 @@ TCP is also known as Transmission Control Protocol. It is a connection-oriented 
 
 
 
-https://techmusa.com/ipsec-vpn-troubleshooting/
 
 
 
@@ -1856,9 +1927,3 @@ https://techmusa.com/ipsec-vpn-troubleshooting/
 
 
 
-
-
-https://app.pluralsight.com/library/courses/protocol-deep-dive-dhcp/table-of-contents
-
-
-https://app.pluralsight.com/library/courses/protocol-deep-dive-ipsec/table-of-contents
