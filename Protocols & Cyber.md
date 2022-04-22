@@ -1532,24 +1532,26 @@ In addition, all patterns can be categorized by their intent, or purpose. This b
 - <u>**Structural patterns**</u> explain how to assemble objects and classes into larger structures, while keeping these structures flexible and efficient. *How objects relate to each other*
 
 
-- - **Facade**  provides a unified interface to a set of interfaces in a subsystem. it is a simplified API for reaching other properties in the codebase. Bunun sebebi, complex code logici bir API arkasina saklamak (API burda bir class olabilir) ihtiyac olunca bu API call ile islem yapilir.
+- - **Facade**  provides a unified interface to a set of interfaces in a subsystem. it is a simplified API for reaching other properties in the codebase. Bunun sebebi, complex code logici bir API arkasina saklamak (API burda bir class olabilir) ihtiyac olunca bu API call ile islem yapilir. Butun npm packegeler bir facade aslinda.
 
 
-- - **Proxy**   provides a surrogate or placeholder for another object to control access to it.
+- - **Proxy**   provides a surrogate or placeholder for another object to control access to it. interacting with a substitute object instead of the original object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object. Generally used with databases or big data. A credit card is a proxy for a bank account and cash in it.
 
 
-- <u>**Behavioral patterns**</u> take care of effective communication and the assignment of responsibilities between objects. *How objects interact and communicate*
+
+
+- <u>**Behavioral patterns**</u> take care of effective communication and the assignment of responsibilities between objects. *How objects interact and communicate* 
 
 - - **Chain of responsibility**  allows for the passing of requests to a chain of objects until one of them handles the request.
 
-- - **Observer**  allows for the notification of observers when an object changes.
+- - **Observer**  allows for the notification of observers when an object changes. one-tom-many relationship. lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing.
 
-- - **Iterator**  allows for the traversal of a collection of objects without exposing its underlying representation.
+- - **Iterator**  allows for the traversal of a collection of objects without exposing its underlying representation. For loop mesela is an iterator. or range. Depth-first or breadth-first traversal is also an iterator.
 
-- - **Mediator**  allows for the communication between objects without exposing their implementation details.
+- - **Mediator**  allows for the communication between objects without exposing their implementation details and exposing their chaotic dependencies. for example with the profile editing form, the dialog class itself may act as the mediator. Most likely, the dialog class is already aware of all of its sub-elements, so you won’t even need to introduce new dependencies into this class.
 
-- - **State**  allows for the encapsulation of an object’s internal state and its behavior when this state changes.
-
+- - **State**  allows for the encapsulation of an object’s internal state and its behavior when this state changes. and  lets an object alter its behavior when its internal state changes. It appears as if the object changed its class. Mesela telefondaki tuslar, context dependent olarak farkli fonksiyonlara gore hareket ederler. 
+ 
 
 
 
