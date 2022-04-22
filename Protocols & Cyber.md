@@ -1409,6 +1409,12 @@ The **Explicit Congestion Notification (ECN)** is useful when best-effort traffi
 
 
 
+
+
+
+
+
+
 ### <u>**OOP and Programming stuff**</u>
 
 
@@ -1464,12 +1470,32 @@ In OOP, polymorphism allows for the uniform treatment of classes in a hierarchy.
 Because derived objects share the same interface as their parents, the calling code can call any function in that class’ interface. At run-time, the appropriate function will be called depending on the type of object passed leading to possibly different behaviors.
 
 Example: Suppose we have a class called, “Animal” and two child classes, “Cat,” and “Dog.” If the Animal class has a method to make a noise, called, “makeNoise,” then, we can override the "makeNoise" function that is inherited by the sub-classes, "Cat" and "Dog," to be “meow” and “bark,” respectively. Another function can, then, be written that accepts any Animal object as a parameter and invokes its "makeNoise" member function. The noise will be different: either a “meow” or a “bark” depending on the type of animal object that was actually passed to the function.
+ 
+=======
 
+#### <u>**CyberAttack Per OSI Level**</u>
 
+- **Layer 1** (physical layer) attacks are historically very uncommon. The only somewhat related attack is the manipulation of the wiring harness.
 
+- **Layer 2** (data link layer) attacks include manipulation of MAC addresses,
+changing the VLAN ID (i.e., VLAN hopping), or changing other parameters such as a packet’s priority. The manipulation of the MAC addresses allows circumventing filtering mechanisms implemented to stop attacks (e.g., preconfigured routing tables). Helper protocols such as ARP to translate IPv4 to MAC addresses may also
+be attacked. This would allow spoofing in order to inject communication or to reroute communication (in order to access the data). MAC address tables in switches may be attacked by generating vast numbers of MAC source addresses either as DoS attack or to force traffic to be flooded to switch ports other than those originally intended. This is a common attack in order to read specific data via the
+port the attacker gained access to.
+ 
+- **Layer 3** (network layer) attacks include changing the address (IP spoofing) and
+taking additional control by carefully crafted IP fragments, so as to circumvent filtering.
 
+- **Layer 4** (transport layer) attacks include attacks against TCP, such as blind injection
+of data into TCP streams or terminating other TCP streams. Another favorite
+TCP attack is to send large numbers of SYN packets – SYN packets are part of the
+three way handshake to start a TCP connection to a server and overwhelming the
+TCP state machines of the target [100].
 
+- **Layers 5–7** (session, presentation, and application layers): These attacks are manifold
+and include circumventing access control.
 
+  Almost all layers: Attacks include trying to use bugs in software implementations
+of protocols to control the software stack, thus gaining privileged access.
 
 
 
@@ -1482,9 +1508,55 @@ Example: Suppose we have a class called, “Animal” and two child classes, “
 #### <u>**Software Design Patterns**</u>
 
 
-https://refactoring.guru/design-patterns
+Design patterns are typical solutions to common problems in software design. Each pattern is like a blueprint that you can customize to solve a particular design problem in your code.
 
-https://www.youtube.com/watch?v=tv-_1er1mWI
+Design patterns differ by their complexity, level of detail and scale of applicability to the entire system being designed. I like the analogy to road construction: you can make an intersection safer by either installing some traffic lights or building an entire multi-level interchange with underground passages for pedestrians.
+
+The most basic and low-level patterns are often called idioms. They usually apply only to a single programming language.
+
+The most universal and high-level patterns are architectural patterns. Developers can implement these patterns in virtually any language. Unlike other patterns, they can be used to design the architecture of an entire application.
+
+In addition, all patterns can be categorized by their intent, or purpose. This book covers three main groups of patterns:
+
+- **Creational patterns** provide object creation mechanisms that increase flexibility and reuse of existing code.
+
+- - **Singleton** is a design pattern that ensures that a class has only one instance and provides a global point of access to it.
+
+- - **Factory** is a design pattern that provides an interface for creating objects without specifying their concrete classes.
+
+- - **Builder** is a design pattern that allows you to construct complex objects step by step.
+
+- - **Prototype** is a design pattern that allows you to create objects without using the new operator.
+
+
+- **Structural patterns** explain how to assemble objects and classes into larger structures, while keeping these structures flexible and efficient.
+
+
+- - **Facade** is a design pattern that provides a unified interface to a set of interfaces in a subsystem.
+
+
+- - **Proxy**  is a design pattern that provides a surrogate or placeholder for another object to control access to it.
+
+
+- **Behavioral patterns** take care of effective communication and the assignment of responsibilities between objects.
+
+- - **Chain of responsibility** is a design pattern that allows for the passing of requests to a chain of objects until one of them handles the request.
+
+- - **Observer** is a design pattern that allows for the notification of observers when an object changes.
+
+- - **Iterator** is a design pattern that allows for the traversal of a collection of objects without exposing its underlying representation.
+
+- - **Mediator** is a design pattern that allows for the communication between objects without exposing their implementation details.
+
+- - **State** is a design pattern that allows for the encapsulation of an object’s internal state and its behavior when this state changes.
+
+
+
+
+
+
+
+
 
 
 
