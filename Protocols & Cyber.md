@@ -1607,6 +1607,222 @@ In addition, all patterns can be categorized by their intent, or purpose. This b
 
 
 
+#### <u>**Crypto**</u>
+
+
+1. Symmetric Encryption
+
+Symmetric encryption gathers plain-text data and then shuffles it to make it unreadable. And just before reaching the required party, it re-arranges the data again. Symmetric types of encryption are the fastest of other encryption processes. The viable part to remember here is that the encrypter and decrypter party both need to have the same key to intercept the data. The bad part about the symmetric key is that even if your data is encrypted, the software readily needs the unencrypted data to match the password and not the encrypted one. This indirectly proves that the software itself is compromised. The only to protect yourself is to design the software so that the data remains encrypted when the user logs out of the system and leaves the key only in an unreadable encrypted format which is actually tough, to begin with.
+
+2. Asymmetric Encryption (public key encryption)
+
+Asymmetric encryption, similar to symmetric ones, also gathers plain-text, shuffles it, and re-arranges it again at the other end. Still, here multiple variable keys are used for each end. Users and decrypters use public key and private key to shuffle and re-arrange the data. The only problem with a public key is to make sure you trust the public key you hold. If the public-key is somewhat compromised, then everything is. A simple Man-in-the-middle attack is an easy way to compromise it.
+
+two different keys are used for public-key encryption. One key is used for the encryption process, and another key is used for the decryption process. Once the key is decided for encryption and decryption, no other key will be used. One key is called a public key from these two keys, and another one is called a private key.
+
+Let’s assume that you want to communicate with friends over the internet, to start the communication securely; you need to obtain both public and private key. The private key is a secret key; you should keep it as a secret. If the private key is disposed to another party, there is a chance of attack through the third party.
+
+If X wants to communicate with Y securely, both X and Y should have a public key and private key.
+
+- X should keep her private key secret.
+- X should inform her public key to Y.
+- Y should keep her private key secret.
+- Y should inform her public key to X.
+
+whoever wants to decrypt, use their private keys.
+
+
+3. Hashing
+
+Nowadays, when you hear the term encryption process, it’s actually hashing what is happening in the background. Hashing is not a pure form of the encryption process, though. Remember the example I gave previously about email security?
+
+
+
+#### <u>**Subnetting-Supernetting.**</u>
+
+
+
+**What is Subnetting?**
+
+<br/>
+
+Subnetting is a technique that is used to divide the individual physical network into a smaller size called sub-networks. These sub-networks are called a subnet. An internal address is made up of a combination of the small networks segment and host segment. A subnetwork is designed by accepting the bits from the IP address host portion; then, they are uses to assign a number of small-sized sub-networks in the original network.
+In the subnetting process, network bits are converted into host bits. Subnetting process is performed to slow down the depletion of the IP addresses. It allows the administrator to divide the single class A, class B and class C into small segments. Subnetting makes use of VLSM (Variable Length Subnet Mask) and FLSM (Fixed Length Subnet Mask). The process of partitioning the IP address space into a subnet of different size is called a Variable Length Subnet Mask. VLSM reduces the wastage of memory. The process of partitioning the IP address space into a subnet of the same size is called a Fixed Length Subnet Mask.
+Advantages and Disadvantages of Subnetting:
+Below are some advantages and disadvantage of subnetting:
+
+<br/>
+
+Advantages:
+
+Subnetting increases the number of allowed hosts in the local area network.
+Subnetting decreases the volume of broadcast, hence minimize the number of network traffic.
+Sub networks are easy to maintain and manage.
+Subnetting increases the flexibility of address.
+Network security can be readily employed between sub networks rather than employing it in the whole network.
+
+<br/>
+
+Disadvantages:
+
+The process of subnetting is quite expensive.
+To perform subnetting process, we need a trained administrator.
+
+<br/>
+
+**What is Supernetting?**
+
+<br/>
+Supernetting is the process that is used to combine several sub networks into a single network. Its process is inverse of the subnetting process. In supernetting, mask bits are moved towards the left of the default mask; network bits are converted into hosts bits. Supernetting is also called router summarization and aggregation. It creates a more number of host addresses at the expense of network addresses. The Internet service provider performs the supernetting process to achieve the most efficient IP address allocation.
+
+It uses the CIDR method, i.e. Classless inter-domain routing method, to route the network traffic across the internet. CIDR combines several sub networks and combined them together for routing network traffic. In other words, we can say that CIDR organizes the IP Addresses in the sub networks independent of the value of the Addresses.
+
+Advantages and Disadvantages of Supernetting:
+Below are some advantages and disadvantage of supernetting:
+
+<br/>
+
+Advantages:
+
+Supernetting reduces the traffic of the network over the internet.
+Supernetting increases the speed of routing table lookup.
+As it is summarized the number of routing information entries into a single entry, the size of the router’s memory table decreased, hence saving the memory space.
+Provision for the router to isolate the topology changes from the other routers.
+
+<br/>
+
+Disadvantages:
+
+<br/>
+
+The combination of blocks should be made in power 2 alternatively; if the three blocks are required, then there must be assigned four blocks.
+While merging several entries into one, it lacks covering different areas.
+The whole network must exist in the same class.
+
+
+
+#### <u>**TCP-IP Protocols**</u>
+
+3. TCP/IP Protocols
+The TCP/IP based protocols are further classified into the following:
+
+<u> **a-Web Protocols**</u>
+
+- **HTTP** – It stands for HyperText Transfer Protocol, the format of messages, transmission, and this protocol manages web actions associated at client and server-end. The Worldwide web uses it. It runs on port 80.
+
+- **HTTPS** – It stands for HyperText Transfer Protocol Secure, so it seems to enhance HTTP only. This is used for secure communication; hence whenever you are out of the local host world, then go by this.
+
+- **TLS** – It stands for Transport Layer Security; this is a cryptographic protocol that provides end to end communications security over networks, commonly used in transactions; the security is maintained by forgery prevention, data leak prevention, etc.
+
+- **SSL** – It stands for Secure Sockets Layer, establishes an encrypted link between browser and server, the web server requires an SSL certificate. A public and a private key are created cryptographically.
+
+<u> **b-File Transfer Protocols**</u>
+
+- **FTP** – File Transfer Protocol is used for file transfer between client and server on a computer network.
+
+- **TFTP** – Trivial File Transfer Protocol is how the client can get a file and put it into a remote host, the nodes that boot from LAN use it.
+
+- **SFTP** – SSH File Transfer Protocol provides a secure connection to transfer files and traverse the file system on local and remote systems.
+
+- **FTPS** – It’s a secure File Transfer Protocol; TLS support and SSL are added here; we are not using a secure shell-based protocol.
+
+- **SMB** – Server Message Block, which is used by windows, allows computers within the same network to share files.
+
+- **NFS** – Network File system is a distributed file system used in UNIX generally to access files among computers on the same network.
+
+<u> **c-Mail Protocols**</u>
+
+- **SMTP** – Simple Mail Transfer Protocol is a push protocol to send an email, Post Office Protocol, or Internet Message Access Protocol, which is used to retrieve those at the receiver side. It is implemented at the application layer.
+
+<u> **d-Management Protocols**</u>
+
+- **Telnet** – It is used on the internet and LAN for bilateral text communication; it uses a virtual terminal connection.
+
+- **SSH** – It is a secure shell-based remote login from one computer into another computer. Authentication and security can be taken care of too.
+
+- **SNMP** – Simple Network Management Protocol is used for collecting and organizing information about devices in the network and modify the information.
+
+<u> **e-Media Protocols**</u>
+
+- **RTP** – Real-time transport protocol is used for audio and video communication over the network.
+
+- **RTSP** – Real-time streaming protocol is a protocol for streaming; it establishes media sessions between endpoints.
+
+
+
+
+
+#### <u>**Transport Layer Protocols**</u>
+
+
+The transport layer is the center of the entire hierarchy of the protocol. Two protocols display the transport layer.
+1. UDP
+2. TCP
+
+What is UDP?
+The full form of UDP is User Datagram Protocol. It is a connectionless protocol. UDP is a transport-level end-to-end protocol that adds addresses of transport-level, control of errors in the checksum, and data lengths from the top laying. The UDP protocol packet is called a user datagram. A 16-byte header is shown in the user’s Data Chart below:
+
+What is UDP?
+
+In this, you will see the components such as
+
+**Destination Port Address:** The address of the request process to receive the message is specified. The address of the destination port is 16-bit.
+
+
+**Checksum**: The control is a 16-bit field used to detect errors.
+
+
+**Total Length:** This determines the user datagram’s total length in bytes. It’s an area of 16 bits.
+
+
+**Source Port Address:** The application process address that has sent a message is specified. The 
+address of the source port is 16-bit.
+Examples of services and programs that are UDP are DNS, IP telephony, and DHCP.
+
+<br>
+
+<u>Disadvantages of UDP</u>
+
+
+UDP can notice that there has been an error, but does not indicate which packet has been lost because it does not have an ID or a data sequence number.
+3This does not have a sequence or reorder feature and when recording an error, it does not indicate the damaged package.
+UDP offers critical features required for end-to-end transmission delivery.
+What is TCP?
+TCP is also known as Transmission Control Protocol. It is a connection-oriented transport protocol. TCP is a protocol that specifies how network connections can be developed and maintained under which applications can share data. TCP uses the Internet Protocol (IP) to describe how computers transmit data packets to each other.  Example of services and programs that uses TCP are HTTP, HTTPS, FTP as well as many computer games.
+
+*What is TCP?*
+
+**Control Bits**: Each control area operates independently and individually. The control bit specifies the operation of a segment or serves for certain fields as a validity test.
+
+
+**Acknowledgment Number**: The data of other communication devices is acknowledged by a 32-field acknowledgment number. If ACK is set to 1, the sequence number the receiver expects to receive is specified.
+
+
+**Header Length:** The TCP header in 32-bit words will be specified. The header is 5 words in minimum size and the header is 15 words in full size. There are also 60 bytes for the TCP header, and 20 bytes for the UDP header.
+
+
+**Source Port Address:** It is used in a source machine for specifying the application’s address. It’s a space of 16 bits.
+
+**Sequence Number**: A data stream is divided into two or more parts of TCP. The 32-bit number sequence field is the location of the data within an original data stream.
+
+**Destination port Address**: This is used in a destination machine to identify the address of an application program. It’s a field of 16 bits.
+
+<br/>
+
+<u>Features of TCP Protocol</u>
+
+
+
+
+**Multiplexing** is a method of accepting and forwarding data on separate computers from various applications to each server. The data is sent to the right device at the receiver’s end. It is called demultiplexing. Through using the logical channels known as ports, TCP transmits the packet to the appropriate program.
+
+**Full Duplex**: TCP offers Full Duplex operation, i.e. simultaneously data flux in both directions. Can TCP have buffers sent and received so that the segments can flow in both directions for full-duplex services? TCP is a protocol that binds. Assume that process A requires the data from process B to be sent and received.
+
+
+**Flow Control**: Once TCP receives a data packet, it returns to the sender displaying the number of bytes without exhausting the internal buffer. In ACK, the number of bytes is sent as the highest sequence number, which it can easily obtain. It is also known as the window process
+
+
+**Logical Connections**: A logical relation is called the combination of sockets, sequence numbers, and window sizes. The pair of sockets used by sending and receiving processes are used to classify each connection.
 
 
 
@@ -1614,16 +1830,11 @@ In addition, all patterns can be categorized by their intent, or purpose. This b
 
 
 
-https://www.educba.com/types-of-cipher/ ==>important on ciphers (symmetrical etc)
-
-
-https://www.youtube.com/watch?v=sZjpxU12_eI => IPSEC on wireshark
-
-https://community.f5.com/t5/technical-articles/understanding-ipsec-ikev1-negotiation-on-wireshark/ta-p/281176 => IPSEC on wireshark
 
 
 
-https://www.reddit.com/r/wireshark/comments/tnttds/analysis_and_troubleshooting_ipsec_vpns_with/
+
+https://techmusa.com/ipsec-vpn-troubleshooting/
 
 
 
@@ -1633,7 +1844,8 @@ https://www.reddit.com/r/wireshark/comments/tnttds/analysis_and_troubleshooting_
 
 
 
-https://www.youtube.com/watch?v=CuxyZiSCSfc
+
+
 
 
 https://app.pluralsight.com/library/courses/protocol-deep-dive-dhcp/table-of-contents
