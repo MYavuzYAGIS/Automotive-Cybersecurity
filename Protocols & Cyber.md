@@ -4,10 +4,15 @@
 
 ### **What is IpSec?**
 
+<br/>
+
+
 
 RFC 6071(IP Security (IPsec) and Internet Key Exchange (IKE) Document Roadmap)
 
 IPsec is a protocol that provides a secure tunnel between two computers. It is used to protect data that is transmitted over the internet. 
+
+so it is used for encrypted vpn tunneling. VPN tunnel is a logical tunnel. when IPSEc is enabled between 2 routers (and many pcs via switches under routers), the third router acting as MITM
 
 IPsec helps mitigation against:
 
@@ -26,6 +31,60 @@ In ***tunnel mode***, everything is encapsulated in IPsec datagram. when data is
 This is used basically in the site-to-site VPN and remote access VPN.
 
 in ***transport mode***, all of the data is protected but the original IP header is not. Payload is protected by IPsec. This is used generally in P2P applications.
+
+
+Here’s how IPSec creates a secure VPN tunnel:
+
+-  It authenticates data to ensure data packet integrity in transit.
+-  It encrypts internet traffic over VPN tunnels so data can’t be viewed.
+-  It protects against data replay attacks which can lead to unauthorized logins.
+-  It enables secure cryptographic key exchange between computers.
+-  It offers two security modes: tunnel and transport.
+
+
+IPSec Protocols and Supporting Components
+IPSec Core Protocols
+
+
+- **IPSec Authentication Header (AH)**: This protocol protects the IP addresses of the computers involved in a data exchange to ensure that bits of data are not lost, changed, or damaged during transmission. AH also verifies that the person who sent the data actually sent it, protecting the tunnel from infiltration by unauthorized users.
+
+<br/>
+
+- **Encapsulating Security Payload (ESP)**: The ESP protocol provides the encryption part of the IPSec, which ensures the confidentiality of data traffic between devices. ESP encrypts the data packets/payload and authenticates the payload and its origin within the IPSec protocol suite. This protocol effectively scrambles internet traffic, so that anyone looking at the tunnel can’t see what’s there.
+
+
+And for supporting components:
+
+
+- **IPsec Security Association (SA)**: This is the key to IPSec. It is used to encrypt and authenticate the data packets. These contracts might define the type of encryption and hashing algorithms to be used. These policies are often flexible, allowing devices to decide how they want to handle things.
+
+
+- **Internet Key Exchange** :  For encryption to work, the computers involved in a private communication exchange need to share encryption keys. IKE allows two computers to securely exchange and share cryptographic keys when establishing a VPN connection.
+
+
+
+IPSec provides the following security services:
+
+- Data encryption: The IPsec sender encrypts the packet before transmitting it through the network.
+
+- Data integrity: The IPsec receiver authenticates the packet sent by the sender to ensure that the data has not been tampered with during transmission.
+
+- Data source authentication: IPsec at the receiving end can authenticate whether the sending end of the IPsec message is legal.
+
+- Anti-replay: The IPsec receiver can detect and refuse to receive outdated or duplicate messages.
+
+
+
+IPSec mainly uses encryption and verification methods. The authentication mechanism enables the data receiver of IP communication to confirm the true identity of the data sender and whether the data has been tampered with during transmission. The encryption mechanism guarantees the confidentiality of the data by encrypting the data to prevent the data from being eavesdropped during transmission. To provide security services for IP data packets.
+
+The AH protocol provides data source authentication, data integrity verification and anti-message replay functions. It can protect communications from tampering, but it cannot prevent eavesdropping. It is suitable for transmitting non-confidential data. The working principle of AH is to add an identity authentication message header to each data packet, which is inserted behind the standard IP header to provide integrity protection for the data.
+
+
+The ESP protocol provides encryption, data source authentication, data integrity verification and anti-message replay functions. The working principle of ESP is to add an ESP header to the standard IP header of each data packet, and to append an ESP tail to the data packet. Common encryption algorithms are DES, 3DES, AES, etc.
+
+
+In actual network communication, you can use these two protocols at the same time or choose to use one of them according to actual security requirements. Both AH and ESP can provide authentication services, but the authentication services provided by AH are stronger than those provided by ESP.
+
 
 
 ### Ipsec building Blocks:
@@ -77,6 +136,8 @@ for SA estabblishement, there are couple of different protocols that are used.
 - <u>IKE</u> (Internet Key Exchange) : Uses combination of ISAKMP, OAKLEY, and SKEME
 
 
+
+note: sha > md5!!
 =========
 
 
@@ -84,7 +145,7 @@ for SA estabblishement, there are couple of different protocols that are used.
 
 
 
-In enterprise level, there are 2 main uses of IPsec:
+In enterprise level, there are **2 main uses** of IPsec:
 
 - <u>Site-to-Site VPN</u>
 
@@ -104,14 +165,14 @@ useful in wifi hotspots.
 Bu mesela bir isci evden calisirken isyerinin agina ulassin diye kullanilan vpn. ticari bireysel VPNler de bu tip, hotspotshield, NordVPN gibi.
 
 
-as for IPsec implementations, there are 2 main types:
+as for IPsec implementations, there are **2 main types**:
 
 
 - <u>GRE over IPSec</u>
 
 way more commen. 
 
-encapsulates entire packet.  this is essentially DMVPN over IPSec.
+encapsulates entire packet including Level 3.  this is essentially DMVPN over IPSec. 
 
 
 - <u>IPSec over GRE  </u>
@@ -163,6 +224,9 @@ For authentication, IKEv2 uses` Pre-Shared Key` (PSK) and `Certificate Authentic
 
 
 ## <u>**MacSec**</u>
+
+<br/>
+
 
 Macsec is defined in 802.1AE as `point2point security protocol` providing `data confidentialiity, integrity, and origin authenticity` (all CIA triad.) for traffic over LAyer 1 or Layer 2 links and is part of larger security ecosystem.
 
@@ -348,6 +412,9 @@ Macsec is cost-effective and could be used in combination with other technologie
 
 ## <u>**ARP & ArpSec**</u>
 
+<br/>
+
+
 ARP is unauthenticated, insecure and primarily broadcast protocol. 
 
 this kind of broadcasts are stopped either by routers or alike Layer 3 devices on the network. 
@@ -487,11 +554,14 @@ The scope of ISO 21424 :
 
 - An `Assurance Level` is defined with ISO 21424 which is `Cybersecurity Assurance Level` this is like common security assurance level like how secure is the system or how much trust you can put onto it.
 
+<br/>
 
 
 ## <u>**CanBus IDS/IPS vs Ethernet IPS/IDS**</u>
 
 ### <u>**Comparing Can and Ethernet**</u>
+
+<br/>
 
 
 CanBus is a Bus topology which means when a message leaves and ECU, it is guaranteed to reach any neighbir ecu on the same bus. Meaning there is no way to stop an attack using software which reside in the gateway since it is just listening to the traffic. Gateway can only stop propogation of the message from one bus to another but not on the same bus.
@@ -511,7 +581,12 @@ In ethernet, on the other hand, there is `distinct unicast` that means it has so
 
 Beware that `automotive ethernet` is not necessarily about ethernet, it is about  all the networking. For example, on top of ethernet sits MAC, and then on top of that sits IP, on top of that sits TCP/IP or UDP/IP. To the application level, there is DoIP.
 
+<br/>
+
 ### <u>**Can and Autmotive Ethernet IDS/IPS work process**</u>
+
+<br/>
+
 
 IDS/IPS is designed to counter an attacker manipulating network traffic via a malicious application, hacked ECU or other controller.
 
@@ -717,7 +792,11 @@ c) **other proprietary formats over IP are possible.**
 
 - for access control, Ethernet access Control and SOME/IP is used
 
+<br/>
+
 ## <u>**SecOC**</u>
+
+<br/>
 
 SecOC = Secure OnBoard Communication.
 
@@ -790,6 +869,8 @@ Between two, the tradeoff are the `security level` and `impact on busload`.
 Networks like CAN FD, Flexray and Ethernet do not have payload limits.
 
 ================================================
+
+<br/>
 
 ## <u>**Vehicle Key Management Systems**</u>
 
@@ -926,6 +1007,8 @@ but in any case you need to address as holistic problem.
 
 ===
 
+<br/>
+
 
 ## <u>**Exceprts from YouTube Videos**</u>
 
@@ -1035,6 +1118,7 @@ You need to consider the multitude of protocols. Physical and layer testing. ind
 
 
 
+<br/>
 
 ====================
 
@@ -1069,6 +1153,7 @@ Verification is done by the QA team while Validation is done by the involvement 
 
 Comparing Verification vs Validation testing, Verification process comes before validation whereas Validation process comes after verification.
 
+<br/>
 
 ## <u>**General E/E Knowledge**</u>
 
@@ -1220,12 +1305,6 @@ this HCP, ZDC, and IO nodes enable `Software-defined vehicles`.
 
 
 
-
-
-
-
-
-
 So what is **AUTOSAR**?
 
 for ECU ==> AUTOSAR Classic Platform
@@ -1253,6 +1332,8 @@ AUTOSAR RTE is the Run-Time Environment (RTE) that is the heart of the AUTOSAR E
 
 
 Autosar adaptive platform (for HCP) provides access to the computing power needed by future vehicles which are ACES functions.
+
+<br/>
 
 
 ## <u>**DTC and Flashing and V-Model**</u>
@@ -1283,6 +1364,8 @@ DTC operates on **UDS** (Unified Diagnostic Services) protocol which is an ISO s
 
 **Unified Diagnostic Services (UDS)** is an automotive protocol that lets the diagnostic systems communicate with the ECUs to diagnose faults and reprogram the ECUs accordingly (if required). It is called unified because it combines and consolidates all the standards like KWP 2000, ISO 15765 and others.
 
+<br/>
+
 ### <u>**Flashing ECU**</u>
 
 updating the ECU is done through UDS protocol.
@@ -1309,6 +1392,7 @@ ECU flash can be segmented into 2 section:
 
 2) Data Flash (DFlash) : flashing into where the data resides, and targets the variables (constants, maps, curves) and referred when the software needs like re-flashing for setting maximum speed or uploading new map.
 
+<br/>
 
 
 ### <u>**V-Model**</u>
@@ -1405,14 +1489,7 @@ The **Explicit Congestion Notification (ECN)** is useful when best-effort traffi
 **Remote Direct Memory Access (RDMA) over Converged Ethernet (RoCE)** v2 is an important tool for distributed computing that runs on top of Ethernet, IP, and UDP [81]. It implements a large part of the protocol stack in hardware and thereby saves power and time as well as frees up CPU load. It may be beneficial, when software is virtualized in cars and arbitrarily distributed among the ECUs.
 
 
-
-
-
-
-
-
-
-
+<br/>
 
 
 ### <u>**OOP and Programming stuff**</u>
@@ -1473,38 +1550,6 @@ Example: Suppose we have a class called, “Animal” and two child classes, “
  
 =======
 
-#### <u>**CyberAttack Per OSI Level**</u>
-
-- **Layer 1** (physical layer) attacks are historically very uncommon. The only somewhat related attack is the manipulation of the wiring harness.
-
-- **Layer 2** (data link layer) attacks include manipulation of MAC addresses,
-changing the VLAN ID (i.e., VLAN hopping), or changing other parameters such as a packet’s priority. The manipulation of the MAC addresses allows circumventing filtering mechanisms implemented to stop attacks (e.g., preconfigured routing tables). Helper protocols such as ARP to translate IPv4 to MAC addresses may also
-be attacked. This would allow spoofing in order to inject communication or to reroute communication (in order to access the data). MAC address tables in switches may be attacked by generating vast numbers of MAC source addresses either as DoS attack or to force traffic to be flooded to switch ports other than those originally intended. This is a common attack in order to read specific data via the
-port the attacker gained access to.
- 
-- **Layer 3** (network layer) attacks include changing the address (IP spoofing) and
-taking additional control by carefully crafted IP fragments, so as to circumvent filtering.
-
-- **Layer 4** (transport layer) attacks include attacks against TCP, such as blind injection
-of data into TCP streams or terminating other TCP streams. Another favorite
-TCP attack is to send large numbers of SYN packets – SYN packets are part of the
-three way handshake to start a TCP connection to a server and overwhelming the
-TCP state machines of the target [100].
-
-- **Layers 5–7** (session, presentation, and application layers): These attacks are manifold
-and include circumventing access control.
-
-  Almost all layers: Attacks include trying to use bugs in software implementations
-of protocols to control the software stack, thus gaining privileged access.
-
-
-
-
-
-
-
-
-
 #### <u>**Software Design Patterns**</u>
 
 
@@ -1518,6 +1563,9 @@ The most universal and high-level patterns are architectural patterns. Developer
 
 In addition, all patterns can be categorized by their intent, or purpose. This book covers three main groups of patterns:
 
+<br/>
+
+
 - <u>**Creational patterns**</u> provide object creation mechanisms that increase flexibility and reuse of existing code. *How objects are created*
 
 - - **Singleton**  ensures that a class *has only one instance* and provides a global point of access to it.  Mesela settings class gibi. bir kere yaziyorsun.
@@ -1528,6 +1576,8 @@ In addition, all patterns can be categorized by their intent, or purpose. This b
 
 - - **Prototype**  (clone) allows you to create objects without using the new operator. It is an alternative to `inheritance`, you dont inherit from a class but from a prototype or object. using __proto__ is a way for it in Javascript for example. instead of using new keyword you use *Object.Create(prototype, properties)*
 
+<br/>
+
 
 - <u>**Structural patterns**</u> explain how to assemble objects and classes into larger structures, while keeping these structures flexible and efficient. *How objects relate to each other*
 
@@ -1537,8 +1587,7 @@ In addition, all patterns can be categorized by their intent, or purpose. This b
 
 - - **Proxy**   provides a surrogate or placeholder for another object to control access to it. interacting with a substitute object instead of the original object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object. Generally used with databases or big data. A credit card is a proxy for a bank account and cash in it.
 
-
-
+<br/>
 
 - <u>**Behavioral patterns**</u> take care of effective communication and the assignment of responsibilities between objects. *How objects interact and communicate* 
 
@@ -1546,12 +1595,14 @@ In addition, all patterns can be categorized by their intent, or purpose. This b
 
 - - **Observer**  allows for the notification of observers when an object changes. one-tom-many relationship. lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing.
 
+
 - - **Iterator**  allows for the traversal of a collection of objects without exposing its underlying representation. For loop mesela is an iterator. or range. Depth-first or breadth-first traversal is also an iterator.
 
 - - **Mediator**  allows for the communication between objects without exposing their implementation details and exposing their chaotic dependencies. for example with the profile editing form, the dialog class itself may act as the mediator. Most likely, the dialog class is already aware of all of its sub-elements, so you won’t even need to introduce new dependencies into this class.
 
 - - **State**  allows for the encapsulation of an object’s internal state and its behavior when this state changes. and  lets an object alter its behavior when its internal state changes. It appears as if the object changed its class. Mesela telefondaki tuslar, context dependent olarak farkli fonksiyonlara gore hareket ederler. 
  
+<br/>
 
 
 
@@ -1573,6 +1624,13 @@ https://community.f5.com/t5/technical-articles/understanding-ipsec-ikev1-negotia
 
 
 https://www.reddit.com/r/wireshark/comments/tnttds/analysis_and_troubleshooting_ipsec_vpns_with/
+
+
+
+
+
+
+
 
 
 https://www.youtube.com/watch?v=CuxyZiSCSfc
