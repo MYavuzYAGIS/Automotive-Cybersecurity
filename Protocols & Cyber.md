@@ -1518,37 +1518,37 @@ The most universal and high-level patterns are architectural patterns. Developer
 
 In addition, all patterns can be categorized by their intent, or purpose. This book covers three main groups of patterns:
 
-- **Creational patterns** provide object creation mechanisms that increase flexibility and reuse of existing code.
+- **Creational patterns** provide object creation mechanisms that increase flexibility and reuse of existing code. *How objects are created*
 
-- - **Singleton** is a design pattern that ensures that a class has only one instance and provides a global point of access to it.
+- - **Singleton**  ensures that a class *has only one instance* and provides a global point of access to it.  Mesela settings class gibi. bir kere yaziyorsun.
 
-- - **Factory** is a design pattern that provides an interface for creating objects without specifying their concrete classes.
+- - **Factory**  provides an interface for creating objects without specifying their concrete classes.
 
-- - **Builder** is a design pattern that allows you to construct complex objects step by step.
+- - **Builder**  allows you to construct complex objects step by step.
 
-- - **Prototype** is a design pattern that allows you to create objects without using the new operator.
-
-
-- **Structural patterns** explain how to assemble objects and classes into larger structures, while keeping these structures flexible and efficient.
+- - **Prototype**  (clone) allows you to create objects without using the new operator. It is an alternative to `inheritance`, you dont inherit from a class but from a prototype or object. using __proto__ is a way for it in Javascript for example. instead of using new keyword you use *Object.Create(prototype, properties)*
 
 
-- - **Facade** is a design pattern that provides a unified interface to a set of interfaces in a subsystem.
+- **Structural patterns** explain how to assemble objects and classes into larger structures, while keeping these structures flexible and efficient. *How objects relate to each other*
 
 
-- - **Proxy**  is a design pattern that provides a surrogate or placeholder for another object to control access to it.
+- - **Facade**  provides a unified interface to a set of interfaces in a subsystem.
 
 
-- **Behavioral patterns** take care of effective communication and the assignment of responsibilities between objects.
+- - **Proxy**   provides a surrogate or placeholder for another object to control access to it.
 
-- - **Chain of responsibility** is a design pattern that allows for the passing of requests to a chain of objects until one of them handles the request.
 
-- - **Observer** is a design pattern that allows for the notification of observers when an object changes.
+- **Behavioral patterns** take care of effective communication and the assignment of responsibilities between objects. *How objects interact and communicate*
 
-- - **Iterator** is a design pattern that allows for the traversal of a collection of objects without exposing its underlying representation.
+- - **Chain of responsibility**  allows for the passing of requests to a chain of objects until one of them handles the request.
 
-- - **Mediator** is a design pattern that allows for the communication between objects without exposing their implementation details.
+- - **Observer**  allows for the notification of observers when an object changes.
 
-- - **State** is a design pattern that allows for the encapsulation of an object’s internal state and its behavior when this state changes.
+- - **Iterator**  allows for the traversal of a collection of objects without exposing its underlying representation.
+
+- - **Mediator**  allows for the communication between objects without exposing their implementation details.
+
+- - **State**  allows for the encapsulation of an object’s internal state and its behavior when this state changes.
 
 
 
