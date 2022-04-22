@@ -1405,13 +1405,23 @@ To put it simply, V-Model (where V stands for verification and validation) split
 
 
 
-### <u>**Special Swithc/Hub/Router Section**</u>
+### <u>**Quick Swithc/Hub/Router Notes**</u>
 
-https://www.youtube.com/watch?v=1z0ULvg_pW8
+<br/>
+
+Quick notes on 3 of them:
+
+- **Switch:**
+
+
+- **Hub:**
+
+
+- **Router:**
 
 
 
-
+<br/>
 
 ### <u>**More On Ethernet**</u>
 
