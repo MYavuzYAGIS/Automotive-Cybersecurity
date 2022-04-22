@@ -1518,27 +1518,27 @@ The most universal and high-level patterns are architectural patterns. Developer
 
 In addition, all patterns can be categorized by their intent, or purpose. This book covers three main groups of patterns:
 
-- **Creational patterns** provide object creation mechanisms that increase flexibility and reuse of existing code. *How objects are created*
+- <u>**Creational patterns**</u> provide object creation mechanisms that increase flexibility and reuse of existing code. *How objects are created*
 
 - - **Singleton**  ensures that a class *has only one instance* and provides a global point of access to it.  Mesela settings class gibi. bir kere yaziyorsun.
 
-- - **Factory**  provides an interface for creating objects without specifying their concrete classes.
+- - **Factory**  provides an interface for creating objects without specifying their concrete classes.  bir suru if-else check yerine, bir factory class method yazip bizim yerimize o karar veriyor if elselere gerek kalmadan.
 
-- - **Builder**  allows you to construct complex objects step by step.
+- - **Builder**  allows you to construct complex objects step by step. for building an object, instead of using a constructor with full of parameters, you create them step by step and assigning each property to this functions.
 
 - - **Prototype**  (clone) allows you to create objects without using the new operator. It is an alternative to `inheritance`, you dont inherit from a class but from a prototype or object. using __proto__ is a way for it in Javascript for example. instead of using new keyword you use *Object.Create(prototype, properties)*
 
 
-- **Structural patterns** explain how to assemble objects and classes into larger structures, while keeping these structures flexible and efficient. *How objects relate to each other*
+- <u>**Structural patterns**</u> explain how to assemble objects and classes into larger structures, while keeping these structures flexible and efficient. *How objects relate to each other*
 
 
-- - **Facade**  provides a unified interface to a set of interfaces in a subsystem.
+- - **Facade**  provides a unified interface to a set of interfaces in a subsystem. it is a simplified API for reaching other properties in the codebase. Bunun sebebi, complex code logici bir API arkasina saklamak (API burda bir class olabilir) ihtiyac olunca bu API call ile islem yapilir.
 
 
 - - **Proxy**   provides a surrogate or placeholder for another object to control access to it.
 
 
-- **Behavioral patterns** take care of effective communication and the assignment of responsibilities between objects. *How objects interact and communicate*
+- <u>**Behavioral patterns**</u> take care of effective communication and the assignment of responsibilities between objects. *How objects interact and communicate*
 
 - - **Chain of responsibility**  allows for the passing of requests to a chain of objects until one of them handles the request.
 
