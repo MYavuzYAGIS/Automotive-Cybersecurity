@@ -642,15 +642,26 @@ Other options are possible such as independent SMS over cellular.
 
 a) **`SOME/IP `messages to telematics, API sending messages to microcontroller.**
 
+
+it is a Control-communication protocol.
+
 ***What is SOME/IP?***
 
+SOME/IP is a **middleware** where SOME stands for `Scalable service oriented middleware` which creates absraction in automotive and used for standardization of: 
 
-SOME/IP is a middleware where SOME stands for `Scalable service oriented middleware` which creates absraction in automotive and used for standardization of: 
+
+middleware used in data exchange that often passes through a network and it is the task of the middleware to ensure that the network itself is transparent to the software components exchanging the data.
+
+
+it is a Control-communication protocol.
 
 - header format,
 - payload serialization rules
 - service discovery mechanism
 - remote procedure call mechanism(RPC)
+- service-based communication
+- small footprint
+- Scalable,flexible, compatible.
 
 data needs to be serialized. the faster the communication, the more resouce hungry the serialization. so there needs to be a fast and efficient middleware to serialize data. Due to string operations, text-based serialization and deserialization(JSON, XML these are self descriptive(structured) and text based) are very slow so a binay operation neededd. SOME/IP allows you to build the most efficient hi-speed performance system,formatting is optimized for low resources and high speed directly works on binary data.
 SOME/IP is like XML and JSOn, which are very slow. SOME/IP works on binary data and non-descriptive. it is fastest due to `zero-copy` and nearly as fast as Raw struct which is not serialization.
@@ -671,6 +682,18 @@ SOME/IP protocol has many advantages compared to traditional automotive protocol
 5. The data from the server ECU can be communicated to client ECU via unicast, multicast, and broadcast.
 
 6. Being a middleware, it is suitable even for CPU-intensive applications, and OS-agnostic.
+
+
+
+The size of the SOME/IP payload field depends on the transport protocol used. For UDP, the SOME/IP payload can contain 0–1400 bytes. The decision to limit the payload length to 1400 bytes was taken in order to allow for future changes to the protocol stack, such as using IPv6 or adding security protocols.
+Since TCP supports the segmentation of payloads, larger payload sizes are automatically supported.
+
+
+
+
+
+
+
 
 
 
@@ -1232,9 +1255,6 @@ AUTOSAR RTE is the Run-Time Environment (RTE) that is the heart of the AUTOSAR E
 Autosar adaptive platform (for HCP) provides access to the computing power needed by future vehicles which are ACES functions.
 
 
-
-
-
 ## <u>**DTC and Flashing and V-Model**</u>
 
 
@@ -1262,17 +1282,6 @@ When your vehicle’s ECM is directly connected to your company via telematics, 
 DTC operates on **UDS** (Unified Diagnostic Services) protocol which is an ISO standard that defines structures of diagnostic requests and responses.
 
 **Unified Diagnostic Services (UDS)** is an automotive protocol that lets the diagnostic systems communicate with the ECUs to diagnose faults and reprogram the ECUs accordingly (if required). It is called unified because it combines and consolidates all the standards like KWP 2000, ISO 15765 and others.
-
-
-
-
-
-
-
-
-
-
-
 
 ### <u>**Flashing ECU**</u>
 
@@ -1308,6 +1317,94 @@ To put it simply, V-Model (where V stands for verification and validation) split
 
 
 ![](ss/V-model.png)
+
+
+
+
+### <u>**Special Swithc/Hub/Router Section**</u>
+
+https://www.youtube.com/watch?v=1z0ULvg_pW8
+
+
+
+
+
+### <u>**More On Ethernet**</u>
+
+
+**Quality of Service(QoS) Protocols:**
+
+One of the reasons for the automotive industry to adopt Ethernet-based communication as an in-vehicle networking system is the chance for synergies, i.e., the possibility of reusing protocols that have been developed and tested in other industries.
+
+
+
+NOTE: AVB (Audio Video Bridging) is officially renamed to TSN(Time Sensitive Networking.)
+
+The implementation of AVB requires that the underlying Ethernet network runs at least at 100 Mbps full-duplex, that the Ethernet payload does not exceed the maximum size of 1500 bytes
+
+AVB offers three key capabilities that depend on each other:
+
+- Bandwidth-reservation that depends on
+- Traffic-prioritization and
+- Time-synchronization
+
+TSN is another collection of standards designed to **extend** AVB. It also leverages traffic prioritization, time-synchronization, and can be used with both the credit shaper and strict priority schedulers.
+
+Aside from improving performance and provided performance guarantees, TSN adds two new capabilities:
+
+- Time-scheduled traffic
+- Frame-preemption
+
+**Switches and Virtual LANs (VLANs)**
+
+
+In an Ethernet network there are two important properties that can have an impact on the network’s robustness: (a) Communication can be flooded and (b) there is no default control in an Ethernet network on how much traffic a network participant
+can transmit.
+
+A powerful way to structure an Ethernet network is virtualization. On top of the physical Ethernet network, different virtual networks may be created, each with possibly different subset topologies and QoS configurations. For Ethernet this feature is called **Virtual LANs** (VLANs) as defined in IEEE 802.1Q
+
+VLANs are often used to not only limit broadcast domains but also to isolate traffic. Depending on the design, the isolation can be between critical/uncritical traffic, internal/external traffic, or it can isolate the traffic flows of different application areas or security zones.
+
+Two additional
+aspects to consider with respect to VLANs are the following:
+
+- Data logging and testing: 
+
+VLANs provide flexibility in relating ECUs to network segments, independent of the physical location of the units. This will have increasing importance for data logging and analysis in growing Automotive Ethernet networks.
+
+- Performance: 
+
+Certain communication may be assigned to a specific VLAN and this VLAN can, in turn, be prioritized within the switches.
+
+===
+
+**Switches:**
+
+The main task of a switch is to look at the address fields of a received packet and to forward it to the transmit port(s) via which the destination endpoint can be found.
+
+To support this fundamental behavior the switch maintains a **forwarding table**. During normal operation, a layer two switch **“learns” MAC addresses** (MAC LEARNING) by observing the MAC source addresses of received packets and associating those MAC source addresses with the ports via which the packets were received. Thus, when the same MAC address is later observed as a packet’s destination address, the switch can readily identify the port to which the packet must be forwarded. If a packet is received whose MAC destination address has not yet been learned, the switch floods the packet to every transmit port except the port via which the packet was received. This ensures that the packet makes it to its intended destination regardless of whether or not its destination address is known to the switch.
+
+Sending broadcast or unknown multicast packets has a similar flooding effect. To prevent the flooding of packets with unknown unicast addresses, static or semi-static configuration of unicast addresses is often recommended. In this solution, the Ethernet Switch is configured with all unicast addresses in the network or they may be learned in very limited circumstances, e.g., just once with the first start in the factory. In order to limit the flooding of unknown addresses, the Ethernet switches would then need to be configured to discard all packets with unknown source or destination addresses. Unfortunately, the usefulness of this in a car is limited, despite the network being preconfigured and more or less static in its configuration. It would make testing and replacing units during service more complex, since, e.g., the tester addresses cannot be known a-priori and partial networking becomes difficult.
+
+For multicast traffic, configuration of multicast addresses is very helpful. Instead of flooding the multicast packets within the packet’s VLAN, each Ethernet Switch is configured to only forward these packets to the specified outgoing switch ports. This is especially helpful if VLANs are used to define domains and not traffic types. In addition, configuring Ethernet switches to discard packets with unknown multicast destination addresses is highly recommended. This feature is already common for multicast addresses configured by SRP. Another important option is to configure ingress policing for Multicast and Broadcast traffic. Additionally, in some Ethernet switches a specific variant for this is present as Denial of Service (DoS) prevention.
+
+
+**Routing vs Switching:**
+
+
+Routing versus Switching Ethernet-based communication generally provides for two ways to pass packets through a network: **Using the MAC addresses in the Ethernet packet header at ISO/ OSI layer two, or using the IP addresses provided in the header of the IP packet (that can be found in the payload of the Ethernet packet) at layer three. The first method is called switching (throughout this book), the second routing.**
+
+When switching is possible, it seems to be the simpler choice. With switching, packets are forwarded using the addresses of a packet’s outermost header (Ethernet), whereas routing must examine the IP header that follows the Ethernet header. Switching can thus offer somewhat lower latencies and is performed in hardware within dedicated switch semiconductors that are currently readily available to the automotive industry. Routing is used to interconnect separate layer two networks (i.e., LANs). This is done to minimize the scope of a LAN’s “broadcast domain,” to allow a mix of different layer two technologies (i.e., something other than Ethernet), and to build networks of massive scale (e.g., the global Internet). 
+
+Routing is also well established and commonly used in the IT world and in data centers. These networks benefit from the efficiency and stability of layer three, for which well-proven methods and protocols exist.23,24 As the in-vehicle network is always limited in size, as routers seem more complex and expensive (software), and as dedicated automotive router chips are not (yet) available, the car industry has, until now, shied away from using routing instead of switching. However, the following list gives examples of three well-established features and methods enabled by IP that might be worthwhile to investigate for automotive deployment: 282 Protocols for Automotive Ethernet 
+
+The **Time-To-Live (TTL)** field of IP ensures that any single packet cannot make it further than all of the way across the network. If a packet’s TTL expires, the packet is discarded; guarding the network against infinite loops. This feature safeguards a network that may have many redundant routes. While the automotive network sees little redundancy today, it might play a larger role when the concept of networks is truly realized. A feature such as TTL will be of use in the automotive industry then, too. 
+
+The **Explicit Congestion Notification (ECN)** is useful when best-effort traffic is mixed with time-critical and/or synchronous data. It functions as follows: When a router determines that a packet was present in its queues longer than some specific time limit, the router sets the ECN field to reflect this. This allows the recipient to notify the source about the issue, which, in turn, can reduce its transmission rate and, consequently, reduce congestion. Reducing congestion has the beneficial effect of reducing network latency (no queued packets means no delays). And, if congestion is allowed to grow to excess, packets may be dropped. These dropped packets must be dealt with by a higher-layer protocol such as TCP (or even the application itself ). This, unfortunately, leads to greatly reduced network throughput. Remember that TSN reserves QoS for prioritized traffic (see Section 7.1). As cars adopt more distributed computing over time, providing some minimum guarantees and greater efficiencies for best-effort traffic may also become relevant. 
+
+**Remote Direct Memory Access (RDMA) over Converged Ethernet (RoCE)** v2 is an important tool for distributed computing that runs on top of Ethernet, IP, and UDP [81]. It implements a large part of the protocol stack in hardware and thereby saves power and time as well as frees up CPU load. It may be beneficial, when software is virtualized in cars and arbitrarily distributed among the ECUs.
+
+
 
 
 
@@ -1378,12 +1475,6 @@ Example: Suppose we have a class called, “Animal” and two child classes, “
 
 
 
-#### <u>**Special Swithc/Hub/Router Section**</u>
-
-https://www.youtube.com/watch?v=1z0ULvg_pW8
-
-
-
 
 
 
@@ -1411,3 +1502,9 @@ https://www.reddit.com/r/wireshark/comments/tnttds/analysis_and_troubleshooting_
 
 
 https://www.youtube.com/watch?v=CuxyZiSCSfc
+
+
+https://app.pluralsight.com/library/courses/protocol-deep-dive-dhcp/table-of-contents
+
+
+https://app.pluralsight.com/library/courses/protocol-deep-dive-ipsec/table-of-contents
