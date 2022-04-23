@@ -774,10 +774,43 @@ DHCP problems can be categorized under 2 categories:
 
 #### <u>**TCP Troubleshooting**</u>
 
+**==>** **TCP Firewall Issues**
+
+- source and destination misconfigured addresses or ports.
+
+- incorrect firewall direction/zone.
+
+Firewalls are direction based which are inbound,outbound, and local. local means traffic destined to firewall.
+
+
+- incorrect order
+
+
+**==>** **TCP DNAT Issues**
+
+
+DNAT ==> Destination NAT. also called as **port forwarding**. used for mapping private IP address to public IP address. The most problematic issue is **port assignment**.
+
+
+**==> **TCP MTU(Maximum Transmission Unit) Issues- MSS Issues**
+
+
+**==>** MTU forces data fragmentations if they exceed the MTU. generally 1500 bytes.
+
+
+**==>** MSS is the maximum segment size. MSS shows maximum amount of data that can be sent accross connection. MSS only cares about actual user data it is generally **MTU-40 bytes** , works alongside MTU.
 
 
 
 
+
+
+==> Lets say you connected devices and ICMP can send ping but not traffic is happening. (timeout) **How to troubleshoot?**
+
+both servers might be running 1500 mtu but connective devices can support 1300 mtu only. so traffic passes but packets are too large :)
+
+
+ 
 
 
 
@@ -790,6 +823,7 @@ Main UDP Issues:
 
 - DNS problem
 
+- Service Issues
 
 
 **==>** **UDP Firewall Issues**: it is same as TCP Firewall Issues. but also adds a special caveat. The most common issues are DHCP related issues like blocking port 67 or 68 (DHCP address).  Another issue is , **raw sockets bypass** firewall issues.
@@ -797,11 +831,18 @@ Main UDP Issues:
 
 
 
-
-
 **==>** **DNS related issues**. 
 
 DNS operates on both UDP and TCP ports. everything that is 512 bytes or less is sent over UDP. anything larger is sent over TCP. sometimes problem arises thinking it is a UDP issue whereas it is TCP.
+
+
+**==>** **UDP Service issues**:
+
+TCP and UDP rely on services. USP service issues more common. Top 3 services are : **DHCP**, **DNS**, **NTP**.
+
+
+These things are generally handled manually. if there is UDP problem happening, it is better to check the services are running correctly.
+
 
 
 
@@ -998,3 +1039,49 @@ The TCP/IP based protocols are further classified into the following:
 - **RTSP** – Real-time streaming protocol is a protocol for streaming; it establishes media sessions between endpoints.
 
 
+
+
+#### <u>**TCP-IP Basic fundamental**</u>
+
+**The Basic Fundamental Of Networking Presentation Layer**
+
+<br/>
+
+This layer converts or does the job of translating data such as character encoding like the Unicode or the UTF8, encryption/decryption and data compression between a networking
+device and a software application. Few examples would be of JSON, XML, HTML, CSS and many more. This Layer is more useful when doing secure transactions such as banking and transferring money to account for the data needs to be encrypted and decrypted on the go. This layer is also responsible for converting formats like the UTF8 to ASCII and similar stuff
+
+
+
+
+**The Basic Fundamental Of Networking Session Layer**
+
+<br>
+
+In Networking, the session layer is responsible for opening, closure, and managing a session for an end-user application. This session can include multiple requests and responses occurring
+inside the software. If disconnection occurs or if there are any packet losses, the OSI session layer Ip protocol tries to recover the connectivity, and if it fails to do so, then it tries to totally
+close and opens a new connection. This can either be a full or a half-duplex operation. This layer also handles the combining of packets and sorting in proper order. E.g., when you download something from Bit torrent, you see packets get downloaded, but they are not in a synchronized manner. This session layer then combines packets from different streams and allows them to be properly synchronized.
+
+**The Basic Fundamental Of Networking Transport Layer**
+
+<br/>
+
+The transport layer is the one that communicates with the application layer to transfer data to the appropriate hosts. The two most important protocols used almost everywhere at transport
+layers are the TCP and the UDP protocols 
+Both have their own set of pros and cons and are used as per their requirement. TCP distributes the data received from the application layer into specifically sized chunks of data and then transfers these packets part by part into the network. It first acknowledges the packets it receives, requests acknowledgements for the packets sent,
+and then sets response timeouts to retransmit any packet if their acknowledgement is not received before the timeout expires. This is the main reason why this is considered a reliable connection since it takes care that every single packet transmitted is received by the opposite host. This protocol is mainly used when downloading and uploading large files since the loss in
+packets may result in corruption in the uploaded or the downloaded data.
+
+<br/>
+
+UDP, on the other hand, is much simpler but unreliable than Transmission Control Protocol. In UDP, there is no acknowledgement done for any data sent or received to and from the host. Thus there are high chances of packet drops and leaks. This is the main
+reason why UDP is not used where quality data transmission is required and thus, is considered unreliable. This type of protocol is mostly used in YouTube or Vimeo when streaming a video since a few packets drops won’t hamper the user experience. The Basic Fundamental Of Networking Network Layer This specific layer is alternatively known as the Internet Layer as well. This layer is responsible for routing data over networks, and the IP protocol is used to differentiate between addresses.
+
+The most popular ICMP and the IFMP are used in this layer. The ICMP or Internet Control Message Protocol which is used in the ping command to check whether the host is active or down, is used here. The ICMP is
+one of the most important protocols of the IP protocol suite. ICMP is also used to send error messages over the network about whether a host is down or is not responding or if it’s only
+available via the wake on Lan feature and similar stuff. The Basic 
+
+**Fundamental Of Networking Data Link Layer**
+
+<br/>
+
+This layer provides the drivers for different devices present in the Operating system and is alternatively known as the Network Interface Layer. These drivers are of the NIC or the Network Interface Card present in the system. The network cards and their properly configured device drivers are responsible for communicating and transferring data onto networks. Without a network interface card, communication is not possible. This data is transferred either wirelessly via routers and Wi-Fi or via cables like the cross-wired or the RJ-45 cable. The protocols used to transfer data here are the ARP  and the PPP, i.e. Point to Point Protocol.
