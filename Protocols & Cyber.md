@@ -759,13 +759,15 @@ DHCP problems can be categorized under 2 categories:
 - configuration (Server Config)
 
 
-**==>**  Make sure Firewall is allowing UDP and broadcast/multicast traffic on the specified port.
+**==>** Make sure Firewall is allowing UDP and broadcast/multicast traffic on the specified port.
 
 **==>** Check cabling for **loops**
 
-**==>** Check ACL(Access Control List) on router/switch for **deny** for UDP and/or multicast/broadcasts.
+**==>** Check ACL(Access Control List) on router/switch for **deny** for UDP and/or multicast/broadcasts. In this case ICMP packet on wireshark will say administratively filtered.
 
+**==>** make sure the **bridge** is set as **DHCP server** so router/switch/pc can obtain IP address.
 
+**==>** check **DHCP NAK** packet, NAK stands for Negative Acknowledgement. in that case in the DHCP NAK packet, check **Relay Agent IP Address** field. this could mean forgotten DHCP relay config on the router/switch.
 
 
 
@@ -773,6 +775,15 @@ DHCP problems can be categorized under 2 categories:
 #### <u>**TCP Troubleshooting**</u>
 
 #### <u>**UDP Troubleshooting**</u>
+
+
+
+
+
+
+
+
+
 
 
 
