@@ -695,12 +695,37 @@ SSH works in one of 3 ways:
 
 ## <u>**Some Quick Notes on DHCP**</u>
 
-used for endpoint configuration dynamically.  
+used for endpoint configuration dynamically.  otherwise static configuration would be required for each device in every network.
+
+DHCP used UDP ports 67 and 68. Generally broadcast packets. Address assignment happens in 4 packets:
+
+- Discover
+- Offer
+- Request
+- Ack
+
+It has 3 adress allocation methods:
+
+- Dynamic : most common. address is leased for a fixed amount of time.
+
+- Static : address is assigned by the administrator based on MAC adress. manually done.
+
+- Automatic: Assigns a permanenet IP address using **DORA** method.
 
 
+Common DHCP Options:
 
+- Option 52 : Message type.
 
+- Option 52: Lease time.
 
+- Option 6 : Domain server
+
+- Option 1: Subnet mask
+
+- Option 3: Router
+
+- Option 150: TFTP server
 
 
 ### <u>**Network Address Translation (NAT)**</u>
@@ -725,6 +750,25 @@ To access the Internet, one public IP address is needed, but we can use a privat
 ### <u>**TroubleShooting DHCP, UDP, TCP**</u>
 
 #### <u>**DHCP Troubleshooting**</u>
+
+
+DHCP problems can be categorized under 2 categories:
+
+- connectivity (comms)
+
+- configuration (Server Config)
+
+
+**==>**  Make sure Firewall is allowing UDP and broadcast/multicast traffic on the specified port.
+
+**==>** Check cabling for **loops**
+
+**==>** Check ACL(Access Control List) on router/switch for **deny** for UDP and/or multicast/broadcasts.
+
+
+
+
+
 
 #### <u>**TCP Troubleshooting**</u>
 
