@@ -693,6 +693,16 @@ SSH works in one of 3 ways:
 
 <br/>
 
+## <u>**Some Quick Notes on DHCP**</u>
+
+used for endpoint configuration dynamically.  
+
+
+
+
+
+
+
 ### <u>**Network Address Translation (NAT)**</u>
 
 
