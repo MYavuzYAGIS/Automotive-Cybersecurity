@@ -801,18 +801,12 @@ DNAT ==> Destination NAT. also called as **port forwarding**. used for mapping p
 **==>** MSS is the maximum segment size. MSS shows maximum amount of data that can be sent accross connection. MSS only cares about actual user data it is generally **MTU-40 bytes** , works alongside MTU.
 
 
-
-
-
-
 ==> Lets say you connected devices and ICMP can send ping but not traffic is happening. (timeout) **How to troubleshoot?**
 
 both servers might be running 1500 mtu but connective devices can support 1300 mtu only. so traffic passes but packets are too large :)
 
 
- 
-
-
+For better ones, refer to **wireshark.md**
 
 #### <u>**UDP Troubleshooting**</u>
 
@@ -1085,3 +1079,21 @@ available via the wake on Lan feature and similar stuff. The Basic
 <br/>
 
 This layer provides the drivers for different devices present in the Operating system and is alternatively known as the Network Interface Layer. These drivers are of the NIC or the Network Interface Card present in the system. The network cards and their properly configured device drivers are responsible for communicating and transferring data onto networks. Without a network interface card, communication is not possible. This data is transferred either wirelessly via routers and Wi-Fi or via cables like the cross-wired or the RJ-45 cable. The protocols used to transfer data here are the ARP  and the PPP, i.e. Point to Point Protocol.
+
+
+
+=======
+
+
+Small note on **duplexing**:
+
+
+Duplex is a bidirectional communication system that allows both end nodes to send and receive communication data or signals, simultaneously and one at a time. Both nodes have the ability to operate as sender and receiver at the same time, or take turns sending or receiving data.
+
+There are two types of duplex, as follows:
+
+- Full duplex: Sends and receives simultaneously
+- Half Duplex: Can send or receive, one path at a time
+
+
+=================DONE=======================================
