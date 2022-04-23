@@ -752,6 +752,8 @@ To access the Internet, one public IP address is needed, but we can use a privat
 #### <u>**DHCP Troubleshooting**</u>
 
 
+ports 67 and 68 are used for DHCP.
+
 DHCP problems can be categorized under 2 categories:
 
 - connectivity (comms)
@@ -770,20 +772,36 @@ DHCP problems can be categorized under 2 categories:
 **==>** check **DHCP NAK** packet, NAK stands for Negative Acknowledgement. in that case in the DHCP NAK packet, check **Relay Agent IP Address** field. this could mean forgotten DHCP relay config on the router/switch.
 
 
-
-
 #### <u>**TCP Troubleshooting**</u>
+
+
+
+
+
+
+
 
 #### <u>**UDP Troubleshooting**</u>
 
 
+Main UDP Issues:
+
+- inccorrect firewall config
+
+- DNS problem
+
+
+
+**==>** **UDP Firewall Issues**: it is same as TCP Firewall Issues. but also adds a special caveat. The most common issues are DHCP related issues like blocking port 67 or 68 (DHCP address).  Another issue is , **raw sockets bypass** firewall issues.
 
 
 
 
 
 
+**==>** **DNS related issues**. 
 
+DNS operates on both UDP and TCP ports. everything that is 512 bytes or less is sent over UDP. anything larger is sent over TCP. sometimes problem arises thinking it is a UDP issue whereas it is TCP.
 
 
 
