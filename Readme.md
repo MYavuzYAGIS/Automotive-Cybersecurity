@@ -43,5 +43,7 @@ I have compiled the following topics:
 
 ## <u>Why?</u>
 
-Why not?
+Why not? :)
+
+Probably this repo will be filtered down to remove some elements or get additions into it in the future but this does not mean that it is actively maintained.
 
